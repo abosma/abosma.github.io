@@ -3,7 +3,7 @@ var goldGain = 5;
 var text = "";
 var i = setInterval(passiveGoldGain, 1000);
 var j = setInterval(updateTexts, 500);
-
+document.getElementById("upgradeGoldGain").onclick = function{upgradeGoldGain()};
 
 function passiveGoldGain(){
   console.log(gold);
