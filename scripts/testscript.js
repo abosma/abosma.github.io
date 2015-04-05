@@ -1,9 +1,6 @@
-var gold = 100;
 var goldGain = 5;
+var gold = setInterval(function(){ 100 += goldGain; }, 1000);;
 var text = "";
-var i;
-
-setInterval(function(){ gold += goldGain; }, 100);
 
 text += "Gold: " + gold + "<br>";
 
