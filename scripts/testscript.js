@@ -5,6 +5,7 @@ var i = setInterval(passiveGoldGain, 1000);
 
 function passiveGoldGain(){
   console.log(gold);
+  console.log(text);
   gold += goldGain
   text += "Gold: " + gold + "<br>";
 }
