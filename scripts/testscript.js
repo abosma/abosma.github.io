@@ -8,4 +8,4 @@ function goldGainFunction(){
   gold + goldGain;
 }
 
-document.getElementById("test").innerHTML = gold;
+document.getElementById("test").innerHTML = gold + goldGain;
