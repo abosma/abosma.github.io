@@ -1,6 +1,6 @@
 var gold = 100
 var goldGain = 5;
-var text = "";
+var text = "100";
 var i = setInterval(passiveGoldGain, 1000);
 
 function passiveGoldGain(){
@@ -9,4 +9,8 @@ function passiveGoldGain(){
   gold += goldGain
   text = "Gold: " + gold;
   document.getElementById("test").innerHTML = text;
+}
+
+function upgradeGoldGain(){
+  goldGain += 2;
 }
