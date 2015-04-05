@@ -5,7 +5,9 @@ var i = setInterval(passiveGoldGain, 1000);
 var j = setInterval(updateTexts, 500);
 
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
-document.getElementById("upgradeGoldGain").style.font-weight = bold;
+document.getElementById("upgradeGoldGain").style.fontWeight = bold;
+document.getElementById("upgradeGoldGain").style.position = "absolute";
+document.getElementById("upgradeGoldGain").style.top = "100px";
 
 function passiveGoldGain(){
   console.log(gold);
