@@ -1,9 +1,10 @@
 var gold = 100;
 var goldGain = 5;
+var text = "";
 var i;
 
-setInterval(function(){ 
-    gold + goldGain;
-}, 5000);
+for (i = 0; i < 5; i++) {
+    text += "The number is " + i + "<br>";
+}
 
-document.getElementById("test").innerHTML = setInterval(function(){ gold + goldGain;}, 5000);
+document.getElementById("demo").innerHTML = text;
