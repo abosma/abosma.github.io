@@ -8,6 +8,5 @@ function passiveGoldGain(){
   console.log(text);
   gold += goldGain
   text = "Gold: " + gold;
+  document.getElementById("test").innerHTML = text;
 }
-
-document.getElementById("test").innerHTML = text;
