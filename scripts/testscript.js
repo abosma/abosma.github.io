@@ -9,7 +9,12 @@ var j = setInterval(updateTexts, 500);
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
 document.getElementById("upgradeGoldGain").style.fontWeight = 900;
 document.getElementById("upgradeGoldGain").style.position = "absolute";
-document.getElementById("upgradeGoldGain").style.top = "100px";
+document.getElementById("upgradeGoldGain").style.top = "50px";
+
+document.getElementById("upgradeGoldGainSpeed").onclick = function() {upgradeGoldGainSpeed()};
+document.getElementById("upgradeGoldGainSpeed").style.fontWeight = 900;
+document.getElementById("upgradeGoldGainSpeed").style.position = "absolute";
+document.getElementById("upgradeGoldGainSpeed").style.top = "80px";
 
 document.getElementById("goldText").style.position = "absolute";
 document.getElementById("goldText").style.left = "10px";
@@ -27,6 +32,10 @@ function passiveGoldGain(){
 
 function upgradeGoldGain(){
   goldGain += 2;
+}
+
+function upgradeGoldGainSpeed(){
+  goldGainSpeed -= 200;
 }
 
 function updateTexts(){
