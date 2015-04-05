@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html>
-<body>
-  <p id="test">Test</p>
-  <button onclick = "upgradeGoldGain()">Upgrade Gold Gain</button>
-</body>
 <head>
+<style>
+  gold{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+  }
+  
+  goldGain{
+    position: absolute;
+    left: 10px;
+    right: 10px;
+  }
+</style>
   <script type="text/javascript" src="scripts/testscript.js"></script>
 </head>
+
+<body>
+  <gold id="goldText">Gold</gold>
+  <goldGain id="goldGainText">Gold</gold>
+  <button onclick = "upgradeGoldGain()">Upgrade Gold Gain</button>
+</body>
+
 </html>
