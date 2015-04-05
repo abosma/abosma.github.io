@@ -12,7 +12,7 @@ document.getElementById("upgradeGoldGain").style.position = "absolute";
 document.getElementById("upgradeGoldGain").style.top = "50px";
 
 document.getElementById("upgradeGoldGainCost").style.position = "absolute";
-document.getElementById("upgradeGoldGainCost").style.visibility = "hidden";
+document.getElementById("upgradeGoldGainCost").style.opacity = 0;
 document.getElementById("upgradeGoldGainCost").style.top = "50px";
 document.getElementById("upgradeGoldGainCost").style.left = "150px";
 
@@ -39,6 +39,6 @@ function upgradeGoldGain(){
 function updateTexts(){
   document.getElementById("goldGainText").innerHTML = "+ " + goldGain;
   document.getElementById("goldText").innerHTML = text;
-  document.getElementById("upgradeGoldGain").onmouseover = function(){document.getElementById("upgradeGoldGainCost").style.visibility = "visible"};
+  document.getElementById("upgradeGoldGain").onmouseover = function(){document.getElementById("upgradeGoldGainCost").style.opacity = 100};
   document.getElementById("upgradeGoldGain").onmouseover = function(){document.getElementById("upgradeGoldGainCost").innerHTML = "Cost: " + upgradeGoldGainCost};
 }
