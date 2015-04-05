@@ -7,6 +7,7 @@ var j = setInterval(updateTexts, 500);
 
 // Text Positions
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
+document.getElementById("upgradeGoldGain").onmouseover = function(){document.getElementById("upgradeGoldGain").innerHTML = "Cost: " + upgradeGoldGainCost};
 document.getElementById("upgradeGoldGain").style.fontWeight = 900;
 document.getElementById("upgradeGoldGain").style.position = "absolute";
 document.getElementById("upgradeGoldGain").style.top = "50px";
@@ -33,5 +34,4 @@ function upgradeGoldGain(){
 function updateTexts(){
   document.getElementById("goldGainText").innerHTML = "+ " + goldGain;
   document.getElementById("goldText").innerHTML = text;
-  document.getElementById("upgradeGoldGain").onmouseover = function(){document.getElementById("upgradeGoldGain").innerHTML = "Cost: " + upgradeGoldGainCost};
 }
