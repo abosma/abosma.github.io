@@ -13,7 +13,7 @@ document.getElementById("upgradeGoldGain").style.top = "50px";
 
 document.getElementById("upgradeGoldGainCost").style.position = "absolute";
 document.getElementById("upgradeGoldGainCost").style.top = "50px";
-document.getElementById("upgradeGoldGainCost").style.left = "100px";
+document.getElementById("upgradeGoldGainCost").style.left = "150px";
 
 document.getElementById("goldText").style.position = "absolute";
 document.getElementById("goldText").style.left = "10px";
