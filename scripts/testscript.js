@@ -33,6 +33,5 @@ function upgradeGoldGain(){
 function updateTexts(){
   document.getElementById("goldGainText").innerHTML = "+ " + goldGain;
   document.getElementById("goldText").innerHTML = text;
-  document.getElementById("upgradeGoldGain").innerHTML = "Upgrade Gold Gain";
   document.getElementById("upgradeGoldGain").onmouseover = function(){document.getElementById("upgradeGoldGain").innerHTML = "Cost: " + upgradeGoldGainCost};
 }
