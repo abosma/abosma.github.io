@@ -26,6 +26,7 @@ function passiveGoldGain(){
   console.log(gold);
   console.log(goldGain);
   console.log(goldGainSpeed);
+  console.log(document.getElementById("upgradeGoldGainSpeed").innerHTML = "Upgrade Gold Gain Speed")
   gold += goldGain
   text = "Gold: " + gold;
 }
