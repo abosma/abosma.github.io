@@ -2,10 +2,10 @@ var gold = 100;
 var goldGain = 5;
 var i;
 
-document.getElementById("test").innerHTML = gold;
+i = setInterval(goldGainFunction, 1000);
 
-i = setInterval(goldGain, 1000);
-
-function goldGain(){
+function goldGainFunction(){
   gold + goldGain;
 }
+
+document.getElementById("test").innerHTML = gold;
