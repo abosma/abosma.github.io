@@ -6,4 +6,4 @@ setInterval(function(){
     gold + goldGain;
 }, 5000);
 
-document.getElementById("test").innerHTML = gold;
+document.getElementById("test").innerHTML = setInterval(function(){ gold + goldGain;}, 5000);
