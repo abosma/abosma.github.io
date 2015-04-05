@@ -17,6 +17,6 @@ function upgradeGoldGain(){
 }
 
 function updateTexts(){
-  document.getElementById("goldGainText").innerHTML = goldGain;
+  document.getElementById("goldGainText").innerHTML = "+ " + goldGain;
   document.getElementById("goldText").innerHTML = text;
 }
