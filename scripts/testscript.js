@@ -9,6 +9,7 @@ function passiveGoldGain(){
   console.log(gold);
   console.log(goldGain)
   console.log(text);
+  console.log(document.getElementById("upgradeGoldGain").innerHTML)
   gold += goldGain
   text = "Gold: " + gold;
 }
