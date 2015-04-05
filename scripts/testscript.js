@@ -12,7 +12,6 @@ document.getElementById("upgradeGoldGain").style.position = "absolute";
 document.getElementById("upgradeGoldGain").style.top = "50px";
 
 document.getElementById("upgradeGoldGainCost").style.position = "absolute";
-document.getElementById("upgradeGoldGainCost").style.visibility = "hidden"
 document.getElementById("upgradeGoldGainCost").style.top = "50px";
 document.getElementById("upgradeGoldGainCost").style.left = "100px";
 
