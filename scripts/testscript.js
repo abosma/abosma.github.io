@@ -2,15 +2,21 @@ var gold = 100
 var goldGain = 5;
 var text = "";
 var i = setInterval(passiveGoldGain, 1000);
+var j =setInterval(updateTexts, 500);
 
 function passiveGoldGain(){
   console.log(gold);
+  console.log(goldGain)
   console.log(text);
   gold += goldGain
   text = "Gold: " + gold;
-  document.getElementById("test").innerHTML = text;
 }
 
 function upgradeGoldGain(){
   goldGain += 2;
+}
+
+function updateTexts(){
+  document.getElementById("goldGainText").innerHTML = goldGain;
+  document.getElementById("goldText").innerHTML = text;
 }
