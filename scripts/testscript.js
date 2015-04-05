@@ -36,7 +36,7 @@ function upgradeGoldGain(){
 }
 
 function upgradeGoldGainSpeed(){
-  goldGainSpeed -= 200;
+  i = setInterval(passiveGoldGain, (goldGainSpeed -= 200));
 }
 
 function updateTexts(){
