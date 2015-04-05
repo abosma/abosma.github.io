@@ -1,1 +1,3 @@
-document.write(5 + 6);
+var gold = 100;
+
+document.getElementByID("Test").innerHTML = gold;
