@@ -19,7 +19,6 @@ document.getElementById("goldGainText").style.left = "100px";
 function passiveGoldGain(){
   console.log(gold);
   console.log(goldGain);
-  console.log(goldGainSpeed);
   gold += goldGain
   text = "Gold: " + gold;
 }
