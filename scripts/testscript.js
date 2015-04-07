@@ -33,6 +33,7 @@ function upgradeGoldGain(){
 
 
 function updateTexts(){
+  goldGain = Math.pow(5, minersAmount);
   document.getElementById("goldGainText").innerHTML = "+ " + goldGain;
   document.getElementById("goldText").innerHTML = text;
 }
