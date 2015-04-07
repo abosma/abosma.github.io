@@ -1,5 +1,5 @@
 var gold = 100;
-var minersAmount = 2;
+var minersAmount = 0;
 var upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
 var goldGain = 5 + Math.pow(2, minersAmount);
 var text = "";
