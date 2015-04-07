@@ -13,7 +13,7 @@ document.getElementById("upgradeGoldGain").style.fontWeight = 900;
 document.getElementById("upgradeGoldGain").style.position = "absolute";
 document.getElementById("upgradeGoldGain").style.top = "80px";
 
-document.getElementById("upgradeGoldGainCostText").style.visibility = hidden;
+document.getElementById("upgradeGoldGainCostText").style.visibility = "hidden";
 
 document.getElementById("foodText").style.position = "absolute";
 document.getElementById("foodText").style.left = "10px";
