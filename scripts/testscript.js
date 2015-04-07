@@ -38,12 +38,12 @@ function passiveGoldGain(){
 }
 
 function foodDecreaseFunction(){
-  if(food -= minersFoodDecrease >= 0){
+  if(food >= 0){
     text2 = "Food: " + food;
     food -= minersFoodDecrease;
-  }else if(food -= minersFoodDecrease < 0){
+  }else if(food < 0){
     text2 = "A miner died..."
-    food = 0;
+    food == 0;
   }
 }
 
