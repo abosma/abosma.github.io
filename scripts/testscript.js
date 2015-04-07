@@ -62,5 +62,5 @@ function updateTexts(){
   minersFoodDecrease = 1.5 * minersAmount;
   document.getElementById("goldGainText").innerHTML = "+ " + goldGain;
   document.getElementById("goldText").innerHTML = text;
-  document.getElementById("foodText").innerHTML = "Food: " + minersFood;
+  document.getElementById("foodText").innerHTML = "Food: " + food;
 }
