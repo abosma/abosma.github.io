@@ -1,6 +1,7 @@
 var gold = 100;
 var minersAmount = 0;
-var food = 30 -= (minersAmount * 1.5);
+var minersFoodDecrease = (minersAmount * 1.5);
+var food = 30;
 var upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
 var goldGain = 5 + Math.pow(2, minersAmount);
 var text = "";
@@ -30,6 +31,7 @@ function passiveGoldGain(){
   console.log(goldGain);
   console.log(minersAmount);
   console.log(upgradeGoldGainCost);
+  console.log(minersFoodDecrease);
   console.log(food);
   gold += goldGain
   text = "Gold: " + gold;
@@ -37,6 +39,7 @@ function passiveGoldGain(){
 
 function foodDecreaseFunction(){
   text2 = "Food: " + food;
+  food -= minersFoodDecrease;
 }
 
 function upgradeGoldGain(){
@@ -52,7 +55,7 @@ function upgradeGoldGain(){
 function updateTexts(){
   goldGain = 5 + Math.pow(2, minersAmount);
   upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
-  food = 30 -= (minersAmount * 1.5);
+  minersFoodDecrease = (minersAmount * 1.5);
   document.getElementById("goldGainText").innerHTML = "+ " + goldGain;
   document.getElementById("goldText").innerHTML = text;
   document.getElementById("foodText").innerHTML = text2;
