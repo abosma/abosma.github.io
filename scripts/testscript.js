@@ -29,6 +29,11 @@ function passiveGoldGain(){
 
 function upgradeGoldGain(){
   minersAmount += 1;
+  if(gold - upgradeGoldGainCost =< 0){
+    alert(Not enough gold);
+  }else if(gold - upgradeGoldGainCost == 0 || gold - upgradeGoldGainCost => 0){
+    gold -= upgradeGoldGainCost;
+  }
 }
 
 
