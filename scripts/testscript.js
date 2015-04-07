@@ -41,7 +41,7 @@ function passiveGoldGain(){
 
 function minersFoodDecrase(){
   food -= minersFoodDecrease;
-  text = "Food: " + food;
+  text2 = "Food: " + food;
 }
 
 function upgradeGoldGain(){
@@ -60,5 +60,5 @@ function updateTexts(){
   minersFoodDecrease = 1.5 * minersAmount;
   document.getElementById("goldGainText").innerHTML = "+ " + goldGain;
   document.getElementById("goldText").innerHTML = text;
-  document.getElementById("foodText").innerHTML = "Food: " + food;
+  document.getElementById("foodText").innerHTML = text2;
 }
