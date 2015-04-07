@@ -1,6 +1,5 @@
 var gold = 100
 var goldGain = 5;
-var upgradeGoldGainCost = 200;
 var text = "";
 var i = setInterval(passiveGoldGain, 1000);
 var j = setInterval(updateTexts, 1000);
