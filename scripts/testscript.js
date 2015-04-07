@@ -6,6 +6,7 @@ var upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
 var goldGain = 5 + Math.pow(2, minersAmount);
 var text = "";
 var text2 = "";
+var text3 = "";
 
 // Text Positions
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
@@ -13,6 +14,10 @@ document.getElementById("upgradeGoldGain").style.fontWeight = 900;
 document.getElementById("upgradeGoldGain").style.position = "absolute";
 document.getElementById("upgradeGoldGain").style.top = "80px";
 document.getElementById("upgradeGoldGain").style.left = "80px";
+
+document.getElementById("minersText").style.position = "absolute";
+document.getElementById("minersText").style.left = "10px";
+document.getElementById("minersText").style.top = "25px";
 
 document.getElementById("upgradeGoldGainCostText").style.visibility = "hidden";
 
@@ -49,7 +54,7 @@ function foodDecreaseFunction(){
       minersAmount -= 1;
     }
   }else if(minersAmount <= 0 || minersAmount == 0){
-    text2 = "You ran out of miners, your food is: " + food;
+    minersAmount = 0;
   }
 }
 
@@ -64,12 +69,14 @@ function upgradeGoldGain(){
 
 
 function updateTexts(){
+  text3 = "Miners: " + minersAmount;
   goldGain = 5 + Math.pow(2, minersAmount);
   upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
   minersFoodDecrease = (minersAmount * 1.5);
   document.getElementById("goldGainText").innerHTML = "+ " + goldGain;
   document.getElementById("goldText").innerHTML = text;
   document.getElementById("foodText").innerHTML = text2;
+  document.getElementById("minersText").innerHTML = text3;
 }
 
 var i = setInterval(passiveGoldGain, 1000);
