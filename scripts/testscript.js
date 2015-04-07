@@ -1,7 +1,7 @@
 var gold = 100
-var goldGain = 5;
 var minersAmount = 0;
-var upgradeGoldGainCost = 200;
+var upgradeGoldGainCost = 200 + (minersAmount)*4
+var goldGain = 5 + (minersAmount)*2
 var text = "";
 var i = setInterval(passiveGoldGain, 1000);
 var j = setInterval(updateTexts, 1000);
@@ -28,8 +28,6 @@ function passiveGoldGain(){
 
 function upgradeGoldGain(){
   minersAmount += 1;
-  goldGain = 5 + (minersAmount)*2
-  upgradeGoldGainCost += (minersAmount)*4
 }
 
 
