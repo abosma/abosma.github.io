@@ -1,7 +1,7 @@
 var gold = 100;
 var farms = 1;
 var minersAmount = 1;
-var minersFoodDecrease = (minersAmount * -1.5);
+var minersFoodDecrease = (minersAmount * 1.5);
 var minersFoodIncrease = (farms * 1);
 var minersFoodDifference = minersFoodIncrease - minersFoodDecrease;
 var food = 30;
@@ -92,10 +92,11 @@ function upgradeGoldGain(){
 
 function updateTexts(){
   text3 = "Miners: " + minersAmount;
-  minersFoodDifference = minersFoodIncrease - minersFoodDecrease;
   goldGain = 5 + Math.pow(2, minersAmount);
   upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
   minersFoodDecrease = (minersAmount * 1.5);
+  minersFoodIncrease = (farms * 1);
+  minersFoodDifference = minersFoodIncrease - minersFoodDecrease;
   document.getElementById("goldGainText").innerHTML = "+ " + goldGain;
   document.getElementById("goldText").innerHTML = text;
   document.getElementById("foodText").innerHTML = text2;
