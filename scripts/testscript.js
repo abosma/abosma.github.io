@@ -7,7 +7,7 @@ var text = "";
 var text2 = "";
 var i = setInterval(passiveGoldGain, 1000);
 var j = setInterval(updateTexts, 1000);
-var k = setInterval(minersFoodDecrease, 1000);
+var k = setInterval(foodDecreaseFunction, 1000);
 
 // Text Positions
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
@@ -38,7 +38,7 @@ function passiveGoldGain(){
   text = "Gold: " + gold;
 }
 
-function minersFoodDecrase(){
+function foodDecreaseFunction(){
   text2 = "Food: " + food;
 }
 
