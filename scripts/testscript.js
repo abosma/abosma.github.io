@@ -43,7 +43,7 @@ function foodDecreaseFunction(){
     food -= minersFoodDecrease;
   }else if(food < 0){
     text2 = "A miner died..."
-    food == 0;
+    food = 0;
   }
 }
 
