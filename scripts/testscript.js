@@ -47,7 +47,7 @@ function foodDecreaseFunction(){
       food = 0;
       minersAmount -= 1;
     }
-  }else if(minersAmount <= 0){
+  }else if(minersAmount <= 0 || minersAmount == 0){
     text2 = "You ran out of miners, your food is: " + food;
   }
 }
