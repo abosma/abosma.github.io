@@ -19,6 +19,12 @@ document.getElementById("upgradeGoldGain").style.position = "absolute";
 document.getElementById("upgradeGoldGain").style.top = "100px";
 document.getElementById("upgradeGoldGain").style.left = "80px";
 
+document.getElementById("buildFarm").onclick = function() {buildFarmFunction()};
+document.getElementById("buildFarm").style.fontWeight = 900;
+document.getElementById("buildFarm").style.position = "absolute";
+document.getElementById("buildFarm").style.top = "120px";
+document.getElementById("buildFarm").style.left = "80px";
+
 document.getElementById("farmsText").style.position = "absolute";
 document.getElementById("farmsText").style.left = "10px";
 document.getElementById("farmsText").style.top = "70px";
@@ -87,6 +93,10 @@ function upgradeGoldGain(){
     gold -= upgradeGoldGainCost;
     minersAmount += 1;
   }
+}
+
+function buildFarmFunction(){
+  farms += 1;
 }
 
 
