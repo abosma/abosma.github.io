@@ -5,6 +5,7 @@ var minersFoodDecrease = 1.5 * minersAmount;
 var upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
 var goldGain = 5 + Math.pow(2, minersAmount);
 var text = "";
+var text2 = "";
 var i = setInterval(passiveGoldGain, 1000);
 var j = setInterval(updateTexts, 1000);
 var k = setInterval(minersFoodDecrease, 1000);
@@ -40,6 +41,7 @@ function passiveGoldGain(){
 
 function minersFoodDecrase(){
   food -= minersFoodDecrease;
+  text = "Food: " + food;
 }
 
 function upgradeGoldGain(){
