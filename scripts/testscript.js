@@ -48,6 +48,8 @@ function passiveGoldGain(){
   console.log(goldGain);
   console.log(minersAmount);
   console.log(upgradeGoldGainCost);
+  console.log(minersFoodIncrease);
+  console.log(minersFoodDecrease);
   console.log(minersFoodDifference);
   console.log(food);
   console.log(text2);
