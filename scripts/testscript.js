@@ -1,7 +1,7 @@
-var gold = 100
+var gold = 100;
 var minersAmount = 0;
-var upgradeGoldGainCost = 200 + minersAmount*4
-var goldGain = 5 + minersAmount*2
+var upgradeGoldGainCost = (200 + minersAmount*4);
+var goldGain = (5 + minersAmount*2);
 var text = "";
 var i = setInterval(passiveGoldGain, 1000);
 var j = setInterval(updateTexts, 1000);
@@ -34,5 +34,4 @@ function upgradeGoldGain(){
 function updateTexts(){
   document.getElementById("goldGainText").innerHTML = "+ " + goldGain;
   document.getElementById("goldText").innerHTML = text;
-  document.getElementById("upgradeGoldGain").onmouseover = function(){document.getElementById("upgradeGoldGainCost").innerHTML = "Cost: " + upgradeGoldGainCost};
 }
