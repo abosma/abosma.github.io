@@ -1,7 +1,7 @@
 var gold = 100;
 var farms = 1;
 var minersAmount = 1;
-var minersFoodDecrease = (minersAmount * 1.5);
+var minersFoodDecrease = (minersAmount * -1.5);
 var minersFoodIncrease = (farms * 1);
 var minersFoodDifference = minersFoodIncrease - minersFoodDecrease;
 var food = 30;
@@ -74,11 +74,9 @@ function foodDecreaseFunction(){
 
 function checkFoodDifference(){
   if(minersFoodDifference < 0){
-    text4 = "- " + minersFoodDifference;
+    text4 = minersFoodDifference;
   }else if(minersFoodDifference > 0){
     text4 = "+ " + minersFoodDifference
-  }else if(minersFoodDifference == 0){
-    text4 = "  0"
   }
 }
 
