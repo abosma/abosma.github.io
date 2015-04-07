@@ -1,6 +1,8 @@
 var gold = 100;
+var farms = 0;
 var minersAmount = 1;
 var minersFoodDecrease = (minersAmount * 1.5);
+var minersFoodIncrease = (farms * 1.2);
 var food = 30;
 var upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
 var goldGain = 5 + Math.pow(2, minersAmount);
@@ -77,6 +79,8 @@ function updateTexts(){
   document.getElementById("goldText").innerHTML = text;
   document.getElementById("foodText").innerHTML = text2;
   document.getElementById("minersText").innerHTML = text3;
+  document.getElementById("farmsText").innerHTML = "Farms: " + farms;
+  document.getElementById("minersFoodGain").innerHTML = "+ " + minersFoodIncrease;
 }
 
 var i = setInterval(passiveGoldGain, 1000);
