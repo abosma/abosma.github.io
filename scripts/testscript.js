@@ -1,5 +1,5 @@
 var gold = 100;
-var farms = 0;
+var farms = 1;
 var minersAmount = 1;
 var minersFoodDecrease = (minersAmount * 1.5);
 var minersFoodIncrease = (farms * 1);
