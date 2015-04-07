@@ -17,11 +17,11 @@ document.getElementById("goldGainText").style.position = "absolute";
 document.getElementById("goldGainText").style.left = "100px";
 
 function passiveGoldGain(){
+  var upgradeGoldGainCost = 200 + (minersAmount)*4
+  var goldGain = 5 + (minersAmount)*2
   console.log(gold);
   console.log(goldGain);
   console.log(minersAmount);
-  var upgradeGoldGainCost = 200 + (minersAmount)*4
-  var goldGain = 5 + (minersAmount)*2
   gold += goldGain
   text = "Gold: " + gold;
 }
