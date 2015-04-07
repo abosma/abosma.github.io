@@ -14,8 +14,16 @@ var text3 = "";
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
 document.getElementById("upgradeGoldGain").style.fontWeight = 900;
 document.getElementById("upgradeGoldGain").style.position = "absolute";
-document.getElementById("upgradeGoldGain").style.top = "80px";
+document.getElementById("upgradeGoldGain").style.top = "100px";
 document.getElementById("upgradeGoldGain").style.left = "80px";
+
+document.getElementById("farmsText").style.position = "absolute";
+document.getElementById("farmsText").style.left = "10px";
+document.getElementById("farmsText").style.top = "69px";
+
+document.getElementById("minersFoodGain").style.position = "absolute";
+document.getElementById("minersFoodGain").style.left = "150px";
+document.getElementById("minersFoodGain").style.top = "69px";
 
 document.getElementById("minersText").style.position = "absolute";
 document.getElementById("minersText").style.left = "10px";
