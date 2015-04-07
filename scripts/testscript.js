@@ -7,7 +7,7 @@ var goldGain = 5 + Math.pow(2, minersAmount);
 var text = "";
 var i = setInterval(passiveGoldGain, 1000);
 var j = setInterval(updateTexts, 1000);
-var k = setInterval(minerFoodDecrease, 1000);
+var k = setInterval(minersFoodDecrease, 1000);
 
 // Text Positions
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
