@@ -23,7 +23,7 @@ document.getElementById("buildFarm").onclick = function() {buildFarmFunction()};
 document.getElementById("buildFarm").style.fontWeight = 900;
 document.getElementById("buildFarm").style.position = "absolute";
 document.getElementById("buildFarm").style.top = "120px";
-document.getElementById("buildFarm").style.left = "79px";
+document.getElementById("buildFarm").style.left = "78px";
 
 document.getElementById("farmsText").style.position = "absolute";
 document.getElementById("farmsText").style.left = "10px";
