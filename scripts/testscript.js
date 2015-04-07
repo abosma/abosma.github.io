@@ -16,7 +16,7 @@ document.getElementById("goldText").style.position = "absolute";
 document.getElementById("goldText").style.left = "10px";
 
 document.getElementById("goldGainText").style.position = "absolute";
-document.getElementById("goldGainText").style.left = "100px";
+document.getElementById("goldGainText").style.left = "150px";
 
 function passiveGoldGain(){
   console.log(gold);
