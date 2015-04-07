@@ -12,6 +12,7 @@ document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain
 document.getElementById("upgradeGoldGain").style.fontWeight = 900;
 document.getElementById("upgradeGoldGain").style.position = "absolute";
 document.getElementById("upgradeGoldGain").style.top = "80px";
+document.getElementById("upgradeGoldGain").style.left = "80px";
 
 document.getElementById("upgradeGoldGainCostText").style.visibility = "hidden";
 
