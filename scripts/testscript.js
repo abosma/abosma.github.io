@@ -1,5 +1,5 @@
 var gold = 100;
-var minersAmount = 0;
+var minersAmount = 1;
 var minersFoodDecrease = (minersAmount * 1.5);
 var food = 30;
 var upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
@@ -38,12 +38,16 @@ function passiveGoldGain(){
 }
 
 function foodDecreaseFunction(){
-  if(food >= 0){
-    text2 = "Food: " + food;
-    food -= minersFoodDecrease;
-  }else if(food < 0){
-    text2 = "A miner died..."
-    food = 0;
+  if(minersAmount >= 0){
+    if(food >= 0){
+      text2 = "Food: " + food;
+      food -= minersFoodDecrease;
+    }else if(food < 0){
+      text2 = "A miner died..."
+      food = 0;
+    }
+  }else if(minersAmount <= 0){
+    text2 = "You ran out of miners, your food is: " + food;
   }
 }
 
