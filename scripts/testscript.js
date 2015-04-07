@@ -1,11 +1,13 @@
 var gold = 100;
 var minersAmount = 0;
-var minersFood = 30;
+var food = 30;
+var minersFoodDecrease = 1.5 * minersAmount;
 var upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
 var goldGain = 5 + Math.pow(2, minersAmount);
 var text = "";
 var i = setInterval(passiveGoldGain, 1000);
 var j = setInterval(updateTexts, 1000);
+var k = setInterval(minerFoodDecrease, 1000);
 
 // Text Positions
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
@@ -35,6 +37,15 @@ function passiveGoldGain(){
   text = "Gold: " + gold;
 }
 
+function minersFoodDecrase(){
+  if(food - minersFoodDecrease < 0){
+    food = 0;
+    minersAmount -= 1;
+  }else if(food - minersFoodDecrease >= 0){
+    food -= minersFoodDecrease;
+  }
+}
+
 function upgradeGoldGain(){
   if(gold - upgradeGoldGainCost < 0){
     alert("Not enough gold");
@@ -48,6 +59,7 @@ function upgradeGoldGain(){
 function updateTexts(){
   goldGain = 5 + Math.pow(2, minersAmount);
   upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
+  minersFoodDecrease = 1.5 * minersAmount;
   document.getElementById("goldGainText").innerHTML = "+ " + goldGain;
   document.getElementById("goldText").innerHTML = text;
   document.getElementById("foodText").innerHTML = "Food: " + minersFood;
