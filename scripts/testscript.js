@@ -22,6 +22,7 @@ function passiveGoldGain(){
   console.log(gold);
   console.log(goldGain);
   console.log(minersAmount);
+  console.log(upgradeGoldGainCost);
   gold += goldGain
   text = "Gold: " + gold;
 }
