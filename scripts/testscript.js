@@ -2,13 +2,15 @@ var gold = 100;
 var farms = 0;
 var minersAmount = 1;
 var minersFoodDecrease = (minersAmount * 1.5);
-var minersFoodIncrease = (farms * 1.2);
+var minersFoodIncrease = (farms * 1);
+var minersFoodDifference = minersFoodIncrease - minersFoodDecrease;
 var food = 30;
 var upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
 var goldGain = 5 + Math.pow(2, minersAmount);
 var text = "";
 var text2 = "";
 var text3 = "";
+var text4 = "";
 
 // Text Positions
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
@@ -19,11 +21,11 @@ document.getElementById("upgradeGoldGain").style.left = "80px";
 
 document.getElementById("farmsText").style.position = "absolute";
 document.getElementById("farmsText").style.left = "10px";
-document.getElementById("farmsText").style.top = "69px";
+document.getElementById("farmsText").style.top = "70px";
 
 document.getElementById("minersFoodGain").style.position = "absolute";
 document.getElementById("minersFoodGain").style.left = "150px";
-document.getElementById("minersFoodGain").style.top = "69px";
+document.getElementById("minersFoodGain").style.top = "50px";
 
 document.getElementById("minersText").style.position = "absolute";
 document.getElementById("minersText").style.left = "10px";
@@ -46,7 +48,7 @@ function passiveGoldGain(){
   console.log(goldGain);
   console.log(minersAmount);
   console.log(upgradeGoldGainCost);
-  console.log(minersFoodDecrease);
+  console.log(minersFoodDifference);
   console.log(food);
   console.log(text2);
   gold += goldGain
@@ -57,7 +59,7 @@ function foodDecreaseFunction(){
   if(minersAmount >= 0){
     if(food >= 0){
       text2 = "Food: " + food;
-      food -= minersFoodDecrease;
+      food += minersFoodDifference;
     }else if(food < 0){
       text2 = "A miner died..."
       food = 0;
@@ -65,6 +67,16 @@ function foodDecreaseFunction(){
     }
   }else if(minersAmount <= 0 || minersAmount == 0){
     minersAmount = 0;
+  }
+}
+
+function checkFoodDifference(){
+  if(minersFoodDifference < 0){
+    text4 = "- " + minersFoodDifference;
+  }else if(minersFoodDifference > 0){
+    text4 = "+ " + minersFoodDifference
+  }else if(minersFoodDifference == 0){
+    text4 = "  0"
   }
 }
 
@@ -80,6 +92,7 @@ function upgradeGoldGain(){
 
 function updateTexts(){
   text3 = "Miners: " + minersAmount;
+  minersFoodDifference = minersFoodIncrease - minersFoodDecrease;
   goldGain = 5 + Math.pow(2, minersAmount);
   upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
   minersFoodDecrease = (minersAmount * 1.5);
@@ -88,9 +101,10 @@ function updateTexts(){
   document.getElementById("foodText").innerHTML = text2;
   document.getElementById("minersText").innerHTML = text3;
   document.getElementById("farmsText").innerHTML = "Farms: " + farms;
-  document.getElementById("minersFoodGain").innerHTML = "+ " + minersFoodIncrease;
+  document.getElementById("minersFoodGain").innerHTML = text4;
 }
 
 var i = setInterval(passiveGoldGain, 1000);
 var j = setInterval(updateTexts, 1000);
 var k = setInterval(foodDecreaseFunction, 1000);
+var l = setInterval(checkFoodDifference, 1000);
