@@ -138,9 +138,13 @@ function updateTexts(){
 }
 
 // githubbutton
-function githubButtonFunction(url) {
-  var win = window.open(https://github.com/AtillaBosma/atillabosma.github.io/, '_blank');
-  win.focus();
+function githubButtonFunction() {
+  var win = window.open('https://github.com/AtillaBosma/atillabosma.github.io/', '_blank');
+  if(win){
+    win.focus();
+  }else{
+    alert('Please allow popups for this site');
+  }
 }
 
 // All the intervals are set on 1s loops
