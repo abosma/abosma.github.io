@@ -1,3 +1,4 @@
+// Intervals
 var gold = 100;
 var farms = 1;
 var minersAmount = 1;
@@ -13,7 +14,7 @@ var text3 = "";
 var text4 = "";
 var text5 = "";
 
-// Text Positions
+// Text Positions, visibility and functions
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
 document.getElementById("upgradeGoldGain").style.fontWeight = 900;
 document.getElementById("upgradeGoldGain").style.position = "absolute";
@@ -53,6 +54,8 @@ document.getElementById("goldText").style.left = "10px";
 document.getElementById("goldGainText").style.position = "absolute";
 document.getElementById("goldGainText").style.left = "150px";
 
+
+// Passive gold gain function
 function passiveGoldGain(){
   console.log(gold);
   console.log(goldGain);
@@ -67,6 +70,7 @@ function passiveGoldGain(){
   text = "Gold: " + gold;
 }
 
+// Passive food decrease, and check if minersAmount is below 0 function
 function foodDecreaseFunction(){
   if(minersAmount >= 0){
     if(food >= 0){
@@ -82,6 +86,7 @@ function foodDecreaseFunction(){
   }
 }
 
+// Change text for minersFoodDifference
 function checkFoodDifference(){
   if(minersFoodDifference < 0){
     text4 = minersFoodDifference;
@@ -90,6 +95,7 @@ function checkFoodDifference(){
   }
 }
 
+// Hire miner button
 function upgradeGoldGain(){
   if(gold - upgradeGoldGainCost < 0){
     text5 = "Not enough gold";
@@ -100,17 +106,19 @@ function upgradeGoldGain(){
   }
 }
 
+// Mouseover for hire miner button
 function checkGoldCostUpgrades(){
   document.getElementById("upgradeGoldGain").onmouseover = function(){document.getElementById("upgradeGoldGainCostText").style.visibility = "visible";}
   document.getElementById("upgradeGoldGain").onmouseout = function(){document.getElementById("upgradeGoldGainCostText").style.visibility = "hidden";}
   text5 = "Cost: " + upgradeGoldGainCost + " gold";
 }
 
+// Build farm button
 function buildFarmFunction(){
   farms += 1;
 }
 
-
+// Updates all texts and variables
 function updateTexts(){
   text3 = "Miners: " + minersAmount;
   goldGain = 5 + Math.pow(2, minersAmount);
@@ -127,6 +135,7 @@ function updateTexts(){
   document.getElementById("upgradeGoldGainCostText").innerHTML = text5;
 }
 
+// All the intervals are set on 1s loops
 var i = setInterval(passiveGoldGain, 1000);
 var j = setInterval(updateTexts, 1000);
 var k = setInterval(foodDecreaseFunction, 1000);
