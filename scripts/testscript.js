@@ -14,7 +14,7 @@ var text3 = "";
 var text4 = "";
 var text5 = "";
 
-// Text Positions, visibility and functions
+// Text Positions, visibility and functions BENNO
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
 document.getElementById("upgradeGoldGain").style.fontWeight = 900;
 document.getElementById("upgradeGoldGain").style.position = "absolute";
