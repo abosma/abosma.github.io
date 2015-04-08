@@ -11,6 +11,7 @@ var text = "";
 var text2 = "";
 var text3 = "";
 var text4 = "";
+var text5 = "";
 
 // Text Positions
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
@@ -91,7 +92,7 @@ function checkFoodDifference(){
 
 function upgradeGoldGain(){
   if(gold - upgradeGoldGainCost < 0){
-    alert("Not enough gold");
+    text5 = "Not enough gold";
   }else if(gold - upgradeGoldGainCost >= 0){
     gold -= upgradeGoldGainCost;
     minersAmount += 1;
@@ -116,6 +117,7 @@ function updateTexts(){
   document.getElementById("minersText").innerHTML = text3;
   document.getElementById("farmsText").innerHTML = "Farms: " + farms;
   document.getElementById("minersFoodGain").innerHTML = text4;
+  document.getElementById("upgradeGoldGainCostText").innerHTML = text5;
 }
 
 var i = setInterval(passiveGoldGain, 1000);
