@@ -101,8 +101,9 @@ function upgradeGoldGain(){
 }
 
 function checkGoldCostUpgrades(){
-  document.getElementById("upgradeGoldGain").onmouseover = function(){document.getElementById("upgradeGoldGainCostText").style.visibility = "visible"}
+  document.getElementById("upgradeGoldGain").onmouseover = function(){document.getElementById("upgradeGoldGainCostText").style.visibility = "visible";} 
   text5 = "Cost: " + upgradeGoldGainCostText;
+}
 
 function buildFarmFunction(){
   farms += 1;
