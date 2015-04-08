@@ -115,7 +115,7 @@ function checkGoldCostUpgrades(){
 
 // Build farm button
 function buildFarmFunction(){
-  farms += 1;
+  farms++;
 }
 
 // Updates all texts and variables
