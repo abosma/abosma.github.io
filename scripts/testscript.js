@@ -38,7 +38,7 @@ document.getElementById("minersText").style.position = "absolute";
 document.getElementById("minersText").style.left = "10px";
 document.getElementById("minersText").style.top = "29px";
 
-document.getElementById("upgradeGoldGainCostText").style.visibility = "visible";
+document.getElementById("upgradeGoldGainCostText").style.visibility = "hidden";
 document.getElementById("upgradeGoldGainCostText").style.position = "absolute";
 document.getElementById("upgradeGoldGainCostText").style.top = "100px";
 document.getElementById("upgradeGoldGainCostText").style.left = "180px";
@@ -96,8 +96,13 @@ function upgradeGoldGain(){
   }else if(gold - upgradeGoldGainCost >= 0){
     gold -= upgradeGoldGainCost;
     minersAmount += 1;
+    text5 = "You hired a miner";
   }
 }
+
+function checkGoldCostUpgrades(){
+  document.getElementById("upgradeGoldGain").onmouseover = function(){document.getElementById("upgradeGoldGainCostText").style.visibility = "visible"}
+  text5 = "Cost: " + upgradeGoldGainCostText;
 
 function buildFarmFunction(){
   farms += 1;
@@ -124,3 +129,4 @@ var i = setInterval(passiveGoldGain, 1000);
 var j = setInterval(updateTexts, 1000);
 var k = setInterval(foodDecreaseFunction, 1000);
 var l = setInterval(checkFoodDifference, 1000);
+var m = setInterval(checkGoldCostUpgrades, 1000);
