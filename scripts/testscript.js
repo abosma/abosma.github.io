@@ -138,8 +138,9 @@ function updateTexts(){
 }
 
 // githubbutton
-function githubButtonFunction(){
-  window.location.href = 'https://github.com/AtillaBosma/atillabosma.github.io/'
+function githubButtonFunction(url) {
+  var win = window.open(https://github.com/AtillaBosma/atillabosma.github.io/, '_blank');
+  win.focus();
 }
 
 // All the intervals are set on 1s loops
