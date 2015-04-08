@@ -146,6 +146,8 @@ function updateTexts(){
   text3 = "Miners: " + minersAmount;
   goldGain = 5 + Math.pow(2, minersAmount);
   upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
+  buildFarmGoldCost = 500 + Math.pow(1.2, farms);
+  buildFarmWoodCost = 10 + Math.pow(2, farms);
   minersFoodDecrease = (minersAmount * 1.5);
   minersFoodIncrease = (farms * 1);
   minersFoodDifference = minersFoodIncrease - minersFoodDecrease;
