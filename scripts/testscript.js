@@ -1,11 +1,14 @@
 // Intervals
 var gold = 100;
 var farms = 0;
+var wood = 25;
 var minersAmount = 0;
 var minersFoodDecrease = (minersAmount * 1.5);
 var minersFoodIncrease = (farms * 1);
 var minersFoodDifference = minersFoodIncrease - minersFoodDecrease;
 var food = 30;
+var buildFarmWoodCost = 10 + Math.pow(2, farms);
+var buildFarmGoldCost = 500 + Math.pow(1.2, farms);
 var upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
 var goldGain = 5 + Math.pow(2, minersAmount);
 var text = "";
@@ -13,6 +16,7 @@ var text2 = "";
 var text3 = "";
 var text4 = "";
 var text5 = "";
+var text6 = "";
 
 // Text Positions, visibility and functions BENNO
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
@@ -43,6 +47,11 @@ document.getElementById("upgradeGoldGainCostText").style.visibility = "hidden";
 document.getElementById("upgradeGoldGainCostText").style.position = "absolute";
 document.getElementById("upgradeGoldGainCostText").style.top = "140px";
 document.getElementById("upgradeGoldGainCostText").style.left = "180px";
+
+document.getElementById("buildFarmCostText").style.visibility = "hidden";
+document.getElementById("buildFarmCostText").style.position = "absolute";
+document.getElementById("buildFarmCostText").style.top = "160px";
+document.getElementById("buildFarmCostText").style.left = "180px";
 
 document.getElementById("foodText").style.position = "absolute";
 document.getElementById("foodText").style.left = "10px";
@@ -116,14 +125,28 @@ function upgradeGoldGain(){
 
 // Mouseover for hire miner button
 function checkGoldCostUpgrades(){
-  document.getElementById("upgradeGoldGain").onmouseover = function(){document.getElementById("upgradeGoldGainCostText").style.visibility = "visible";}
+  document.getElementById("upgradeGoldGain").onmouseover = function(){document.getElementById("upgradeGoldGainCostText").style.visibility = "visible";}  
   document.getElementById("upgradeGoldGain").onmouseout = function(){document.getElementById("upgradeGoldGainCostText").style.visibility = "hidden";}
   text5 = "Cost: " + upgradeGoldGainCost + " gold, 1.5 food per second";
 }
 
+function checkFarmCostUpgrades(){
+  document.getElementById("buildFarm").onmouseover = function(){document.getElementById("buildFarmCostText").style.visibility = "visible";}  
+  document.getElementById("buildFarm").onmouseout = function(){document.getElementById("buildFarmCostText").style.visibility = "hidden";}
+  text6 = "Cost: " + buildFarmGoldCost + " gold, " + buildFarmWoodCost + " wood";
+}
+
 // Build farm button
 function buildFarmFunction(){
-  farms++;
+  if(buildFarmWoodCost < wood && buildFarmGoldCost < gold){
+    wood -= buildFarmWoodCost;
+    gold -= buildFarmGoldCost;
+    farms++;
+  }else if(buildFarmWoodCost > wood){
+    text6 = "You don't have enough wood."
+  }else if(buildFarmGoldCost > gold){
+    text6 = "You dont have enough gold."
+  }
 }
 
 // Updates all texts and variables
@@ -141,6 +164,7 @@ function updateTexts(){
   document.getElementById("farmsText").innerHTML = "Farms: " + farms;
   document.getElementById("minersFoodGain").innerHTML = text4;
   document.getElementById("upgradeGoldGainCostText").innerHTML = text5;
+  document.getElementById("buildFarmCostText").innerHTML = text6;
 }
 
 // githubbutton
