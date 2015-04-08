@@ -38,6 +38,7 @@ document.getElementById("minersText").style.left = "10px";
 document.getElementById("minersText").style.top = "29px";
 
 document.getElementById("upgradeGoldGainCostText").style.visibility = "visible";
+document.getElementById("upgradeGoldGainCostText").style.position = "absolute";
 document.getElementById("upgradeGoldGainCostText").style.top = "100px";
 document.getElementById("upgradeGoldGainCostText").style.left = "100px";
 
