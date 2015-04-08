@@ -60,8 +60,7 @@ document.getElementById("githubButton").style.bottom="100px";
 document.getElementById("githubButton").style.right="10px";
 document.getElementById("githubButton").style.position="absolute";
 document.getElementById("githubButton").style.content= "url(images/gitbuttonUp.png)"
-document.getElementById("githubButton").onmousedown = function(){githubButtonFunction()};
-document.getElementById("githubButton").onmouseup = function(){document.getElementById("githubButton").style.content= "url(images/gitbuttonUp.png)"};
+document.getElementById("githubButton").onclick = function(){githubButtonFunction()};
 
 
 // Passive gold gain function
@@ -146,7 +145,6 @@ function updateTexts(){
 
 // githubbutton
 function githubButtonFunction() {
-  document.getElementById("githubButton").style.content= "url(images/gitbuttonDown.png)"
   var win = window.open('https://github.com/AtillaBosma/atillabosma.github.io/', '_blank');
   if(win){
     win.focus();
