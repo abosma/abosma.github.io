@@ -54,8 +54,8 @@ document.getElementById("goldText").style.left = "10px";
 document.getElementById("goldGainText").style.position = "absolute";
 document.getElementById("goldGainText").style.left = "150px";
 
-document.getElementById("githubButton").style.width="200px";
-document.getElementById("githubButton").style.height="200px";
+document.getElementById("githubButton").style.width="50px";
+document.getElementById("githubButton").style.height="50px";
 document.getElementById("githubButton").style.bottom="10px";
 document.getElementById("githubButton").style.right="10px";
 document.getElementById("githubButton").style.position="fixed";
