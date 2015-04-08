@@ -74,15 +74,7 @@ document.getElementById("githubButton").onclick = function(){githubButtonFunctio
 
 // Passive gold gain function
 function passiveGoldGain(){
-  console.log(gold);
-  console.log(goldGain);
-  console.log(minersAmount);
-  console.log(upgradeGoldGainCost);
-  console.log(minersFoodIncrease);
-  console.log(minersFoodDecrease);
-  console.log(minersFoodDifference);
-  console.log(food);
-  console.log(text2);
+  console.log(text6);
   gold += goldGain
   text = "Gold: " + gold;
 }
