@@ -54,6 +54,8 @@ document.getElementById("goldText").style.left = "10px";
 document.getElementById("goldGainText").style.position = "absolute";
 document.getElementById("goldGainText").style.left = "150px";
 
+document.getElementById("githubButton").style.position = "absolute";
+
 
 // Passive gold gain function
 function passiveGoldGain(){
