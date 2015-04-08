@@ -175,3 +175,4 @@ var j = setInterval(updateTexts, 1000);
 var k = setInterval(foodDecreaseFunction, 1000);
 var l = setInterval(checkFoodDifference, 1000);
 var m = setInterval(checkGoldCostUpgrades, 1000);
+var n = setInterval(checkFarmCostUpgrades, 1000);
