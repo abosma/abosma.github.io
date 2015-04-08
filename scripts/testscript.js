@@ -18,13 +18,13 @@ var text5 = "";
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
 document.getElementById("upgradeGoldGain").style.fontWeight = 900;
 document.getElementById("upgradeGoldGain").style.position = "absolute";
-document.getElementById("upgradeGoldGain").style.top = "100px";
+document.getElementById("upgradeGoldGain").style.top = "140px";
 document.getElementById("upgradeGoldGain").style.left = "80px";
 
 document.getElementById("buildFarm").onclick = function() {buildFarmFunction()};
 document.getElementById("buildFarm").style.fontWeight = 900;
 document.getElementById("buildFarm").style.position = "absolute";
-document.getElementById("buildFarm").style.top = "120px";
+document.getElementById("buildFarm").style.top = "160px";
 document.getElementById("buildFarm").style.left = "78px";
 
 document.getElementById("farmsText").style.position = "absolute";
