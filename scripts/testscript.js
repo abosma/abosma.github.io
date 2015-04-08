@@ -56,9 +56,9 @@ document.getElementById("goldGainText").style.left = "150px";
 
 document.getElementById("githubButton").style.width="200px";
 document.getElementById("githubButton").style.height="200px";
-document.getElementById("githubButton").style.bottom="100px";
+document.getElementById("githubButton").style.bottom="10px";
 document.getElementById("githubButton").style.right="10px";
-document.getElementById("githubButton").style.position="absolute";
+document.getElementById("githubButton").style.position="fixed";
 document.getElementById("githubButton").style.content= "url(images/gitbuttonUp.png)"
 document.getElementById("githubButton").onclick = function(){githubButtonFunction()};
 
