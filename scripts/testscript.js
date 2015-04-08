@@ -33,11 +33,11 @@ document.getElementById("farmsText").style.top = "70px";
 
 document.getElementById("minersFoodGain").style.position = "absolute";
 document.getElementById("minersFoodGain").style.left = "150px";
-document.getElementById("minersFoodGain").style.top = "50px";
+document.getElementById("minersFoodGain").style.top = "29px";
 
 document.getElementById("minersText").style.position = "absolute";
 document.getElementById("minersText").style.left = "10px";
-document.getElementById("minersText").style.top = "29px";
+document.getElementById("minersText").style.top = "50px";
 
 document.getElementById("upgradeGoldGainCostText").style.visibility = "hidden";
 document.getElementById("upgradeGoldGainCostText").style.position = "absolute";
@@ -46,7 +46,7 @@ document.getElementById("upgradeGoldGainCostText").style.left = "180px";
 
 document.getElementById("foodText").style.position = "absolute";
 document.getElementById("foodText").style.left = "10px";
-document.getElementById("foodText").style.top = "50px";
+document.getElementById("foodText").style.top = "29px";
 
 document.getElementById("goldText").style.position = "absolute";
 document.getElementById("goldText").style.left = "10px";
