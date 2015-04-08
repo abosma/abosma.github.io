@@ -137,6 +137,11 @@ function updateTexts(){
   document.getElementById("upgradeGoldGainCostText").innerHTML = text5;
 }
 
+// githubbutton
+function githubButtonFunction(){
+  window.location.href = 'https://github.com/AtillaBosma/atillabosma.github.io/'
+}
+
 // All the intervals are set on 1s loops
 var i = setInterval(passiveGoldGain, 1000);
 var j = setInterval(updateTexts, 1000);
