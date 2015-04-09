@@ -1,4 +1,4 @@
-// Intervals
+// Variables
 var gold = 100;
 var farms = 0;
 var wood = 25;
@@ -11,12 +11,17 @@ var buildFarmWoodCost = 10 + Math.pow(2, farms);
 var buildFarmGoldCost = 500 + Math.pow(1.2, farms);
 var upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
 var goldGain = 5 + Math.pow(2, minersAmount);
+
+// Text Variables
 var text = "";
 var text2 = "";
 var text3 = "";
 var text4 = "";
 var text5 = "";
 var text6 = "";
+
+// Interval Variables
+var goldInterval = 1000;
 
 // Text Positions, visibility and functions BENNO
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
@@ -172,7 +177,7 @@ function githubButtonFunction() {
 }
 
 // All the intervals are set on 1s loops
-var i = setInterval(passiveGoldGain, 1);
+var i = setInterval(passiveGoldGain, goldInterval);
 var j = setInterval(updateTexts, 1000);
 var k = setInterval(foodDecreaseFunction, 1000);
 var l = setInterval(checkFoodDifference, 1000);
