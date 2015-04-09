@@ -1,12 +1,12 @@
 // Intervals
-var gold = 10000;
+var gold = 100;
 var farms = 0;
-var wood = 2500;
+var wood = 25;
 var minersAmount = 0;
 var minersFoodDecrease = (minersAmount * 1.5);
 var minersFoodIncrease = (farms * 2);
 var minersFoodDifference = minersFoodIncrease - minersFoodDecrease;
-var food = 3000;
+var food = 30;
 var buildFarmWoodCost = 10 + Math.pow(2, farms);
 var buildFarmGoldCost = 500 + Math.pow(1.2, farms);
 var upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
@@ -144,12 +144,12 @@ function buildFarmFunction(){
 // Updates all texts and variables
 function updateTexts(){
   text3 = "Miners: " + minersAmount;
-  goldGain = 5 + Math.pow(99999, minersAmount);
+  goldGain = 5 + Math.pow(2, minersAmount);
   upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
   buildFarmGoldCost = 500 + Math.pow(1.2, farms);
   buildFarmWoodCost = 10 + Math.pow(2, farms);
   minersFoodDecrease = (minersAmount * 1.5);
-  minersFoodIncrease = (farms * 99999);
+  minersFoodIncrease = (farms * 2);
   minersFoodDifference = minersFoodIncrease - minersFoodDecrease;
   document.getElementById("goldGainText").innerHTML = "+ " + goldGain;
   document.getElementById("goldText").innerHTML = text;
