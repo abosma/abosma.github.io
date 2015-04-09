@@ -1,12 +1,12 @@
 // Intervals
-var gold = 100;
+var gold = 10000;
 var farms = 0;
-var wood = 25;
+var wood = 2500;
 var minersAmount = 0;
-var minersFoodDecrease = (minersAmount * 1.5);
-var minersFoodIncrease = (farms * 1);
+var minersFoodDecrease = (minersAmount * 150);
+var minersFoodIncrease = (farms * 200);
 var minersFoodDifference = minersFoodIncrease - minersFoodDecrease;
-var food = 30;
+var food = 3000;
 var buildFarmWoodCost = 10 + Math.pow(2, farms);
 var buildFarmGoldCost = 500 + Math.pow(1.2, farms);
 var upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
