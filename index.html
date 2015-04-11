@@ -1,25 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html>
-
-
-<body>
-  <githubbutton id="githubButton" border="0"></githubbutton>
-  <upgradeGoldGainCostText id="upgradeGoldGainCostText">upgradeGoldGainCostText</upgradeGoldGainCostText>
-  <buildFarmCostText id="buildFarmCostText">buildFarmCostText</buildFarmCostText>
-  <farmsText id="farmsText">farmsText</farmsText>
-  <minersFoodGain id="minersFoodGain">minersFoodGain</minersFoodGain>
-  <foodText id="foodText">Food</foodText>
-  <upgradeGoldGain id="upgradeGoldGain">Hire Miner</upgradeGoldGain>
-  <buildFarm id="buildFarm">Build Farm</buildFarm>
-  <miners id="minersText">minersText</miners>
-  <gold id="goldText">Gold</gold>
-  <goldGain id="goldGainText">Gold</gold>
-  
+<html lang="en">
 <head>
-  <script type="text/javascript" src="scripts/testscript.js"></script>
+  <meta charset="utf-8">
+
+  <title>Twatter</title>
+  <meta name="description" content="Twitter">
+  <meta name="author" content="AtillaBosma">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 </head>
 
+<body>
+<a class="twitter-timeline"
+  href="https://twitter.com/Atilla_Bosma"
+  data-widget-id="587032631709163520">
+  Tweets by @Atilla_Bosma
+</a>
+<script src="scripts/twitterscript.js"></script>
+<script>
+	window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+</script>
 </body>
-
 </html>
