@@ -94,6 +94,12 @@ function passiveGoldGain(){
   text = "Gold: " + gold;
 }
 
+// Wood increase
+function woodGain(){
+  wood += woodGain
+  text7 = "Wood: " + wood;
+}
+
 // Passive food decrease, and check if minersAmount is below 0 function
 function foodDecreaseFunction(){
   if(minersAmount >= 0){
@@ -159,6 +165,7 @@ function buildFarmFunction(){
 // Updates all texts and variables
 function updateTexts(){
   text3 = "Miners: " + minersAmount;
+  
   goldGain = 5 + Math.pow(2, minersAmount);
   upgradeGoldGainCost = 200 + Math.pow(3, minersAmount);
   buildFarmGoldCost = 500 + Math.pow(1.2, farms);
@@ -174,6 +181,7 @@ function updateTexts(){
   document.getElementById("minersFoodGain").innerHTML = text4;
   document.getElementById("upgradeGoldGainCostText").innerHTML = text5;
   document.getElementById("buildFarmCostText").innerHTML = text6;
+  document.getElementById("woodText").innerHTML = text7;
 }
 
 // githubbutton
