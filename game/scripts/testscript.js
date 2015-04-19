@@ -2,6 +2,7 @@
 var gold = 100;
 var farms = 0;
 var wood = 25;
+var woodGain = 0;
 var minersAmount = 0;
 var minersFoodDecrease = (minersAmount * 1.5);
 var minersFoodIncrease = (farms * 2);
@@ -19,11 +20,12 @@ var text3 = "";
 var text4 = "";
 var text5 = "";
 var text6 = "";
+var text7 = "";
 
 // Interval Variables
 var goldInterval = 1000;
 
-// Text Positions, visibility and functions BENNO
+// Text Positions, visibility and functions
 document.getElementById("upgradeGoldGain").onclick = function() {upgradeGoldGain()};
 document.getElementById("upgradeGoldGain").style.fontWeight = 900;
 document.getElementById("upgradeGoldGain").style.position = "absolute";
@@ -38,7 +40,7 @@ document.getElementById("buildFarm").style.left = "78px";
 
 document.getElementById("farmsText").style.position = "absolute";
 document.getElementById("farmsText").style.left = "10px";
-document.getElementById("farmsText").style.top = "70px";
+document.getElementById("farmsText").style.top = "90px";
 
 document.getElementById("minersFoodGain").style.position = "absolute";
 document.getElementById("minersFoodGain").style.left = "150px";
@@ -47,6 +49,10 @@ document.getElementById("minersFoodGain").style.top = "29px";
 document.getElementById("minersText").style.position = "absolute";
 document.getElementById("minersText").style.left = "10px";
 document.getElementById("minersText").style.top = "50px";
+
+document.getElementById("woodText").style.position = "absolute";
+document.getElementById("woodText").style.left = "10px";
+document.getElementById("woodText").style.top = "70px";
 
 document.getElementById("upgradeGoldGainCostText").style.visibility = "hidden";
 document.getElementById("upgradeGoldGainCostText").style.position = "absolute";
