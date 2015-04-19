@@ -197,6 +197,7 @@ function githubButtonFunction() {
 // All the intervals are set on 1s loops
 var i = setInterval(passiveGoldGain, goldInterval);
 var j = setInterval(updateTexts, 1000);
+var z = setInterval(woodGain, 1000);
 var k = setInterval(foodDecreaseFunction, 1000);
 var l = setInterval(checkFoodDifference, 1000);
 var m = setInterval(checkGoldCostUpgrades, 1000);
