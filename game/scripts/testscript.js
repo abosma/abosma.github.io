@@ -54,9 +54,9 @@ document.getElementById("woodText").style.position = "absolute";
 document.getElementById("woodText").style.left = "10px";
 document.getElementById("woodText").style.top = "70px";
 
-document.getElementById("woodText").style.position = "absolute";
-document.getElementById("woodText").style.left = "150px";
-document.getElementById("woodText").style.top = "70px";
+document.getElementById("woodGainText").style.position = "absolute";
+document.getElementById("woodGainText").style.left = "150px";
+document.getElementById("woodGainText").style.top = "70px";
 
 document.getElementById("upgradeGoldGainCostText").style.visibility = "hidden";
 document.getElementById("upgradeGoldGainCostText").style.position = "absolute";
