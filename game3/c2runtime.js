@@ -17320,7 +17320,7 @@ cr.getProjectModel = function() { return [
 			false,
 			1985262467740219,
 			[
-				["images/spike-sheet0.png", 848, 0, 0, 250, 250, 1, 0.5, 0.5,[],[0.008000195026397705,-0.5,0.01199907064437866,-0.5,0.5,0.5,-0.5,0.5],0]
+				["images/spike-sheet0.png", 848, 0, 0, 250, 250, 1, 0.5, 0.5,[],[0.008000016212463379,-0.5,0.01199901103973389,-0.5,0.5,0.5,-0.5,0.5],0]
 			]
 			]
 		],
@@ -17676,6 +17676,23 @@ cr.getProjectModel = function() { return [
 		false,
 		false,
 		7027123345036723,
+		[],
+		null
+	]
+,	[
+		"t20",
+		cr.plugins_.Button,
+		false,
+		[],
+		0,
+		0,
+		null,
+		null,
+		[
+		],
+		false,
+		false,
+		4086529061263418,
 		[],
 		null
 	]
@@ -18044,33 +18061,6 @@ cr.getProjectModel = function() { return [
 				]
 			]
 ,			[
-				[928, 288, 0, 96, 16, 0, 0, 1, 0, 0, 0, 0, []],
-				3,
-				18,
-				[
-				],
-				[
-				[
-					1
-				],
-				[
-					1,
-					1,
-					0,
-					4,
-					0,
-					0,
-					0,
-					50,
-					0
-				]
-				],
-				[
-					0,
-					0
-				]
-			]
-,			[
 				[464, 688, 0, 96, 96, 0, 0, 1, 0.5, 0.5, 0, 0, []],
 				7,
 				21,
@@ -18181,7 +18171,7 @@ cr.getProjectModel = function() { return [
 				]
 			]
 ,			[
-				[592, 384, 0, 96, 96, 0, 0, 1, 0.5, 0.5, 0, 0, []],
+				[576, 384, 0, 96, 96, 0, 0, 1, 0.5, 0.5, 0, 0, []],
 				12,
 				27,
 				[
@@ -18303,6 +18293,25 @@ cr.getProjectModel = function() { return [
 					"Default",
 					0,
 					1
+				]
+			]
+,			[
+				[0, 32, 0, 160, 32, 0, 0, 1, 0, 0, 0, 0, []],
+				20,
+				36,
+				[
+				],
+				[
+				],
+				[
+					1,
+					"Make triggers visible",
+					"",
+					1,
+					1,
+					1,
+					"",
+					0
 				]
 			]
 			],
@@ -19664,6 +19673,245 @@ cr.getProjectModel = function() { return [
 			]
 			]
 		]
+,		[
+			0,
+			null,
+			false,
+			null,
+			1586819270237397,
+			[
+			[
+				20,
+				cr.plugins_.Button.prototype.cnds.IsChecked,
+				null,
+				0,
+				false,
+				false,
+				false,
+				909712773357249,
+				false
+			]
+			],
+			[
+			[
+				7,
+				cr.plugins_.Sprite.prototype.acts.SetVisible,
+				null,
+				4023895969680155,
+				false
+				,[
+				[
+					3,
+					1
+				]
+				]
+			]
+,			[
+				10,
+				cr.plugins_.Sprite.prototype.acts.SetVisible,
+				null,
+				8027141400323592,
+				false
+				,[
+				[
+					3,
+					1
+				]
+				]
+			]
+,			[
+				12,
+				cr.plugins_.Sprite.prototype.acts.SetVisible,
+				null,
+				6979585545161673,
+				false
+				,[
+				[
+					3,
+					1
+				]
+				]
+			]
+,			[
+				13,
+				cr.plugins_.Sprite.prototype.acts.SetVisible,
+				null,
+				5810629040510336,
+				false
+				,[
+				[
+					3,
+					1
+				]
+				]
+			]
+,			[
+				16,
+				cr.plugins_.Sprite.prototype.acts.SetVisible,
+				null,
+				8788256266320341,
+				false
+				,[
+				[
+					3,
+					1
+				]
+				]
+			]
+			]
+		]
+,		[
+			0,
+			null,
+			false,
+			null,
+			5351948086325323,
+			[
+			[
+				20,
+				cr.plugins_.Button.prototype.cnds.IsChecked,
+				null,
+				0,
+				false,
+				true,
+				false,
+				8443706975045835,
+				false
+			]
+			],
+			[
+			[
+				7,
+				cr.plugins_.Sprite.prototype.acts.SetVisible,
+				null,
+				1487210295257543,
+				false
+				,[
+				[
+					3,
+					0
+				]
+				]
+			]
+,			[
+				10,
+				cr.plugins_.Sprite.prototype.acts.SetVisible,
+				null,
+				5097111452023773,
+				false
+				,[
+				[
+					3,
+					0
+				]
+				]
+			]
+,			[
+				12,
+				cr.plugins_.Sprite.prototype.acts.SetVisible,
+				null,
+				966294090281693,
+				false
+				,[
+				[
+					3,
+					0
+				]
+				]
+			]
+,			[
+				13,
+				cr.plugins_.Sprite.prototype.acts.SetVisible,
+				null,
+				2159996069950624,
+				false
+				,[
+				[
+					3,
+					0
+				]
+				]
+			]
+,			[
+				16,
+				cr.plugins_.Sprite.prototype.acts.SetVisible,
+				null,
+				6606355695637441,
+				false
+				,[
+				[
+					3,
+					0
+				]
+				]
+			]
+			]
+		]
+,		[
+			0,
+			null,
+			false,
+			null,
+			9591568892862479,
+			[
+			[
+				-1,
+				cr.system_object.prototype.cnds.EveryTick,
+				null,
+				0,
+				false,
+				false,
+				false,
+				7465958053735785,
+				false
+			]
+			],
+			[
+			[
+				20,
+				cr.plugins_.Button.prototype.acts.SetPos,
+				null,
+				6756304094282112,
+				false
+				,[
+				[
+					0,
+					[
+						5,
+						[
+							20,
+							1,
+							cr.plugins_.Sprite.prototype.exps.X,
+							false,
+							null
+						]
+						,[
+							0,
+							200
+						]
+					]
+				]
+,				[
+					0,
+					[
+						5,
+						[
+							20,
+							1,
+							cr.plugins_.Sprite.prototype.exps.Y,
+							false,
+							null
+						]
+						,[
+							0,
+							200
+						]
+					]
+				]
+				]
+			]
+			]
+		]
 		]
 	]
 ,	[
@@ -19722,7 +19970,7 @@ cr.getProjectModel = function() { return [
 	false,
 	0,
 	0,
-	36,
+	37,
 	false,
 	true,
 	1,
