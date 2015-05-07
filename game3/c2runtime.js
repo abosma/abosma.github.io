@@ -15117,6 +15117,316 @@ cr.plugins_.Text = function(runtime)
 }());
 ;
 ;
+cr.plugins_.TextBox = function(runtime)
+{
+	this.runtime = runtime;
+};
+(function ()
+{
+	var pluginProto = cr.plugins_.TextBox.prototype;
+	pluginProto.Type = function(plugin)
+	{
+		this.plugin = plugin;
+		this.runtime = plugin.runtime;
+	};
+	var typeProto = pluginProto.Type.prototype;
+	typeProto.onCreate = function()
+	{
+	};
+	pluginProto.Instance = function(type)
+	{
+		this.type = type;
+		this.runtime = type.runtime;
+	};
+	var instanceProto = pluginProto.Instance.prototype;
+	var elemTypes = ["text", "password", "email", "number", "tel", "url"];
+	if (navigator.userAgent.indexOf("MSIE 9") > -1)
+	{
+		elemTypes[2] = "text";
+		elemTypes[3] = "text";
+		elemTypes[4] = "text";
+		elemTypes[5] = "text";
+	}
+	instanceProto.onCreate = function()
+	{
+		if (this.runtime.isDomFree)
+		{
+			cr.logexport("[Construct 2] Textbox plugin not supported on this platform - the object will not be created");
+			return;
+		}
+		if (this.properties[7] === 6)	// textarea
+		{
+			this.elem = document.createElement("textarea");
+			jQuery(this.elem).css("resize", "none");
+		}
+		else
+		{
+			this.elem = document.createElement("input");
+			this.elem.type = elemTypes[this.properties[7]];
+		}
+		this.elem.id = this.properties[9];
+		jQuery(this.elem).appendTo(this.runtime.canvasdiv ? this.runtime.canvasdiv : "body");
+		this.elem["autocomplete"] = "off";
+		this.elem.value = this.properties[0];
+		this.elem["placeholder"] = this.properties[1];
+		this.elem.title = this.properties[2];
+		this.elem.disabled = (this.properties[4] === 0);
+		this.elem["readOnly"] = (this.properties[5] === 1);
+		this.elem["spellcheck"] = (this.properties[6] === 1);
+		this.autoFontSize = (this.properties[8] !== 0);
+		this.element_hidden = false;
+		if (this.properties[3] === 0)
+		{
+			jQuery(this.elem).hide();
+			this.visible = false;
+			this.element_hidden = true;
+		}
+		var onchangetrigger = (function (self) {
+			return function() {
+				self.runtime.trigger(cr.plugins_.TextBox.prototype.cnds.OnTextChanged, self);
+			};
+		})(this);
+		this.elem["oninput"] = onchangetrigger;
+		if (navigator.userAgent.indexOf("MSIE") !== -1)
+			this.elem["oncut"] = onchangetrigger;
+		this.elem.onclick = (function (self) {
+			return function(e) {
+				e.stopPropagation();
+				self.runtime.isInUserInputEvent = true;
+				self.runtime.trigger(cr.plugins_.TextBox.prototype.cnds.OnClicked, self);
+				self.runtime.isInUserInputEvent = false;
+			};
+		})(this);
+		this.elem.ondblclick = (function (self) {
+			return function(e) {
+				e.stopPropagation();
+				self.runtime.isInUserInputEvent = true;
+				self.runtime.trigger(cr.plugins_.TextBox.prototype.cnds.OnDoubleClicked, self);
+				self.runtime.isInUserInputEvent = false;
+			};
+		})(this);
+		this.elem.addEventListener("touchstart", function (e) {
+			e.stopPropagation();
+		}, false);
+		this.elem.addEventListener("touchmove", function (e) {
+			e.stopPropagation();
+		}, false);
+		this.elem.addEventListener("touchend", function (e) {
+			e.stopPropagation();
+		}, false);
+		jQuery(this.elem).mousedown(function (e) {
+			e.stopPropagation();
+		});
+		jQuery(this.elem).mouseup(function (e) {
+			e.stopPropagation();
+		});
+		jQuery(this.elem).keydown(function (e) {
+			if (e.which !== 13 && e.which != 27)	// allow enter and escape
+				e.stopPropagation();
+		});
+		jQuery(this.elem).keyup(function (e) {
+			if (e.which !== 13 && e.which != 27)	// allow enter and escape
+				e.stopPropagation();
+		});
+		this.lastLeft = 0;
+		this.lastTop = 0;
+		this.lastRight = 0;
+		this.lastBottom = 0;
+		this.lastWinWidth = 0;
+		this.lastWinHeight = 0;
+		this.updatePosition(true);
+		this.runtime.tickMe(this);
+	};
+	instanceProto.saveToJSON = function ()
+	{
+		return {
+			"text": this.elem.value,
+			"placeholder": this.elem.placeholder,
+			"tooltip": this.elem.title,
+			"disabled": !!this.elem.disabled,
+			"readonly": !!this.elem.readOnly,
+			"spellcheck": !!this.elem["spellcheck"]
+		};
+	};
+	instanceProto.loadFromJSON = function (o)
+	{
+		this.elem.value = o["text"];
+		this.elem.placeholder = o["placeholder"];
+		this.elem.title = o["tooltip"];
+		this.elem.disabled = o["disabled"];
+		this.elem.readOnly = o["readonly"];
+		this.elem["spellcheck"] = o["spellcheck"];
+	};
+	instanceProto.onDestroy = function ()
+	{
+		if (this.runtime.isDomFree)
+				return;
+		jQuery(this.elem).remove();
+		this.elem = null;
+	};
+	instanceProto.tick = function ()
+	{
+		this.updatePosition();
+	};
+	instanceProto.updatePosition = function (first)
+	{
+		if (this.runtime.isDomFree)
+			return;
+		var left = this.layer.layerToCanvas(this.x, this.y, true);
+		var top = this.layer.layerToCanvas(this.x, this.y, false);
+		var right = this.layer.layerToCanvas(this.x + this.width, this.y + this.height, true);
+		var bottom = this.layer.layerToCanvas(this.x + this.width, this.y + this.height, false);
+		if (!this.visible || !this.layer.visible || right <= 0 || bottom <= 0 || left >= this.runtime.width || top >= this.runtime.height)
+		{
+			if (!this.element_hidden)
+				jQuery(this.elem).hide();
+			this.element_hidden = true;
+			return;
+		}
+		if (left < 1)
+			left = 1;
+		if (top < 1)
+			top = 1;
+		if (right >= this.runtime.width)
+			right = this.runtime.width - 1;
+		if (bottom >= this.runtime.height)
+			bottom = this.runtime.height - 1;
+		var curWinWidth = window.innerWidth;
+		var curWinHeight = window.innerHeight;
+		if (!first && this.lastLeft === left && this.lastTop === top && this.lastRight === right && this.lastBottom === bottom && this.lastWinWidth === curWinWidth && this.lastWinHeight === curWinHeight)
+		{
+			if (this.element_hidden)
+			{
+				jQuery(this.elem).show();
+				this.element_hidden = false;
+			}
+			return;
+		}
+		this.lastLeft = left;
+		this.lastTop = top;
+		this.lastRight = right;
+		this.lastBottom = bottom;
+		this.lastWinWidth = curWinWidth;
+		this.lastWinHeight = curWinHeight;
+		if (this.element_hidden)
+		{
+			jQuery(this.elem).show();
+			this.element_hidden = false;
+		}
+		var offx = Math.round(left) + jQuery(this.runtime.canvas).offset().left;
+		var offy = Math.round(top) + jQuery(this.runtime.canvas).offset().top;
+		jQuery(this.elem).css("position", "absolute");
+		jQuery(this.elem).offset({left: offx, top: offy});
+		jQuery(this.elem).width(Math.round(right - left));
+		jQuery(this.elem).height(Math.round(bottom - top));
+		if (this.autoFontSize)
+			jQuery(this.elem).css("font-size", ((this.layer.getScale(true) / this.runtime.devicePixelRatio) - 0.2) + "em");
+	};
+	instanceProto.draw = function(ctx)
+	{
+	};
+	instanceProto.drawGL = function(glw)
+	{
+	};
+	function Cnds() {};
+	Cnds.prototype.CompareText = function (text, case_)
+	{
+		if (this.runtime.isDomFree)
+			return false;
+		if (case_ === 0)	// insensitive
+			return cr.equals_nocase(this.elem.value, text);
+		else
+			return this.elem.value === text;
+	};
+	Cnds.prototype.OnTextChanged = function ()
+	{
+		return true;
+	};
+	Cnds.prototype.OnClicked = function ()
+	{
+		return true;
+	};
+	Cnds.prototype.OnDoubleClicked = function ()
+	{
+		return true;
+	};
+	pluginProto.cnds = new Cnds();
+	function Acts() {};
+	Acts.prototype.SetText = function (text)
+	{
+		if (this.runtime.isDomFree)
+			return;
+		this.elem.value = text;
+	};
+	Acts.prototype.SetPlaceholder = function (text)
+	{
+		if (this.runtime.isDomFree)
+			return;
+		this.elem.placeholder = text;
+	};
+	Acts.prototype.SetTooltip = function (text)
+	{
+		if (this.runtime.isDomFree)
+			return;
+		this.elem.title = text;
+	};
+	Acts.prototype.SetVisible = function (vis)
+	{
+		if (this.runtime.isDomFree)
+			return;
+		this.visible = (vis !== 0);
+	};
+	Acts.prototype.SetEnabled = function (en)
+	{
+		if (this.runtime.isDomFree)
+			return;
+		this.elem.disabled = (en === 0);
+	};
+	Acts.prototype.SetReadOnly = function (ro)
+	{
+		if (this.runtime.isDomFree)
+			return;
+		this.elem.readOnly = (ro === 0);
+	};
+	Acts.prototype.SetFocus = function ()
+	{
+		if (this.runtime.isDomFree)
+			return;
+		this.elem.focus();
+	};
+	Acts.prototype.SetBlur = function ()
+	{
+		if (this.runtime.isDomFree)
+			return;
+		this.elem.blur();
+	};
+	Acts.prototype.SetCSSStyle = function (p, v)
+	{
+		if (this.runtime.isDomFree)
+			return;
+		jQuery(this.elem).css(p, v);
+	};
+	Acts.prototype.ScrollToBottom = function ()
+	{
+		if (this.runtime.isDomFree)
+			return;
+		this.elem.scrollTop = this.elem.scrollHeight;
+	};
+	pluginProto.acts = new Acts();
+	function Exps() {};
+	Exps.prototype.Text = function (ret)
+	{
+		if (this.runtime.isDomFree)
+		{
+			ret.set_string("");
+			return;
+		}
+		ret.set_string(this.elem.value);
+	};
+	pluginProto.exps = new Exps();
+}());
+;
+;
 cr.plugins_.TiledBg = function(runtime)
 {
 	this.runtime = runtime;
@@ -17096,6 +17406,18 @@ cr.getProjectModel = function() { return [
 		false
 	]
 ,	[
+		cr.plugins_.TextBox,
+		false,
+		true,
+		true,
+		true,
+		false,
+		false,
+		false,
+		false,
+		false
+	]
+,	[
 		cr.plugins_.TiledBg,
 		false,
 		true,
@@ -17696,6 +18018,57 @@ cr.getProjectModel = function() { return [
 		[],
 		null
 	]
+,	[
+		"t21",
+		cr.plugins_.Text,
+		false,
+		[],
+		0,
+		0,
+		null,
+		null,
+		[
+		],
+		false,
+		false,
+		6786267818495527,
+		[],
+		null
+	]
+,	[
+		"t22",
+		cr.plugins_.TextBox,
+		false,
+		[],
+		0,
+		0,
+		null,
+		null,
+		[
+		],
+		false,
+		false,
+		5390025061321397,
+		[],
+		null
+	]
+,	[
+		"t23",
+		cr.plugins_.Text,
+		false,
+		[],
+		0,
+		0,
+		null,
+		null,
+		[
+		],
+		false,
+		false,
+		3596038363858402,
+		[],
+		null
+	]
 	],
 	[
 	],
@@ -17755,7 +18128,7 @@ cr.getProjectModel = function() { return [
 			0,
 			[
 			[
-				[224, 736, 0, 32, 32, 0, 0, 1, 0.5, 1, 0, 0, []],
+				[224, 720, 0, 32, 32, 0, 0, 1, 0.5, 1, 0, 0, []],
 				1,
 				1,
 				[
@@ -18295,25 +18668,6 @@ cr.getProjectModel = function() { return [
 					1
 				]
 			]
-,			[
-				[0, 32, 0, 160, 32, 0, 0, 1, 0, 0, 0, 0, []],
-				20,
-				36,
-				[
-				],
-				[
-				],
-				[
-					1,
-					"Make triggers visible",
-					"",
-					1,
-					1,
-					1,
-					"",
-					0
-				]
-			]
 			],
 			[			]
 		]
@@ -18352,6 +18706,45 @@ cr.getProjectModel = function() { return [
 					0
 				]
 			]
+,			[
+				[0, 64, 0, 200, 30, 0, 0, 1, 0, 0, 0, 0, []],
+				21,
+				37,
+				[
+				],
+				[
+				],
+				[
+					"\"Time: \" & levelTime",
+					0,
+					"12pt Arial",
+					"rgb(0,0,0)",
+					0,
+					0,
+					0,
+					0,
+					0
+				]
+			]
+,			[
+				[0, 32, 0, 160, 32, 0, 0, 1, 0, 0, 0, 0, []],
+				20,
+				36,
+				[
+				],
+				[
+				],
+				[
+					1,
+					"Make triggers visible",
+					"",
+					1,
+					1,
+					1,
+					"",
+					0
+				]
+			]
 			],
 			[			]
 		]
@@ -18384,22 +18777,7 @@ cr.getProjectModel = function() { return [
 			0,
 			[
 			[
-				[313, 173, 0, 505, 229, 0, 0, 1, 0.5, 0.5, 0, 0, []],
-				14,
-				30,
-				[
-				],
-				[
-				],
-				[
-					0,
-					"Default",
-					0,
-					1
-				]
-			]
-,			[
-				[269, 357, 0, 185, 24, 0, 0, 1, 0, 0, 0, 0, []],
+				[231, 354, 0, 185, 24, 0, 0, 1, 0, 0, 0, 0, []],
 				15,
 				31,
 				[
@@ -18408,12 +18786,32 @@ cr.getProjectModel = function() { return [
 				],
 				[
 					0,
-					"RESTART",
+					"Restart",
 					"",
 					1,
 					1,
 					1,
 					"",
+					0
+				]
+			]
+,			[
+				[203, 90, 0, 234, 95, 0, 0, 1, 0, 0, 0, 0, []],
+				23,
+				18,
+				[
+				],
+				[
+				],
+				[
+					"You win",
+					0,
+					"12pt Arial",
+					"rgb(0,0,0)",
+					1,
+					1,
+					0,
+					0,
 					0
 				]
 			]
@@ -18431,6 +18829,13 @@ cr.getProjectModel = function() { return [
 		"Event sheet 1",
 		[
 		[
+			1,
+			"levelTime",
+			0,
+			0,
+false,false,7043234301375508,false
+		]
+,		[
 			0,
 			[true, "Jump through platforms"],
 			false,
@@ -19675,86 +20080,206 @@ cr.getProjectModel = function() { return [
 		]
 ,		[
 			0,
-			null,
+			[true, "Checkbox"],
 			false,
 			null,
-			1586819270237397,
+			6329794699795633,
 			[
 			[
-				20,
-				cr.plugins_.Button.prototype.cnds.IsChecked,
+				-1,
+				cr.system_object.prototype.cnds.IsGroupActive,
 				null,
 				0,
 				false,
 				false,
 				false,
-				909712773357249,
+				6329794699795633,
 				false
+				,[
+				[
+					1,
+					[
+						2,
+						"Checkbox"
+					]
+				]
+				]
 			]
 			],
 			[
+			]
+			,[
 			[
-				7,
-				cr.plugins_.Sprite.prototype.acts.SetVisible,
+				0,
 				null,
-				4023895969680155,
-				false
-				,[
+				false,
+				null,
+				1586819270237397,
 				[
-					3,
-					1
+				[
+					20,
+					cr.plugins_.Button.prototype.cnds.IsChecked,
+					null,
+					0,
+					false,
+					false,
+					false,
+					909712773357249,
+					false
+				]
+				],
+				[
+				[
+					7,
+					cr.plugins_.Sprite.prototype.acts.SetVisible,
+					null,
+					4023895969680155,
+					false
+					,[
+					[
+						3,
+						1
+					]
+					]
+				]
+,				[
+					10,
+					cr.plugins_.Sprite.prototype.acts.SetVisible,
+					null,
+					8027141400323592,
+					false
+					,[
+					[
+						3,
+						1
+					]
+					]
+				]
+,				[
+					12,
+					cr.plugins_.Sprite.prototype.acts.SetVisible,
+					null,
+					6979585545161673,
+					false
+					,[
+					[
+						3,
+						1
+					]
+					]
+				]
+,				[
+					13,
+					cr.plugins_.Sprite.prototype.acts.SetVisible,
+					null,
+					5810629040510336,
+					false
+					,[
+					[
+						3,
+						1
+					]
+					]
+				]
+,				[
+					16,
+					cr.plugins_.Sprite.prototype.acts.SetVisible,
+					null,
+					8788256266320341,
+					false
+					,[
+					[
+						3,
+						1
+					]
+					]
 				]
 				]
 			]
 ,			[
-				10,
-				cr.plugins_.Sprite.prototype.acts.SetVisible,
+				0,
 				null,
-				8027141400323592,
-				false
-				,[
-				[
-					3,
-					1
-				]
-				]
-			]
-,			[
-				12,
-				cr.plugins_.Sprite.prototype.acts.SetVisible,
+				false,
 				null,
-				6979585545161673,
-				false
-				,[
+				5351948086325323,
 				[
-					3,
-					1
-				]
-				]
-			]
-,			[
-				13,
-				cr.plugins_.Sprite.prototype.acts.SetVisible,
-				null,
-				5810629040510336,
-				false
-				,[
 				[
-					3,
-					1
+					20,
+					cr.plugins_.Button.prototype.cnds.IsChecked,
+					null,
+					0,
+					false,
+					true,
+					false,
+					8443706975045835,
+					false
 				]
-				]
-			]
-,			[
-				16,
-				cr.plugins_.Sprite.prototype.acts.SetVisible,
-				null,
-				8788256266320341,
-				false
-				,[
+				],
 				[
-					3,
-					1
+				[
+					7,
+					cr.plugins_.Sprite.prototype.acts.SetVisible,
+					null,
+					1487210295257543,
+					false
+					,[
+					[
+						3,
+						0
+					]
+					]
+				]
+,				[
+					10,
+					cr.plugins_.Sprite.prototype.acts.SetVisible,
+					null,
+					5097111452023773,
+					false
+					,[
+					[
+						3,
+						0
+					]
+					]
+				]
+,				[
+					12,
+					cr.plugins_.Sprite.prototype.acts.SetVisible,
+					null,
+					966294090281693,
+					false
+					,[
+					[
+						3,
+						0
+					]
+					]
+				]
+,				[
+					13,
+					cr.plugins_.Sprite.prototype.acts.SetVisible,
+					null,
+					2159996069950624,
+					false
+					,[
+					[
+						3,
+						0
+					]
+					]
+				]
+,				[
+					16,
+					cr.plugins_.Sprite.prototype.acts.SetVisible,
+					null,
+					6606355695637441,
+					false
+					,[
+					[
+						3,
+						0
+					]
+					]
 				]
 				]
 			]
@@ -19765,83 +20290,38 @@ cr.getProjectModel = function() { return [
 			null,
 			false,
 			null,
-			5351948086325323,
+			6545082588285924,
 			[
 			[
-				20,
-				cr.plugins_.Button.prototype.cnds.IsChecked,
+				-1,
+				cr.system_object.prototype.cnds.OnLayoutStart,
 				null,
-				0,
+				1,
 				false,
-				true,
 				false,
-				8443706975045835,
+				false,
+				5977664258263439,
 				false
 			]
 			],
 			[
 			[
-				7,
-				cr.plugins_.Sprite.prototype.acts.SetVisible,
+				-1,
+				cr.system_object.prototype.acts.SetVar,
 				null,
-				1487210295257543,
+				208856049512979,
 				false
 				,[
 				[
-					3,
-					0
+					11,
+					"levelTime"
 				]
-				]
-			]
-,			[
-				10,
-				cr.plugins_.Sprite.prototype.acts.SetVisible,
-				null,
-				5097111452023773,
-				false
-				,[
-				[
-					3,
-					0
-				]
-				]
-			]
-,			[
-				12,
-				cr.plugins_.Sprite.prototype.acts.SetVisible,
-				null,
-				966294090281693,
-				false
-				,[
-				[
-					3,
-					0
-				]
-				]
-			]
-,			[
-				13,
-				cr.plugins_.Sprite.prototype.acts.SetVisible,
-				null,
-				2159996069950624,
-				false
-				,[
-				[
-					3,
-					0
-				]
-				]
-			]
-,			[
-				16,
-				cr.plugins_.Sprite.prototype.acts.SetVisible,
-				null,
-				6606355695637441,
-				false
-				,[
-				[
-					3,
-					0
+,				[
+					7,
+					[
+						0,
+						0
+					]
 				]
 				]
 			]
@@ -19852,7 +20332,7 @@ cr.getProjectModel = function() { return [
 			null,
 			false,
 			null,
-			9591568892862479,
+			7197364294776107,
 			[
 			[
 				-1,
@@ -19862,50 +20342,88 @@ cr.getProjectModel = function() { return [
 				false,
 				false,
 				false,
-				7465958053735785,
+				3987364025572611,
 				false
 			]
 			],
 			[
 			[
-				20,
-				cr.plugins_.Button.prototype.acts.SetPos,
+				21,
+				cr.plugins_.Text.prototype.acts.SetText,
 				null,
-				6756304094282112,
+				9058875861807878,
+				false
+				,[
+				[
+					7,
+					[
+						10,
+						[
+							10,
+							[
+								2,
+								"Time: "
+							]
+							,[
+								23,
+								"levelTime"
+							]
+						]
+						,[
+							2,
+							" seconds"
+						]
+					]
+				]
+				]
+			]
+			]
+		]
+,		[
+			0,
+			null,
+			false,
+			null,
+			6313980070667304,
+			[
+			[
+				-1,
+				cr.system_object.prototype.cnds.Every,
+				null,
+				0,
+				false,
+				false,
+				false,
+				7256381999898791,
 				false
 				,[
 				[
 					0,
 					[
-						5,
-						[
-							20,
-							1,
-							cr.plugins_.Sprite.prototype.exps.X,
-							false,
-							null
-						]
-						,[
-							0,
-							200
-						]
+						1,
+						1
 					]
 				]
+				]
+			]
+			],
+			[
+			[
+				-1,
+				cr.system_object.prototype.acts.AddVar,
+				null,
+				7796250089423191,
+				false
+				,[
+				[
+					11,
+					"levelTime"
+				]
 ,				[
-					0,
+					7,
 					[
-						5,
-						[
-							20,
-							1,
-							cr.plugins_.Sprite.prototype.exps.Y,
-							false,
-							null
-						]
-						,[
-							0,
-							200
-						]
+						0,
+						1
 					]
 				]
 				]
@@ -19952,6 +20470,58 @@ cr.getProjectModel = function() { return [
 			]
 			]
 		]
+,		[
+			0,
+			null,
+			false,
+			null,
+			3554464048456179,
+			[
+			[
+				-1,
+				cr.system_object.prototype.cnds.OnLayoutStart,
+				null,
+				1,
+				false,
+				false,
+				false,
+				8510939814199385,
+				false
+			]
+			],
+			[
+			[
+				23,
+				cr.plugins_.Text.prototype.acts.SetText,
+				null,
+				7407461596964041,
+				false
+				,[
+				[
+					7,
+					[
+						10,
+						[
+							10,
+							[
+								2,
+								"You win, your time is: "
+							]
+							,[
+								23,
+								"levelTime"
+							]
+						]
+						,[
+							2,
+							" seconds."
+						]
+					]
+				]
+				]
+			]
+			]
+		]
 		]
 	]
 	],
@@ -19970,7 +20540,7 @@ cr.getProjectModel = function() { return [
 	false,
 	0,
 	0,
-	37,
+	38,
 	false,
 	true,
 	1,
