@@ -18128,7 +18128,7 @@ cr.getProjectModel = function() { return [
 			0,
 			[
 			[
-				[224, 720, 0, 32, 32, 0, 0, 1, 0.5, 1, 0, 0, []],
+				[224, 768, 0, 32, 32, 0, 0, 1, 0.5, 1, 0, 0, []],
 				1,
 				1,
 				[
@@ -18138,7 +18138,7 @@ cr.getProjectModel = function() { return [
 					330,
 					1500,
 					1500,
-					650,
+					600,
 					1500,
 					1000,
 					1,
@@ -20287,92 +20287,176 @@ false,false,7043234301375508,false
 		]
 ,		[
 			0,
-			null,
+			[true, "Timer"],
 			false,
 			null,
-			6545082588285924,
+			3220412397053916,
 			[
 			[
 				-1,
-				cr.system_object.prototype.cnds.OnLayoutStart,
-				null,
-				1,
-				false,
-				false,
-				false,
-				5977664258263439,
-				false
-			]
-			],
-			[
-			[
-				-1,
-				cr.system_object.prototype.acts.SetVar,
-				null,
-				208856049512979,
-				false
-				,[
-				[
-					11,
-					"levelTime"
-				]
-,				[
-					7,
-					[
-						0,
-						0
-					]
-				]
-				]
-			]
-			]
-		]
-,		[
-			0,
-			null,
-			false,
-			null,
-			7197364294776107,
-			[
-			[
-				-1,
-				cr.system_object.prototype.cnds.EveryTick,
+				cr.system_object.prototype.cnds.IsGroupActive,
 				null,
 				0,
 				false,
 				false,
 				false,
-				3987364025572611,
-				false
-			]
-			],
-			[
-			[
-				21,
-				cr.plugins_.Text.prototype.acts.SetText,
-				null,
-				9058875861807878,
+				3220412397053916,
 				false
 				,[
 				[
-					7,
+					1,
 					[
-						10,
+						2,
+						"Timer"
+					]
+				]
+				]
+			]
+			],
+			[
+			]
+			,[
+			[
+				0,
+				null,
+				false,
+				null,
+				6545082588285924,
+				[
+				[
+					-1,
+					cr.system_object.prototype.cnds.OnLayoutStart,
+					null,
+					1,
+					false,
+					false,
+					false,
+					5977664258263439,
+					false
+				]
+				],
+				[
+				[
+					-1,
+					cr.system_object.prototype.acts.SetVar,
+					null,
+					208856049512979,
+					false
+					,[
+					[
+						11,
+						"levelTime"
+					]
+,					[
+						7,
+						[
+							0,
+							0
+						]
+					]
+					]
+				]
+				]
+			]
+,			[
+				0,
+				null,
+				false,
+				null,
+				7197364294776107,
+				[
+				[
+					-1,
+					cr.system_object.prototype.cnds.EveryTick,
+					null,
+					0,
+					false,
+					false,
+					false,
+					3987364025572611,
+					false
+				]
+				],
+				[
+				[
+					21,
+					cr.plugins_.Text.prototype.acts.SetText,
+					null,
+					9058875861807878,
+					false
+					,[
+					[
+						7,
 						[
 							10,
 							[
-								2,
-								"Time: "
+								10,
+								[
+									2,
+									"Time: "
+								]
+								,[
+									23,
+									"levelTime"
+								]
 							]
 							,[
-								23,
-								"levelTime"
+								2,
+								" seconds"
 							]
 						]
-						,[
-							2,
-							" seconds"
+					]
+					]
+				]
+				]
+			]
+,			[
+				0,
+				null,
+				false,
+				null,
+				6313980070667304,
+				[
+				[
+					-1,
+					cr.system_object.prototype.cnds.Every,
+					null,
+					0,
+					false,
+					false,
+					false,
+					7256381999898791,
+					false
+					,[
+					[
+						0,
+						[
+							1,
+							1
 						]
+					]
+					]
+				]
+				],
+				[
+				[
+					-1,
+					cr.system_object.prototype.acts.AddVar,
+					null,
+					7796250089423191,
+					false
+					,[
+					[
+						11,
+						"levelTime"
+					]
+,					[
+						7,
+						[
+							0,
+							1
+						]
+					]
 					]
 				]
 				]
@@ -20381,49 +20465,356 @@ false,false,7043234301375508,false
 		]
 ,		[
 			0,
-			null,
+			[true, "Doublejump"],
 			false,
 			null,
-			6313980070667304,
+			9747519627833982,
 			[
 			[
 				-1,
-				cr.system_object.prototype.cnds.Every,
+				cr.system_object.prototype.cnds.IsGroupActive,
 				null,
 				0,
 				false,
 				false,
 				false,
-				7256381999898791,
+				9747519627833982,
 				false
 				,[
 				[
-					0,
+					1,
 					[
-						1,
-						1
+						2,
+						"Doublejump"
 					]
 				]
 				]
 			]
 			],
 			[
+			]
+			,[
 			[
-				-1,
-				cr.system_object.prototype.acts.AddVar,
+				1,
+				"JumpingSequence",
+				0,
+				0,
+true,false,8967234369899194,false
+			]
+,			[
+				0,
 				null,
-				7796250089423191,
-				false
-				,[
+				false,
+				null,
+				511667014935002,
 				[
-					11,
-					"levelTime"
+				[
+					5,
+					cr.plugins_.Keyboard.prototype.cnds.OnKey,
+					null,
+					1,
+					false,
+					false,
+					false,
+					2528468075732316,
+					false
+					,[
+					[
+						9,
+						87
+					]
+					]
 				]
 ,				[
-					7,
+					-1,
+					cr.system_object.prototype.cnds.CompareVar,
+					null,
+					0,
+					false,
+					false,
+					false,
+					9386207037290973,
+					false
+					,[
+					[
+						11,
+						"JumpingSequence"
+					]
+,					[
+						8,
+						0
+					]
+,					[
+						7,
+						[
+							0,
+							1
+						]
+					]
+					]
+				]
+,				[
+					1,
+					cr.behaviors.Platform.prototype.cnds.IsOnFloor,
+					"Platform",
+					0,
+					false,
+					true,
+					false,
+					7941482109905446,
+					false
+				]
+				],
+				[
+				[
+					1,
+					cr.behaviors.Platform.prototype.acts.SetVectorY,
+					"Platform",
+					2371844666806159,
+					false
+					,[
 					[
 						0,
-						1
+						[
+							3,
+							[
+								6,
+								[
+									22,
+									1,
+									"Platform",
+									cr.behaviors.Platform.prototype.exps.JumpStrength,
+									false,
+									null
+								]
+								,[
+									1,
+									0.75
+								]
+							]
+						]
+					]
+					]
+				]
+,				[
+					-1,
+					cr.system_object.prototype.acts.AddVar,
+					null,
+					6487465457330717,
+					false
+					,[
+					[
+						11,
+						"JumpingSequence"
+					]
+,					[
+						7,
+						[
+							0,
+							1
+						]
+					]
+					]
+				]
+				]
+			]
+,			[
+				0,
+				null,
+				false,
+				null,
+				1345160310028185,
+				[
+				[
+					5,
+					cr.plugins_.Keyboard.prototype.cnds.OnKey,
+					null,
+					1,
+					false,
+					false,
+					false,
+					6273968053940707,
+					false
+					,[
+					[
+						9,
+						38
+					]
+					]
+				]
+,				[
+					-1,
+					cr.system_object.prototype.cnds.CompareVar,
+					null,
+					0,
+					false,
+					false,
+					false,
+					6220870001013319,
+					false
+					,[
+					[
+						11,
+						"JumpingSequence"
+					]
+,					[
+						8,
+						0
+					]
+,					[
+						7,
+						[
+							0,
+							1
+						]
+					]
+					]
+				]
+,				[
+					1,
+					cr.behaviors.Platform.prototype.cnds.IsOnFloor,
+					"Platform",
+					0,
+					false,
+					true,
+					false,
+					4302080042464295,
+					false
+				]
+				],
+				[
+				[
+					1,
+					cr.behaviors.Platform.prototype.acts.SetVectorY,
+					"Platform",
+					6024441261629988,
+					false
+					,[
+					[
+						0,
+						[
+							3,
+							[
+								6,
+								[
+									22,
+									1,
+									"Platform",
+									cr.behaviors.Platform.prototype.exps.JumpStrength,
+									false,
+									null
+								]
+								,[
+									1,
+									0.75
+								]
+							]
+						]
+					]
+					]
+				]
+,				[
+					-1,
+					cr.system_object.prototype.acts.AddVar,
+					null,
+					8248261858368857,
+					false
+					,[
+					[
+						11,
+						"JumpingSequence"
+					]
+,					[
+						7,
+						[
+							0,
+							1
+						]
+					]
+					]
+				]
+				]
+			]
+,			[
+				0,
+				null,
+				false,
+				null,
+				4982774514069313,
+				[
+				[
+					1,
+					cr.behaviors.Platform.prototype.cnds.OnJump,
+					"Platform",
+					1,
+					false,
+					false,
+					false,
+					6274697947078048,
+					false
+				]
+				],
+				[
+				[
+					-1,
+					cr.system_object.prototype.acts.SetVar,
+					null,
+					534667320433845,
+					false
+					,[
+					[
+						11,
+						"JumpingSequence"
+					]
+,					[
+						7,
+						[
+							0,
+							1
+						]
+					]
+					]
+				]
+				]
+			]
+,			[
+				0,
+				null,
+				false,
+				null,
+				1865719554399167,
+				[
+				[
+					1,
+					cr.behaviors.Platform.prototype.cnds.IsOnFloor,
+					"Platform",
+					0,
+					false,
+					false,
+					false,
+					7931376503476405,
+					false
+				]
+				],
+				[
+				[
+					-1,
+					cr.system_object.prototype.acts.SetVar,
+					null,
+					2591452491696206,
+					false
+					,[
+					[
+						11,
+						"JumpingSequence"
+					]
+,					[
+						7,
+						[
+							0,
+							0
+						]
+					]
 					]
 				]
 				]
