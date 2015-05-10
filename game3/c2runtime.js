@@ -26540,6 +26540,103 @@ true,false,8967234369899194,false
 				null,
 				false,
 				null,
+				1090500185857543,
+				[
+				[
+					36,
+					cr.plugins_.Touch.prototype.cnds.OnTapGesture,
+					null,
+					1,
+					false,
+					false,
+					false,
+					8511025458920367,
+					false
+				]
+,				[
+					1,
+					cr.behaviors.Platform.prototype.cnds.IsOnFloor,
+					"Platform",
+					0,
+					false,
+					true,
+					false,
+					1465066936997102,
+					false
+				]
+,				[
+					-1,
+					cr.system_object.prototype.cnds.CompareVar,
+					null,
+					0,
+					false,
+					false,
+					false,
+					6655962968357263,
+					false
+					,[
+					[
+						11,
+						"JumpingSequence"
+					]
+,					[
+						8,
+						2
+					]
+,					[
+						7,
+						[
+							0,
+							1
+						]
+					]
+					]
+				]
+				],
+				[
+				[
+					1,
+					cr.behaviors.Platform.prototype.acts.SetVectorY,
+					"Platform",
+					9797388341671157,
+					false
+					,[
+					[
+						0,
+						[
+							0,
+							-500
+						]
+					]
+					]
+				]
+,				[
+					-1,
+					cr.system_object.prototype.acts.SetVar,
+					null,
+					4126412489606257,
+					false
+					,[
+					[
+						11,
+						"JumpingSequence"
+					]
+,					[
+						7,
+						[
+							0,
+							1
+						]
+					]
+					]
+				]
+				]
+			]
+,			[
+				0,
+				null,
+				false,
+				null,
 				2889128068612977,
 				[
 				[
@@ -26684,34 +26781,67 @@ true,false,8967234369899194,false
 		]
 ,		[
 			0,
-			null,
+			[true, "Touch controls"],
 			false,
 			null,
-			9928071012064482,
+			4473150076481694,
 			[
 			[
-				36,
-				cr.plugins_.Touch.prototype.cnds.OnTapGesture,
+				-1,
+				cr.system_object.prototype.cnds.IsGroupActive,
 				null,
-				1,
+				0,
 				false,
 				false,
 				false,
-				8463982779670475,
-				false
-			]
-			],
-			[
-			[
-				1,
-				cr.behaviors.Platform.prototype.acts.SimulateControl,
-				"Platform",
-				774892524379213,
+				4473150076481694,
 				false
 				,[
 				[
-					3,
-					2
+					1,
+					[
+						2,
+						"Touch controls"
+					]
+				]
+				]
+			]
+			],
+			[
+			]
+			,[
+			[
+				0,
+				null,
+				false,
+				null,
+				9928071012064482,
+				[
+				[
+					36,
+					cr.plugins_.Touch.prototype.cnds.OnTapGesture,
+					null,
+					1,
+					false,
+					false,
+					false,
+					8463982779670475,
+					false
+				]
+				],
+				[
+				[
+					1,
+					cr.behaviors.Platform.prototype.acts.SimulateControl,
+					"Platform",
+					774892524379213,
+					false
+					,[
+					[
+						3,
+						2
+					]
+					]
 				]
 				]
 			]
