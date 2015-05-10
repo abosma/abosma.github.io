@@ -22596,6 +22596,36 @@ cr.getProjectModel = function() { return [
 		[],
 		null
 	]
+,	[
+		"t40",
+		cr.plugins_.Sprite,
+		false,
+		[],
+		0,
+		0,
+		null,
+		[
+			[
+			"Default",
+			5,
+			false,
+			1,
+			0,
+			false,
+			9895183141631374,
+			[
+				["images/touchjump-sheet0.png", 168, 0, 0, 250, 250, 1, 0.5, 0.5,[],[],0]
+			]
+			]
+		],
+		[
+		],
+		false,
+		false,
+		6825241474355484,
+		[],
+		null
+	]
 	],
 	[
 	],
@@ -23288,7 +23318,7 @@ cr.getProjectModel = function() { return [
 				]
 			]
 ,			[
-				[64, 704, 0, 96, 96, 0, 0, 1, 0.5, 0.5, 0, 0, []],
+				[48, 416, 0, 96, 96, 0, 0, 1, 0.5, 0.5, 0, 0, []],
 				38,
 				118,
 				[
@@ -23303,9 +23333,24 @@ cr.getProjectModel = function() { return [
 				]
 			]
 ,			[
-				[256, 704, 0, -96, 96, 0, 0, 1, 0.5, 0.5, 0, 0, []],
+				[272, 416, 0, -96, 96, 0, 0, 1, 0.5, 0.5, 0, 0, []],
 				39,
 				119,
+				[
+				],
+				[
+				],
+				[
+					1,
+					"Default",
+					0,
+					1
+				]
+			]
+,			[
+				[544, 416, 0, 90, 90, 0, 0, 1, 0.5, 0.5, 0, 0, []],
+				40,
+				120,
 				[
 				],
 				[
@@ -26679,7 +26724,7 @@ true,false,8967234369899194,false
 				[
 				[
 					36,
-					cr.plugins_.Touch.prototype.cnds.OnTapGesture,
+					cr.plugins_.Touch.prototype.cnds.OnTapGestureObject,
 					null,
 					1,
 					false,
@@ -26687,6 +26732,12 @@ true,false,8967234369899194,false
 					false,
 					8511025458920367,
 					false
+					,[
+					[
+						4,
+						40
+					]
+					]
 				]
 ,				[
 					1,
@@ -26991,6 +27042,19 @@ true,false,8967234369899194,false
 					]
 					]
 				]
+,				[
+					40,
+					cr.plugins_.Sprite.prototype.acts.SetVisible,
+					null,
+					3412281983494475,
+					false
+					,[
+					[
+						3,
+						1
+					]
+					]
+				]
 				]
 			]
 ,			[
@@ -27002,7 +27066,7 @@ true,false,8967234369899194,false
 				[
 				[
 					36,
-					cr.plugins_.Touch.prototype.cnds.OnTapGesture,
+					cr.plugins_.Touch.prototype.cnds.OnTapGestureObject,
 					null,
 					1,
 					false,
@@ -27010,6 +27074,12 @@ true,false,8967234369899194,false
 					false,
 					8463982779670475,
 					false
+					,[
+					[
+						4,
+						40
+					]
+					]
 				]
 				],
 				[
@@ -27037,9 +27107,9 @@ true,false,8967234369899194,false
 				[
 				[
 					36,
-					cr.plugins_.Touch.prototype.cnds.OnTouchObject,
+					cr.plugins_.Touch.prototype.cnds.IsTouchingObject,
 					null,
-					1,
+					0,
 					false,
 					false,
 					false,
@@ -27078,9 +27148,9 @@ true,false,8967234369899194,false
 				[
 				[
 					36,
-					cr.plugins_.Touch.prototype.cnds.OnTouchObject,
+					cr.plugins_.Touch.prototype.cnds.IsTouchingObject,
 					null,
-					1,
+					0,
 					false,
 					false,
 					false,
@@ -28808,7 +28878,7 @@ true,false,8967234369899194,false
 	false,
 	0,
 	0,
-	120,
+	121,
 	false,
 	true,
 	1,

@@ -1,5 +1,5 @@
 ﻿CACHE MANIFEST
-#1431279157
+#1431279716
 index.html
 c2runtime.js
 jquery-2.0.0.min.js
@@ -16,6 +16,7 @@ images/sprite3-sheet0.png
 images/spider-sheet0.png
 images/sprite6-sheet0.png
 images/touchleft-sheet0.png
+images/touchjump-sheet0.png
 media/loz_fanfare.m4a
 media/loz_fanfare.ogg
 media/spider%20roar.ogg
