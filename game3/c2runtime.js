@@ -22506,6 +22506,96 @@ cr.getProjectModel = function() { return [
 		null
 		,[1]
 	]
+,	[
+		"t37",
+		cr.plugins_.Sprite,
+		false,
+		[],
+		0,
+		0,
+		null,
+		[
+			[
+			"Default",
+			5,
+			false,
+			1,
+			0,
+			false,
+			6906650590218927,
+			[
+				["images/sprite6-sheet0.png", 168, 0, 0, 250, 250, 1, 0.5, 0.5,[],[],3]
+			]
+			]
+		],
+		[
+		],
+		false,
+		false,
+		4467440884828081,
+		[],
+		null
+	]
+,	[
+		"t38",
+		cr.plugins_.Sprite,
+		false,
+		[],
+		0,
+		0,
+		null,
+		[
+			[
+			"Default",
+			5,
+			false,
+			1,
+			0,
+			false,
+			5309467771975465,
+			[
+				["images/touchleft-sheet0.png", 925, 0, 0, 250, 250, 1, 0.5, 0.5,[],[],0]
+			]
+			]
+		],
+		[
+		],
+		false,
+		false,
+		9900027267520705,
+		[],
+		null
+	]
+,	[
+		"t39",
+		cr.plugins_.Sprite,
+		false,
+		[],
+		0,
+		0,
+		null,
+		[
+			[
+			"Default",
+			5,
+			false,
+			1,
+			0,
+			false,
+			6415632736226988,
+			[
+				["images/touchleft-sheet0.png", 925, 0, 0, 250, 250, 1, 0.5, 0.5,[],[],0]
+			]
+			]
+		],
+		[
+		],
+		false,
+		false,
+		1205204225841949,
+		[],
+		null
+	]
 	],
 	[
 	],
@@ -22544,6 +22634,21 @@ cr.getProjectModel = function() { return [
 				[
 					0,
 					0
+				]
+			]
+,			[
+				[112, 656, 0, 250, 250, 0, 0, 1, 0.5, 0.5, 0, 0, []],
+				37,
+				62,
+				[
+				],
+				[
+				],
+				[
+					0,
+					"Default",
+					0,
+					1
 				]
 			]
 			],
@@ -23180,6 +23285,36 @@ cr.getProjectModel = function() { return [
 					1,
 					"",
 					0
+				]
+			]
+,			[
+				[64, 704, 0, 96, 96, 0, 0, 1, 0.5, 0.5, 0, 0, []],
+				38,
+				118,
+				[
+				],
+				[
+				],
+				[
+					1,
+					"Default",
+					0,
+					1
+				]
+			]
+,			[
+				[256, 704, 0, -96, 96, 0, 0, 1, 0.5, 0.5, 0, 0, []],
+				39,
+				119,
+				[
+				],
+				[
+				],
+				[
+					1,
+					"Default",
+					0,
+					1
 				]
 			]
 			],
@@ -26815,6 +26950,54 @@ true,false,8967234369899194,false
 				null,
 				false,
 				null,
+				6467750796666925,
+				[
+				[
+					-1,
+					cr.system_object.prototype.cnds.IsMobile,
+					null,
+					0,
+					false,
+					false,
+					false,
+					9624842132185158,
+					false
+				]
+				],
+				[
+				[
+					38,
+					cr.plugins_.Sprite.prototype.acts.SetVisible,
+					null,
+					2261267549170671,
+					false
+					,[
+					[
+						3,
+						1
+					]
+					]
+				]
+,				[
+					39,
+					cr.plugins_.Sprite.prototype.acts.SetVisible,
+					null,
+					7897312244919201,
+					false
+					,[
+					[
+						3,
+						1
+					]
+					]
+				]
+				]
+			]
+,			[
+				0,
+				null,
+				false,
+				null,
 				9928071012064482,
 				[
 				[
@@ -26840,6 +27023,88 @@ true,false,8967234369899194,false
 					[
 						3,
 						2
+					]
+					]
+				]
+				]
+			]
+,			[
+				0,
+				null,
+				false,
+				null,
+				1286437702230858,
+				[
+				[
+					36,
+					cr.plugins_.Touch.prototype.cnds.OnTouchObject,
+					null,
+					1,
+					false,
+					false,
+					false,
+					8138694580084603,
+					false
+					,[
+					[
+						4,
+						38
+					]
+					]
+				]
+				],
+				[
+				[
+					1,
+					cr.behaviors.Platform.prototype.acts.SimulateControl,
+					"Platform",
+					5374147086269049,
+					false
+					,[
+					[
+						3,
+						0
+					]
+					]
+				]
+				]
+			]
+,			[
+				0,
+				null,
+				false,
+				null,
+				8424657510226756,
+				[
+				[
+					36,
+					cr.plugins_.Touch.prototype.cnds.OnTouchObject,
+					null,
+					1,
+					false,
+					false,
+					false,
+					9496262938298078,
+					false
+					,[
+					[
+						4,
+						39
+					]
+					]
+				]
+				],
+				[
+				[
+					1,
+					cr.behaviors.Platform.prototype.acts.SimulateControl,
+					"Platform",
+					2606444847105785,
+					false
+					,[
+					[
+						3,
+						1
 					]
 					]
 				]
@@ -28543,7 +28808,7 @@ true,false,8967234369899194,false
 	false,
 	0,
 	0,
-	118,
+	120,
 	false,
 	true,
 	1,
