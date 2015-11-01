@@ -17,4 +17,4 @@ document.getElementById("textBox").style.position="absolute";
 document.getElementById("textBox").style.left="10%"
 document.getElementById("textBox").style.top="52%"
 document.getElementById("textBox").style.zIndex="1"
-document.getElementById("textBox").style.content= "url(pics/textBox.png)"
+document.getElementById("textBox").style.content= "url(pics/textbox.png)"
