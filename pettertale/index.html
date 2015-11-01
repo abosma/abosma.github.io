@@ -2,10 +2,48 @@
 
 <html>
 
-<body>
+<body style="background-color:black">
+	<div class="battleText">It's possible that you may have a problem.</div>
+	<div class="btext1">*</div>
 	<greenGrid id="greenGrid" border="0"></greenGrid>
+	<textBox id="textBox" border="0"></textBox>
+	<dog id="dog" border="0"></dog>
+	<audio autoplay="true" src="sounds/theme.mp3">
 <head>
   <script type="text/javascript" src="scripts/pettertale.js"></script>
+  <style> 
+@font-face {
+    font-family: battleFont;
+    src: url(8bitoperator.ttf);
+}
+
+.battleText {
+    font-family: battleFont;
+	font-size: 210%;
+	color: white;
+    position: absolute;
+    top: 60%;
+    left: 21.5%;
+	width: 600px;
+    margin-left: -50px;
+    margin-top: -25px;
+	z-index: 3;
+	letter-spacing: 3px;
+}
+.btext1 {
+    font-family: battleFont;
+	font-size: 210%;
+	color: white;
+    position: absolute;
+    top: 60%;
+    left: 16%;
+	width: 600px;
+    margin-left: -50px;
+    margin-top: -25px;
+	z-index: 3;
+	letter-spacing: 3px;
+}
+</style>
 </head>
 
 </body>
