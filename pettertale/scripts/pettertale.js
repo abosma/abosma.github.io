@@ -1,4 +1,6 @@
 document.getElementById("dog").style.position="absolute";
+document.getElementById("dog").style.width="192px";
+document.getElementById("dog").style.height="339px";
 document.getElementById("dog").style.left="36.3%"
 document.getElementById("dog").style.top="7%"
 document.getElementById("dog").style.zIndex="2"
