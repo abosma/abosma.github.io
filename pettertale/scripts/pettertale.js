@@ -20,3 +20,11 @@ document.getElementById("textBox").style.left="10%"
 document.getElementById("textBox").style.top="52%"
 document.getElementById("textBox").style.zIndex="1"
 document.getElementById("textBox").style.content= "url(pics/textbox.png)"
+
+document.getElementById("petbutton").style.width="20";
+document.getElementById("petbutton").style.height="12%";
+document.getElementById("petbutton").style.position="absolute";
+document.getElementById("petbutton").style.left="41%"
+document.getElementById("petbutton").style.top="86%"
+document.getElementById("petbutton").style.zIndex="1"
+document.getElementById("petbutton").style.content= "url(pics/petbutton.png)"
