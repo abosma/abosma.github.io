@@ -82,4 +82,32 @@ function pressbutton(){
 	document.getElementById("dogh").style.left="41.75%"
 	document.getElementById("dogh").style.top="0%"
 	}
+	if(AP == 5){
+	document.getElementById("dogh").style.content="url(pics/dogh5.png)";
+	document.getElementById("dogh").style.width="5.2%"
+	document.getElementById("dogh").style.height="28.6%"
+	document.getElementById("dogh").style.left="41.75%"
+	document.getElementById("dogh").style.top="-3%"
+	}
+	if(AP == 6){
+	document.getElementById("dogh").style.content="url(pics/dogh6.png)";
+	document.getElementById("dogh").style.width="5.2%"
+	document.getElementById("dogh").style.height="31.6%"
+	document.getElementById("dogh").style.left="41.75%"
+	document.getElementById("dogh").style.top="-6%"
+	}
+	if(AP == 7){
+	document.getElementById("dogh").style.content="url(pics/dogh7.png)";
+	document.getElementById("dogh").style.width="5.2%"
+	document.getElementById("dogh").style.height="34.6%"
+	document.getElementById("dogh").style.left="41.75%"
+	document.getElementById("dogh").style.top="-9%"
+	}
+	if(AP == 8){
+	document.getElementById("dogh").style.content="url(pics/dogh8.png)";
+	document.getElementById("dogh").style.width="5.2%"
+	document.getElementById("dogh").style.height="37.6%"
+	document.getElementById("dogh").style.left="41.75%"
+	document.getElementById("dogh").style.top="-12%"
+	}
 }
