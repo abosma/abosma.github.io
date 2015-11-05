@@ -49,7 +49,7 @@ function mouseOut() {
 	document.getElementById("petbutton").style.content="url(pics/petbutton.png)";
 }
 
-var AP = 13;
+var AP = 0;
 function pressbutton(){
 	AP++
 	console.log(AP);
