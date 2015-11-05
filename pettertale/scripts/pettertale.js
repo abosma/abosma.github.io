@@ -112,35 +112,35 @@ function pressbutton(){
 	}
 	if(AP == 14){
 	document.getElementById("dogh").style.content="url(pics/dogh9.png)";
-	document.getElementById("dogh").style.width="17.8%"
+	document.getElementById("dogh").style.width="17.35%"
 	document.getElementById("dogh").style.height="37.6%"
 	document.getElementById("dogh").style.left="41.75%"
 	document.getElementById("dogh").style.top="-12%"
 	}
 	if(AP == 15){
 	document.getElementById("dogh").style.content="url(pics/dogh10.png)";
-	document.getElementById("dogh").style.width="17.8%"
+	document.getElementById("dogh").style.width="17.35%"
 	document.getElementById("dogh").style.height="37.6%"
 	document.getElementById("dogh").style.left="41.75%"
 	document.getElementById("dogh").style.top="-12%"
 	}
 	if(AP == 16){
 	document.getElementById("dogh").style.content="url(pics/dogh11.png)";
-	document.getElementById("dogh").style.width="17.8%"
+	document.getElementById("dogh").style.width="17.35%"
 	document.getElementById("dogh").style.height="37.6%"
 	document.getElementById("dogh").style.left="41.75%"
 	document.getElementById("dogh").style.top="-12%"
 	}
 	if(AP == 17){
 	document.getElementById("dogh").style.content="url(pics/dogh12.png)";
-	document.getElementById("dogh").style.width="17.8%"
+	document.getElementById("dogh").style.width="17.35%"
 	document.getElementById("dogh").style.height="37.6%"
 	document.getElementById("dogh").style.left="41.75%"
 	document.getElementById("dogh").style.top="-12%"
 	}
 	if(AP == 18){
 	document.getElementById("dogh").style.content="url(pics/dogh13.png)";
-	document.getElementById("dogh").style.width="17.8%"
+	document.getElementById("dogh").style.width="17.35%"
 	document.getElementById("dogh").style.height="37.6%"
 	document.getElementById("dogh").style.left="41.75%"
 	document.getElementById("dogh").style.top="-12%"
