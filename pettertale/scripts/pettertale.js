@@ -1,3 +1,6 @@
+var AP = 0;
+var health = 20;
+
 document.getElementById("dogh").style.position="absolute";
 document.getElementById("dogh").style.width="5.2%"
 document.getElementById("dogh").style.height="12%"
@@ -22,35 +25,97 @@ document.getElementById("greenGrid").style.zIndex="0"
 document.getElementById("greenGrid").style.content= "url(pics/battlebackground.png)"
 
 document.getElementById("textBox").style.width="79%";
-document.getElementById("textBox").style.height="32%";
+document.getElementById("textBox").style.height="28%";
 document.getElementById("textBox").style.position="absolute";
 document.getElementById("textBox").style.left="10%"
 document.getElementById("textBox").style.top="52%"
 document.getElementById("textBox").style.zIndex="1"
 document.getElementById("textBox").style.content= "url(pics/textbox.png)"
 
-document.getElementById("petbutton").style.width="20";
-document.getElementById("petbutton").style.height="12%";
-document.getElementById("petbutton").style.position="absolute";
-document.getElementById("petbutton").style.left="41%"
-document.getElementById("petbutton").style.top="86%"
-document.getElementById("petbutton").style.zIndex="1"
-document.getElementById("petbutton").style.content= "url(pics/petbutton.png)"
+document.getElementById("fightbutton").style.width="14.5%";
+document.getElementById("fightbutton").style.height="10%";
+document.getElementById("fightbutton").style.position="absolute";
+document.getElementById("fightbutton").style.left="10%"
+document.getElementById("fightbutton").style.top="90%"
+document.getElementById("fightbutton").style.zIndex="1"
+document.getElementById("fightbutton").style.content= "url(pics/fightbutton.png)"
 
-document.getElementById("petbutton").onclick = function() {pressbutton()};
-document.getElementById("petbutton").onmouseover = function() {mouseOver()};
-document.getElementById("petbutton").onmouseout = function() {mouseOut()};
+document.getElementById("hpbar1").style.width="2.6%";
+document.getElementById("hpbar1").style.height="4%";
+document.getElementById("hpbar1").style.position="absolute";
+document.getElementById("hpbar1").style.left="45.5%"
+document.getElementById("hpbar1").style.top="82.8%"
+document.getElementById("hpbar1").style.zIndex="2"
+document.getElementById("hpbar1").style.content= "url(pics/hpbar1.png)"
 
-function mouseOver() {
-	document.getElementById("petbutton").style.content="url(pics/petbuttonover.png)";
+document.getElementById("hpbar2").style.width="2.6%";
+document.getElementById("hpbar2").style.height="4%";
+document.getElementById("hpbar2").style.position="absolute";
+document.getElementById("hpbar2").style.left="45.5%"
+document.getElementById("hpbar2").style.top="82.8%"
+document.getElementById("hpbar2").style.zIndex="1"
+document.getElementById("hpbar2").style.content= "url(pics/hpbar2.png)"
+
+document.getElementById("actbutton").style.width="14.5%";
+document.getElementById("actbutton").style.height="10%";
+document.getElementById("actbutton").style.position="absolute";
+document.getElementById("actbutton").style.left="31.5%"
+document.getElementById("actbutton").style.top="90%"
+document.getElementById("actbutton").style.zIndex="1"
+document.getElementById("actbutton").style.content= "url(pics/actbutton.png)"
+
+document.getElementById("itembutton").style.width="14.5%";
+document.getElementById("itembutton").style.height="10%";
+document.getElementById("itembutton").style.position="absolute";
+document.getElementById("itembutton").style.left="53%"
+document.getElementById("itembutton").style.top="90%"
+document.getElementById("itembutton").style.zIndex="1"
+document.getElementById("itembutton").style.content= "url(pics/itembutton.png)"
+
+document.getElementById("mercybutton").style.width="14.5%";
+document.getElementById("mercybutton").style.height="10%";
+document.getElementById("mercybutton").style.position="absolute";
+document.getElementById("mercybutton").style.left="74.5%"
+document.getElementById("mercybutton").style.top="90%"
+document.getElementById("mercybutton").style.zIndex="1"
+document.getElementById("mercybutton").style.content= "url(pics/mercybutton.png)"
+
+document.getElementById("actbutton").onclick = function() {growDog()};
+document.getElementById("actbutton").onmouseover = function() {mouseOverAct()};
+document.getElementById("actbutton").onmouseout = function() {mouseOutAct()};
+document.getElementById("fightbutton").onmouseout = function() {mouseOutFight()};
+document.getElementById("fightbutton").onmouseover = function() {mouseOverFight()};
+document.getElementById("mercybutton").onmouseout = function() {mouseOutMercy()};
+document.getElementById("mercybutton").onmouseover = function() {mouseOverMercy()};
+document.getElementById("itembutton").onmouseout = function() {mouseOutItem()};
+document.getElementById("itembutton").onmouseover = function() {mouseOverItem()};
+
+function mouseOverAct() {
+	document.getElementById("actbutton").style.content="url(pics/actbuttondown.png)";
+}
+function mouseOutAct() {
+	document.getElementById("actbutton").style.content="url(pics/actbutton.png)";
+}
+function mouseOverFight() {
+	document.getElementById("fightbutton").style.content="url(pics/outoforderbutton.png)";
+}
+function mouseOutFight() {
+	document.getElementById("fightbutton").style.content="url(pics/fightbutton.png)";
+}
+function mouseOverMercy() {
+	document.getElementById("mercybutton").style.content="url(pics/outoforderbutton.png)";
+}
+function mouseOutMercy() {
+	document.getElementById("mercybutton").style.content="url(pics/mercybutton.png)";
+}
+function mouseOverItem() {
+	document.getElementById("itembutton").style.content="url(pics/outoforderbutton.png)";
+}
+function mouseOutItem() {
+	document.getElementById("itembutton").style.content="url(pics/itembutton.png)";
 }
 
-function mouseOut() {
-	document.getElementById("petbutton").style.content="url(pics/petbutton.png)";
-}
-
-var AP = 0;
-function pressbutton(){
+function growDog(){
 	AP++
 	console.log(AP);
 	console.log(document.getElementById("dogh").style.content);
