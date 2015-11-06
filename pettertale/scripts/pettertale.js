@@ -1,8 +1,23 @@
 var AP = 0;
 var health = 20;
 var hpbarwidth = 2.6;
+var currentmenu = 0;
 
 document.getElementById("currenthp").innerHTML = health;
+
+document.getElementById("menu1").style.display="none";
+document.getElementById("menu1").style.zIndex="3"
+document.getElementById("menu1").style.top="57.05%"
+document.getElementById("menu1").style.left="15.5%"
+document.getElementById("menu1").style.position="absolute";
+document.getElementById("menu1").style.content= "url(pics/menu1.png)"
+
+document.getElementById("menu2").style.display="none";
+document.getElementById("menu2").style.zIndex="3"
+document.getElementById("menu2").style.top="57.05%"
+document.getElementById("menu2").style.left="15.5%"
+document.getElementById("menu2").style.position="absolute";
+document.getElementById("menu2").style.content= "url(pics/menu2.png)"
 
 document.getElementById("dogh").style.position="absolute";
 document.getElementById("dogh").style.width="5.2%"
@@ -83,7 +98,7 @@ document.getElementById("mercybutton").style.top="90%"
 document.getElementById("mercybutton").style.zIndex="1"
 document.getElementById("mercybutton").style.content= "url(pics/mercybutton.png)"
 
-document.getElementById("actbutton").onclick = function() {growDog()};
+document.getElementById("actbutton").onclick = function() {pressActButton()};
 document.getElementById("actbutton").onmouseover = function() {mouseOverAct()};
 document.getElementById("actbutton").onmouseout = function() {mouseOutAct()};
 document.getElementById("fightbutton").onmouseout = function() {mouseOutFight()};
@@ -92,6 +107,29 @@ document.getElementById("mercybutton").onmouseout = function() {mouseOutMercy()}
 document.getElementById("mercybutton").onmouseover = function() {mouseOverMercy()};
 document.getElementById("itembutton").onmouseout = function() {mouseOutItem()};
 document.getElementById("itembutton").onmouseover = function() {mouseOverItem()};
+document.getElementById("menu1").onclick = function() {pressMenu1()};
+document.getElementById("menu1").onmouseover = function() {mouseOverMenu1()};
+document.getElementById("menu1").onmouseout = function() {mouseOutMenu1()};
+document.getElementById("menu2").onclick = function() {growDog()};
+document.getElementById("menu2").onmouseover = function() {mouseOverMenu2()};
+document.getElementById("menu2").onmouseout = function() {mouseOutMenu2()};
+
+function mouseOverMenu1() {
+	document.getElementById("menu1").style.content="url(pics/menu1over.png)";
+	document.getElementById("menu1").style.left="11.3%"
+}
+function mouseOutMenu1() {
+	document.getElementById("menu1").style.content="url(pics/menu1.png)";
+	document.getElementById("menu1").style.left="15.5%"
+}
+function mouseOverMenu2() {
+	document.getElementById("menu2").style.content="url(pics/menu2over.png)";
+	document.getElementById("menu2").style.left="11.3%"
+}
+function mouseOutMenu2() {
+	document.getElementById("menu2").style.content="url(pics/menu2.png)";
+	document.getElementById("menu2").style.left="15.5%"
+}
 
 function mouseOverAct() {
 	document.getElementById("actbutton").style.content="url(pics/actbuttondown.png)";
@@ -118,12 +156,35 @@ function mouseOutItem() {
 	document.getElementById("itembutton").style.content="url(pics/itembutton.png)";
 }
 
-function growDog(){
+function pressActButton(){
+	
+	if(currentmenu == 0){
+	currentmenu++;
+	document.getElementById("battleText").style.display = "none";
+	document.getElementById("btext1").style.display = "none";
+	document.getElementById("menu1").style.display="block";
+	}
+	
+}
+
+function pressMenu1(){
+	
+	if(currentmenu == 1){
+	currentmenu++;
+	document.getElementById("menu1").style.display="none";
+	document.getElementById("menu2").style.display="block";
+	}
+}
+
+function getHit(){
 	
 	hpbarwidth -= 0.13;
 	health -= 1;
 	document.getElementById("currenthp").innerHTML = health;
 	document.getElementById("hpbar1").style.width= hpbarwidth + "%";
+}
+
+function growDog(){
 	
 	AP++
 	console.log(AP);
@@ -148,6 +209,7 @@ function growDog(){
 	document.getElementById("battleText").style.display = "none";
 	document.getElementById("btext1").style.display="none";
 	}
+	
 	if(AP == 1){
 	document.getElementById("dogh").style.content="url(pics/dogh1.png)";
 	document.getElementById("dogh").style.width="5.2%"
