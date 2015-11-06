@@ -145,4 +145,25 @@ function pressbutton(){
 	document.getElementById("dogh").style.left="41.75%"
 	document.getElementById("dogh").style.top="-12%"
 	}
+	if(AP == 19){
+	document.getElementById("dogh").style.content="url(pics/dogh14.png)";
+	document.getElementById("dogh").style.width="17.35%"
+	document.getElementById("dogh").style.height="37.6%"
+	document.getElementById("dogh").style.left="41.75%"
+	document.getElementById("dogh").style.top="-12%"
+	}
+	if(AP == 20){
+	document.getElementById("dogh").style.content="url(pics/dogh15.png)";
+	document.getElementById("dogh").style.width="17.35%"
+	document.getElementById("dogh").style.height="37.6%"
+	document.getElementById("dogh").style.left="41.75%"
+	document.getElementById("dogh").style.top="-12%"
+	}
+	if(AP == 21){
+	document.getElementById("dogh").style.content="url(pics/dogh16.png)";
+	document.getElementById("dogh").style.width="17.35%"
+	document.getElementById("dogh").style.height="37.6%"
+	document.getElementById("dogh").style.left="41.75%"
+	document.getElementById("dogh").style.top="-12%"
+	}
 }
