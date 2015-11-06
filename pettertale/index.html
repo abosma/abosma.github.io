@@ -3,13 +3,13 @@
 <html>
 
 <body style="background-color:black">
-	<div class="battleText">It's possible that you may have a problem.</div>
-	<div class="btext1">*</div>
-	<div class="name">FRISK</div>
-	<div class="level">LV 1</div>
-	<div class="smallhptext">HP</div>
-	<div class="currenthp">20</div>
-	<div class="maxhp">/  20</div>
+	<battletext id="battleText">It's possible that you may have a problem.</battletext>
+	<btext id="btext1">*</btext>
+	<playername id="playername">FRISK</playername>
+	<level id="level">LV 1</level>
+	<smallhptext id="smallhptext">HP</smallhptext>
+	<currenthp id="currenthp">currenthp</currenthp>
+	<maxhp id="maxhp">/  20</maxhp>
 	<greenGrid id="greenGrid" border="0"></greenGrid>
 	<hpbar1 id="hpbar1" border="0"></hpbar1>
 	<hpbar2 id="hpbar2" border="0"></hpbar2>
@@ -62,7 +62,7 @@
     src: url(MNC.ttf);
 }
 
-.battleText {
+battleText {
     font-family: battleFont;
 	font-size: 210%;
 	color: white;
@@ -76,7 +76,7 @@
 	letter-spacing: 3px;
 }
 
-.btext1 {
+btext1 {
     font-family: battleFont;
 	font-size: 210%;
 	color: white;
@@ -90,7 +90,7 @@
 	letter-spacing: 3px;
 }
 
-.name {
+playername {
     font-family: MNC;
 	font-size: 230%;
 	color: white;
@@ -103,7 +103,7 @@
 	z-index: 3;
 	letter-spacing: 3px;
 }
-.level {
+level {
     font-family: MNC;
 	font-size: 230%;
 	color: white;
@@ -116,7 +116,7 @@
 	z-index: 3;
 	letter-spacing: 3px;
 }
-.currenthp {
+currenthp {
     font-family: MNC;
 	font-size: 230%;
 	color: white;
@@ -129,7 +129,7 @@
 	z-index: 3;
 	letter-spacing: 3px;
 }
-.maxhp {
+maxhp {
     font-family: MNC;
 	font-size: 230%;
 	color: white;
@@ -142,7 +142,7 @@
 	z-index: 3;
 	letter-spacing: 3px;
 }
-.smallhptext {
+smallhptext {
     font-family: Arial Black;
 	font-size: 130%;
 	color: white;

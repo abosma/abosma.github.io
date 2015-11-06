@@ -1,5 +1,8 @@
 var AP = 0;
 var health = 20;
+var hpbarwidth = 2.6;
+
+document.getElementById("currenthp").innerHTML = health;
 
 document.getElementById("dogh").style.position="absolute";
 document.getElementById("dogh").style.width="5.2%"
@@ -40,7 +43,7 @@ document.getElementById("fightbutton").style.top="90%"
 document.getElementById("fightbutton").style.zIndex="1"
 document.getElementById("fightbutton").style.content= "url(pics/fightbutton.png)"
 
-document.getElementById("hpbar1").style.width="2.6%";
+document.getElementById("hpbar1").style.width= hpbarwidth + "%";
 document.getElementById("hpbar1").style.height="4%";
 document.getElementById("hpbar1").style.position="absolute";
 document.getElementById("hpbar1").style.left="45.5%"
@@ -116,9 +119,35 @@ function mouseOutItem() {
 }
 
 function growDog(){
+	
+	hpbarwidth -= 0.13;
+	health -= 1;
+	document.getElementById("currenthp").innerHTML = health;
+	document.getElementById("hpbar1").style.width= hpbarwidth + "%";
+	
 	AP++
 	console.log(AP);
 	console.log(document.getElementById("dogh").style.content);
+	
+	if(health == 0){
+	document.getElementById("currenthp").style.display="none";
+	document.getElementById("maxhp").style.display="none";
+	document.getElementById("smallhptext").style.display="none";
+	document.getElementById("playername").style.display="none";
+	document.getElementById("level").style.display="none";
+	document.getElementById("greenGrid").style.display="none";
+	document.getElementById("hpbar1").style.display="none";
+	document.getElementById("hpbar2").style.display="none";
+	document.getElementById("textBox").style.display="none";
+	document.getElementById("dog").style.display="none";
+	document.getElementById("dogh").style.display="none";
+	document.getElementById("actbutton").style.display="none";
+	document.getElementById("fightbutton").style.display="none";
+	document.getElementById("mercybutton").style.display="none";
+	document.getElementById("itembutton").style.display="none";
+	document.getElementById("battleText").style.display = "none";
+	document.getElementById("btext1").style.display="none";
+	}
 	if(AP == 1){
 	document.getElementById("dogh").style.content="url(pics/dogh1.png)";
 	document.getElementById("dogh").style.width="5.2%"
