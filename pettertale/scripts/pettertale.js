@@ -3,7 +3,28 @@ var health = 20;
 var hpbarwidth = 2.6;
 var currentmenu = 0;
 
+var player = document.getElementById("pFight");
+var enemy = document.getElementById("dFight");
+
 document.getElementById("currenthp").innerHTML = health;
+
+player.style.zIndex="5";
+player.style.position="absolute";
+player.style.top="64%";
+player.style.left="48%";
+player.style.width="2%";
+player.style.height="3%";
+player.style.display="none";
+player.style.content="url(pics/heart.png)"
+
+enemy.style.zIndex="5";
+enemy.style.position="absolute";
+enemy.style.top="69.7%";
+enemy.style.left="57%";
+enemy.style.width="7%";
+enemy.style.height="9%";
+enemy.style.display="none";
+enemy.style.content="url(pics/dogwalk.gif)"
 
 document.getElementById("deathgif").style.zIndex="4";
 document.getElementById("deathgif").style.width="98%";
@@ -117,7 +138,7 @@ document.getElementById("itembutton").onmouseover = function() {mouseOverItem()}
 document.getElementById("menu1").onclick = function() {pressMenu1()};
 document.getElementById("menu1").onmouseover = function() {mouseOverMenu1()};
 document.getElementById("menu1").onmouseout = function() {mouseOutMenu1()};
-document.getElementById("menu2").onclick = function() {growDog()};
+document.getElementById("menu2").onclick = function() {startFight()};
 document.getElementById("menu2").onmouseover = function() {mouseOverMenu2()};
 document.getElementById("menu2").onmouseout = function() {mouseOutMenu2()};
 
@@ -183,8 +204,18 @@ function pressMenu1(){
 	}
 }
 
+function startFight(){
+	currentmenu == 0;
+	document.getElementById("menu2").style.display="none";
+	document.getElementById("textBox").style.content="pics/fightbox.png";
+	document.getElementById("textBox").style.width="30%";
+	document.getElementById("textBox").style.left="34.45%";
+	enemy.style.display="block";
+	player.style.display="block";
+}
 
-var getHit = setInterval(getHit, 500);
+
+var getHit = setInterval(getHit, 999999);
 
 function getHit(){
 	
