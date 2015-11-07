@@ -5,6 +5,13 @@ var currentmenu = 0;
 
 document.getElementById("currenthp").innerHTML = health;
 
+document.getElementById("deathgif").style.zIndex="4";
+document.getElementById("deathgif").style.width="98%";
+document.getElementById("deathgif").style.height="99%";
+document.getElementById("deathgif").style.position="absolute";
+document.getElementById("deathgif").style.display="none";
+document.getElementById("deathgif").style.content="url(pics/death.gif)"
+
 document.getElementById("menu1").style.display="none";
 document.getElementById("menu1").style.zIndex="3"
 document.getElementById("menu1").style.top="57.05%"
@@ -176,6 +183,9 @@ function pressMenu1(){
 	}
 }
 
+
+var getHit = setInterval(getHit, 500);
+
 function getHit(){
 	
 	hpbarwidth -= 0.13;
@@ -184,13 +194,11 @@ function getHit(){
 	document.getElementById("hpbar1").style.width= hpbarwidth + "%";
 }
 
-function growDog(){
-	
-	AP++
-	console.log(AP);
-	console.log(document.getElementById("dogh").style.content);
-	
-	if(health == 0){
+
+var checkDeath = setInterval(checkDeath, 500);
+
+function checkDeath(){
+	if(health <= 0){
 	document.getElementById("currenthp").style.display="none";
 	document.getElementById("maxhp").style.display="none";
 	document.getElementById("smallhptext").style.display="none";
@@ -208,7 +216,18 @@ function growDog(){
 	document.getElementById("itembutton").style.display="none";
 	document.getElementById("battleText").style.display = "none";
 	document.getElementById("btext1").style.display="none";
+	document.getElementById("deathgif").style.display="block";
+	document.getElementById("theme").src="sounds/dogsong.mp3"
+	window.clearInterval(checkDeath);
+	window.clearInterval(getHit);
 	}
+}
+
+function growDog(){
+	
+	AP++
+	console.log(AP);
+	console.log(document.getElementById("dogh").style.content);
 	
 	if(AP == 1){
 	document.getElementById("dogh").style.content="url(pics/dogh1.png)";
