@@ -2,9 +2,31 @@ var AP = 0;
 var health = 20;
 var hpbarwidth = 2.6;
 var currentmenu = 0;
+var dogDistance = 57;
 
 var player = document.getElementById("pFight");
 var enemy = document.getElementById("dFight");
+
+var Key = {
+  _pressed: {},
+
+  LEFT: 37,
+  UP: 38,
+  RIGHT: 39,
+  DOWN: 40,
+  
+  isDown: function(keyCode) {
+    return this._pressed[keyCode];
+  },
+  
+  onKeydown: function(event) {
+    this._pressed[event.keyCode] = true;
+  },
+  
+  onKeyup: function(event) {
+    delete this._pressed[event.keyCode];
+  }
+};
 
 document.getElementById("currenthp").innerHTML = health;
 
@@ -212,6 +234,12 @@ function startFight(){
 	document.getElementById("textBox").style.left="34.45%";
 	enemy.style.display="block";
 	player.style.display="block";
+	var dogMove = setInterval(moveDog, 20);
+}
+
+function moveDog(){
+	dogDistance -= 0.1;
+	enemy.style.left = dogDistance + "%";
 }
 
 
@@ -252,6 +280,7 @@ function checkDeath(){
 	window.clearInterval(checkDeath);
 	window.clearInterval(getHit);
 	}
+	console.log(enemy.style.left);
 }
 
 function growDog(){
