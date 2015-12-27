@@ -26,7 +26,7 @@ function init() {
     light.position.set( 0, 1, 1 ).normalize();
     scene.add(light);
   
-    var geometry = new THREE.CubeGeometry( 10, 10, 10);
+    var geometry = new THREE.CubeGeometry( 30, 30, 30);
     var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/gabbie.jpg') } );
   
     mesh = new THREE.Mesh(geometry, material );
