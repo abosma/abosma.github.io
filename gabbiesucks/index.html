@@ -27,15 +27,6 @@ function init() {
     light.position.set( 0, 1, 1 ).normalize();
     scene.add(light);
   
-  var material2 = new THREE.MeshPhongMaterial({
-        color: 0xdddddd
-    });
-    var textGeom = new THREE.TextGeometry( 'gabbie sucks', {
-        font: 'source sans pro'
-    });
-    var textMesh = new THREE.Mesh( textGeom, material );
-	scene.add(textMesh);
-  
     var geometry = new THREE.CubeGeometry( 30, 30, 30);
     var material = new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('images/gabbie.jpg') } );
   
