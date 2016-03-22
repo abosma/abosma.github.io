@@ -1,141 +1,143 @@
 <!DOCTYPE html>
 
 <html>
+    <head>
+        <style>
+            @font-face {
+                font-family: battleFont;
+                src: url(8bitoperator.ttf);
+            }
 
-<body style="background-color:black">
-	<battletext id="battleText">Lesser Dog appears.</battletext>
-	<btext1 id="btext1">*</btext1>
-	<playername id="playername">FRISK</playername>
-	<level id="level">LV 1</level>
-	<smallhptext id="smallhptext">HP</smallhptext>
-	<currenthp id="currenthp">currenthp</currenthp>
-	<maxhp id="maxhp">/  20</maxhp>
-	<greenGrid id="greenGrid" border="0"></greenGrid>
-	<hpbar1 id="hpbar1" border="0"></hpbar1>
-	<hpbar2 id="hpbar2" border="0"></hpbar2>
-	<textBox id="textBox" border="0"></textBox>
-	<dog id="dog" border="0"></dog>
-	<dogh id="dogh" border="0"></dogh>
-	<actbutton id="actbutton" border="0"></actbutton>
-	<itembutton id="itembutton" border="0"></itembutton>
-	<fightbutton id="fightbutton" border="0"></fightbutton>
-	<mercybutton id="mercybutton" border="0"></mercybutton>
-	<menu1 id="menu1" border="0"></menu1>
-	<menu2 id="menu2" border="0"></menu2>
-	<deathgif id="deathgif" border="0"></deathgif>
-	<dFight id="dFight" border="0"></dFight>
-	<pFight id="pFight" border="0"></pFight>
-	<audio id="theme" autoplay="true" src="sounds/theme.mp3">
-<head>
-  <script type="text/javascript" src="scripts/pettertale.js"></script>
-  <style> 
-@font-face {
-    font-family: battleFont;
-    src: url(8bitoperator.ttf);
-}
+            @font-face {
+                font-family: MNC;
+                src: url(MNC.ttf);
+            }
 
-@font-face {
-    font-family: MNC;
-    src: url(MNC.ttf);
-}
+            battleText {
+                font-family: battleFont;
+                font-size: 210%;
+                color: white;
+                position: absolute;
+                top: 60%;
+                left: 21.5%;
+                width: 600px;
+                margin-left: -50px;
+                margin-top: -25px;
+                z-index: 3;
+                letter-spacing: 3px;
+            }
 
-battleText {
-    font-family: battleFont;
-	font-size: 210%;
-	color: white;
-    position: absolute;
-    top: 60%;
-    left: 21.5%;
-	width: 600px;
-    margin-left: -50px;
-    margin-top: -25px;
-	z-index: 3;
-	letter-spacing: 3px;
-}
+            btext1 {
+                font-family: battleFont;
+                font-size: 210%;
+                color: white;
+                position: absolute;
+                top: 60%;
+                left: 16%;
+                width: 600px;
+                margin-left: -50px;
+                margin-top: -25px;
+                z-index: 3;
+                letter-spacing: 3px;
+            }
 
-btext1 {
-    font-family: battleFont;
-	font-size: 210%;
-	color: white;
-    position: absolute;
-    top: 60%;
-    left: 16%;
-	width: 600px;
-    margin-left: -50px;
-    margin-top: -25px;
-	z-index: 3;
-	letter-spacing: 3px;
-}
+            playername {
+                font-family: MNC;
+                font-size: 230%;
+                color: white;
+                position: absolute;
+                top: 86%;
+                left: 13%;
+                width: 600px;
+                margin-left: -50px;
+                margin-top: -25px;
+                z-index: 3;
+                letter-spacing: 3px;
+            }
 
-playername {
-    font-family: MNC;
-	font-size: 230%;
-	color: white;
-    position: absolute;
-    top: 86%;
-    left: 13%;
-	width: 600px;
-    margin-left: -50px;
-    margin-top: -25px;
-	z-index: 3;
-	letter-spacing: 3px;
-}
-level {
-    font-family: MNC;
-	font-size: 230%;
-	color: white;
-    position: absolute;
-    top: 86%;
-    left: 26%;
-	width: 600px;
-    margin-left: -50px;
-    margin-top: -25px;
-	z-index: 3;
-	letter-spacing: 3px;
-}
-currenthp {
-    font-family: MNC;
-	font-size: 230%;
-	color: white;
-    position: absolute;
-    top: 86%;
-    left: 53.5%;
-	width: 600px;
-    margin-left: -50px;
-    margin-top: -25px;
-	z-index: 3;
-	letter-spacing: 3px;
-}
-maxhp {
-    font-family: MNC;
-	font-size: 230%;
-	color: white;
-    position: absolute;
-    top: 86%;
-    left: 58%;
-	width: 600px;
-    margin-left: -50px;
-    margin-top: -25px;
-	z-index: 3;
-	letter-spacing: 3px;
-}
-smallhptext {
-    font-family: Arial Black;
-	font-size: 130%;
-	color: white;
-    position: absolute;
-    top: 86%;
-    left: 45%;
-	width: 50px;
-    margin-left: -50px;
-    margin-top: -25px;
-	z-index: 3;
-	letter-spacing: 2px;
-}
+            level {
+                font-family: MNC;
+                font-size: 230%;
+                color: white;
+                position: absolute;
+                top: 86%;
+                left: 26%;
+                width: 600px;
+                margin-left: -50px;
+                margin-top: -25px;
+                z-index: 3;
+                letter-spacing: 3px;
+            }
 
-</style>
-</head>
+            currenthp {
+                font-family: MNC;
+                font-size: 230%;
+                color: white;
+                position: absolute;
+                top: 86%;
+                left: 53.5%;
+                width: 600px;
+                margin-left: -50px;
+                margin-top: -25px;
+                z-index: 3;
+                letter-spacing: 3px;
+            }
 
+            maxhp {
+                font-family: MNC;
+                font-size: 230%;
+                color: white;
+                position: absolute;
+                top: 86%;
+                left: 58%;
+                width: 600px;
+                margin-left: -50px;
+                margin-top: -25px;
+                z-index: 3;
+                letter-spacing: 3px;
+            }
+
+            smallhptext {
+                font-family: Arial Black;
+                font-size: 130%;
+                color: white;
+                position: absolute;
+                top: 86%;
+                left: 45%;
+                width: 50px;
+                margin-left: -50px;
+                margin-top: -25px;
+                z-index: 3;
+                letter-spacing: 2px;
+            }
+        </style>
+    </head>
+
+    <body style="background-color:black">
+        <battletext id="battleText">Lesser Dog appears.</battletext>
+        <btext1 id="btext1">*</btext1>
+        <playername id="playername">FRISK</playername>
+        <level id="level">LV 1</level>
+        <smallhptext id="smallhptext">HP</smallhptext>
+        <currenthp id="currenthp">currenthp</currenthp>
+        <maxhp id="maxhp">/  20</maxhp>
+        <greenGrid id="greenGrid" border="0"></greenGrid>
+        <hpbar1 id="hpbar1" border="0"></hpbar1>
+        <hpbar2 id="hpbar2" border="0"></hpbar2>
+        <textBox id="textBox" border="0"></textBox>
+        <dog id="dog" border="0"></dog>
+        <dogh id="dogh" border="0"></dogh>
+        <actbutton id="actbutton" border="0"></actbutton>
+        <itembutton id="itembutton" border="0"></itembutton>
+        <fightbutton id="fightbutton" border="0"></fightbutton>
+        <mercybutton id="mercybutton" border="0"></mercybutton>
+        <menu1 id="menu1" border="0"></menu1>
+        <menu2 id="menu2" border="0"></menu2>
+        <deathgif id="deathgif" border="0"></deathgif>
+        <dFight id="dFight" border="0"></dFight>
+        <pFight id="pFight" border="0"></pFight>
+        <audio id="theme" autoplay="true" src="sounds/theme.mp3"></audio>
+        <script type="text/javascript" src="scripts/pettertale.js"></script>
 </body>
 
 </html>
