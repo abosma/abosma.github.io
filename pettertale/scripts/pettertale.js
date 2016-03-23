@@ -7,146 +7,9 @@ var dogDistance = 57;
 var player = document.getElementById("pFight");
 var enemy = document.getElementById("dFight");
 
-var Key = {
-  _pressed: {},
-
-  LEFT: 37,
-  UP: 38,
-  RIGHT: 39,
-  DOWN: 40,
-  
-  isDown: function(keyCode) {
-    return this._pressed[keyCode];
-  },
-  
-  onKeydown: function(event) {
-    this._pressed[event.keyCode] = true;
-  },
-  
-  onKeyup: function(event) {
-    delete this._pressed[event.keyCode];
-  }
-};
 
 document.getElementById("currenthp").innerHTML = health;
-
-player.style.zIndex="5";
-player.style.position="absolute";
-player.style.top="64%";
-player.style.left="48%";
-player.style.width="2%";
-player.style.height="3%";
-player.style.display="none";
-player.style.content="url(pics/heart.png)"
-
-enemy.style.zIndex="5";
-enemy.style.position="absolute";
-enemy.style.top="69.7%";
-enemy.style.left="57%";
-enemy.style.width="7%";
-enemy.style.height="9%";
-enemy.style.display="none";
-enemy.style.content="url(pics/dogwalk.gif)"
-
-document.getElementById("deathgif").style.zIndex="4";
-document.getElementById("deathgif").style.width="98%";
-document.getElementById("deathgif").style.height="99%";
-document.getElementById("deathgif").style.position="absolute";
-document.getElementById("deathgif").style.display="none";
-document.getElementById("deathgif").style.content="url(pics/death.gif)"
-
-document.getElementById("menu1").style.display="none";
-document.getElementById("menu1").style.zIndex="3"
-document.getElementById("menu1").style.top="57.05%"
-document.getElementById("menu1").style.left="15.5%"
-document.getElementById("menu1").style.position="absolute";
-document.getElementById("menu1").style.content= "url(pics/menu1.png)"
-
-document.getElementById("menu2").style.display="none";
-document.getElementById("menu2").style.zIndex="3"
-document.getElementById("menu2").style.top="57.05%"
-document.getElementById("menu2").style.left="15.5%"
-document.getElementById("menu2").style.position="absolute";
-document.getElementById("menu2").style.content= "url(pics/menu2.png)"
-
-document.getElementById("dogh").style.position="absolute";
-document.getElementById("dogh").style.width="5.2%"
-document.getElementById("dogh").style.height="12%"
-document.getElementById("dogh").style.left="41.7%"
-document.getElementById("dogh").style.top="13.7%"
-document.getElementById("dogh").style.zIndex="2"
-document.getElementById("dogh").style.content= "url(pics/dogh.png)"
-
-document.getElementById("dog").style.position="absolute";
-document.getElementById("dog").style.width="14%"
-document.getElementById("dog").style.height="48%"
-document.getElementById("dog").style.left="35.7%"
-document.getElementById("dog").style.top="3%"
-document.getElementById("dog").style.zIndex="2"
-document.getElementById("dog").style.content= "url(pics/dog.png)"
-
-document.getElementById("greenGrid").style.width="85%";
-document.getElementById("greenGrid").style.height="50%";
-document.getElementById("greenGrid").style.position="absolute";
-document.getElementById("greenGrid").style.left="7%"
-document.getElementById("greenGrid").style.zIndex="0"
-document.getElementById("greenGrid").style.content= "url(pics/battlebackground.png)"
-
-document.getElementById("textBox").style.width="79%";
-document.getElementById("textBox").style.height="28%";
-document.getElementById("textBox").style.position="absolute";
-document.getElementById("textBox").style.left="10%"
-document.getElementById("textBox").style.top="52%"
-document.getElementById("textBox").style.zIndex="1"
-document.getElementById("textBox").style.content= "url(pics/textbox.png)"
-
-document.getElementById("fightbutton").style.width="14.5%";
-document.getElementById("fightbutton").style.height="10%";
-document.getElementById("fightbutton").style.position="absolute";
-document.getElementById("fightbutton").style.left="10%"
-document.getElementById("fightbutton").style.top="90%"
-document.getElementById("fightbutton").style.zIndex="1"
-document.getElementById("fightbutton").style.content= "url(pics/fightbutton.png)"
-
-document.getElementById("hpbar1").style.width= hpbarwidth + "%";
-document.getElementById("hpbar1").style.height="4%";
-document.getElementById("hpbar1").style.position="absolute";
-document.getElementById("hpbar1").style.left="45.5%"
-document.getElementById("hpbar1").style.top="82.8%"
-document.getElementById("hpbar1").style.zIndex="2"
-document.getElementById("hpbar1").style.content= "url(pics/hpbar1.png)"
-
-document.getElementById("hpbar2").style.width="2.6%";
-document.getElementById("hpbar2").style.height="4%";
-document.getElementById("hpbar2").style.position="absolute";
-document.getElementById("hpbar2").style.left="45.5%"
-document.getElementById("hpbar2").style.top="82.8%"
-document.getElementById("hpbar2").style.zIndex="1"
-document.getElementById("hpbar2").style.content= "url(pics/hpbar2.png)"
-
-document.getElementById("actbutton").style.width="14.5%";
-document.getElementById("actbutton").style.height="10%";
-document.getElementById("actbutton").style.position="absolute";
-document.getElementById("actbutton").style.left="31.5%"
-document.getElementById("actbutton").style.top="90%"
-document.getElementById("actbutton").style.zIndex="1"
-document.getElementById("actbutton").style.content= "url(pics/actbutton.png)"
-
-document.getElementById("itembutton").style.width="14.5%";
-document.getElementById("itembutton").style.height="10%";
-document.getElementById("itembutton").style.position="absolute";
-document.getElementById("itembutton").style.left="53%"
-document.getElementById("itembutton").style.top="90%"
-document.getElementById("itembutton").style.zIndex="1"
-document.getElementById("itembutton").style.content= "url(pics/itembutton.png)"
-
-document.getElementById("mercybutton").style.width="14.5%";
-document.getElementById("mercybutton").style.height="10%";
-document.getElementById("mercybutton").style.position="absolute";
-document.getElementById("mercybutton").style.left="74.5%"
-document.getElementById("mercybutton").style.top="90%"
-document.getElementById("mercybutton").style.zIndex="1"
-document.getElementById("mercybutton").style.content= "url(pics/mercybutton.png)"
+document.getElementById("hpbar1").style.width = hpbarwidth + "%";
 
 document.getElementById("actbutton").onclick = function() {pressActButton()};
 document.getElementById("actbutton").onmouseover = function() {mouseOverAct()};
@@ -231,15 +94,11 @@ function startFight(){
 	document.getElementById("menu2").style.display="none";
 	document.getElementById("textBox").style.content="pics/fightbox.png";
 	document.getElementById("textBox").style.width="30%";
-	document.getElementById("textBox").style.left="34.45%";
+	document.getElementById("textBox").style.left = "34.45%";
+	enemy.style.left = "69.7%";
+	enemy.style.top = "57%";
 	enemy.style.display="block";
 	player.style.display="block";
-	var dogMove = setInterval(moveDog, 20);
-}
-
-function moveDog(){
-	dogDistance -= 0.1;
-	enemy.style.left = dogDistance + "%";
 }
 
 
@@ -280,7 +139,6 @@ function checkDeath(){
 	window.clearInterval(checkDeath);
 	window.clearInterval(getHit);
 	}
-	console.log(enemy.style.left);
 }
 
 function growDog(){

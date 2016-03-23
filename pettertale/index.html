@@ -136,8 +136,160 @@
         <deathgif id="deathgif" border="0"></deathgif>
         <dFight id="dFight" border="0"></dFight>
         <pFight id="pFight" border="0"></pFight>
-        <audio id="theme" autoplay="true" src="sounds/theme.mp3"></audio>
+        <audio id="theme" autoplay="autoplay" src="sounds/theme.mp3"></audio>
         <script type="text/javascript" src="scripts/pettertale.js"></script>
+        <script type="text/javascript" src="scripts/mainloop.min.js"></script>
+        <script type="text/javascript" src="scripts/game.js"></script>
+
+        <style>
+            #pFight {
+                z-index: 5;
+                position: absolute;
+                top: 64%;
+                left: 48%;
+                width: 2%;
+                height: 3%;
+                display: none;
+                content: url(pics/heart.png);
+            }
+
+            #dFight {
+                z-index: 5;
+                position: absolute;
+                top: 69.7%;
+                left: 57%;
+                width: 7%;
+                height: 9%;
+                display: none;
+                content: url(pics/dogwalk.gif);
+            }
+
+            #deathgif{
+                z-index: 4;
+                position: absolute;
+                width: 98%;
+                height: 99%;
+                display: none;
+                content: url(pics/death.gif);
+            }
+
+            #menu1{
+                z-index: 3;
+                position: absolute;
+                top: 57.05%;
+                left: 15.5%;
+                display: none;
+                content: url(pics/menu1.png);
+            }
+
+            #menu2{
+                z-index: 3;
+                position: absolute;
+                top: 57.05%;
+                left: 15.5%;
+                display: none;
+                content: url(pics/menu2.png);
+            }
+
+            #dogh{
+                z-index: 2;
+                position: absolute;
+                top: 13.7%;
+                left: 41.7%;
+                width: 5.2%;
+                height: 12%;
+                content: url(pics/dogh.png);
+            }
+
+            #dog{
+                z-index: 2;
+                position: absolute;
+                top: 3%;
+                left: 35.7%;
+                width: 14%;
+                height: 48%;
+                content: url(pics/dog.png);
+            }
+
+            #greenGrid{
+                z-index: 0;
+                position: absolute;
+                left: 7%;
+                width: 85%;
+                height: 50%;
+                content: url(pics/battlebackground.png);
+            }
+
+            #textBox{
+                z-index: 1;
+                position: absolute;
+                top: 52%;
+                left: 10%;
+                width: 79%;
+                height: 28%;
+                content: url(pics/textbox.png);
+            }
+
+            #fightbutton{
+                z-index: 1;
+                position: absolute;
+                top: 90%;
+                left: 10%;
+                width: 14.5%;
+                height: 10%;
+                content: url(pics/fightbutton.png);
+            }
+
+            #hpbar1{
+                z-index: 2;
+                position: absolute;
+                top: 82.8%;
+                left: 45.5%;
+                width: 2.6%;
+                height: 4%;
+                content: url(pics/hpbar1.png);
+            }
+
+            #hpbar2{
+                z-index: 1;
+                position: absolute;
+                top: 82.8%;
+                left: 45.5%;
+                width: 2.6%;
+                height: 4%;
+                content: url(pics/hpbar2.png);
+            }
+
+            #actbutton{
+                z-index: 1;
+                position: absolute;
+                top: 90%;
+                left: 31.5%;
+                width: 14.5%;
+                height: 10%;
+                content: url(pics/actbutton.png);
+            }
+
+            #itembutton{
+                z-index: 1;
+                position: absolute;
+                top: 90%;
+                left: 53%;
+                width: 14.5%;
+                height: 10%;
+                content: url(pics/itembutton.png);
+            }
+
+            #mercybutton{
+                z-index: 1;
+                position: absolute;
+                top: 90%;
+                left: 74.5%;
+                width: 14.5%;
+                height: 10%;
+                content: url(pics/mercybutton.png);
+            }
+        </style>
 </body>
 
 </html>
