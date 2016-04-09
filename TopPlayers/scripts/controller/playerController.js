@@ -88,8 +88,22 @@ function mPageChanger(masteryID, masteryRank, masteryPage) {
 function createMButtons(masteryPage) {
     var btn = document.createElement("BUTTON");
     btn.setAttribute("id", "mPage" + masteryPage);
+    btn.style.position = "absolute";
+    btn.style.top = "15%";
+    btn.style.left = "20%";
+    btn.style.width = "30px";
+    btn.style.height = "20px";
+    var t = document.createTextNode(masteryPage);       // Create a text node
+    btn.appendChild(t);
     document.body.appendChild(btn);
     document.getElementById("mPage" + masteryPage).addEventListener("click", function () {
         document.getElementById("mPageBG").style.visibility = "visible";
     });
+    if (masteryPage > 1) {
+        var dBButtons = 3;
+        var lastButton = document.getElementById("mPage" + (masteryPage - 1));
+        var currentButton = document.getElementById("mPage" + masteryPage);
+        var topVal = parseInt(lastButton.style.top, 10);
+        currentButton.style.top = (topVal + dBButtons) + "%";
+    }
 }
