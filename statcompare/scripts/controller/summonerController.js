@@ -12,7 +12,6 @@ function getSummonerID() {
     SUMMONER_NAME = $("#userName").val();
 
     if (SUMMONER_NAME !== "") {
-
         $.ajax({
             url: 'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/' + SUMMONER_NAME + '?api_key=bacda479-8776-49a8-a67b-41579494c93c',
             type: 'GET',
@@ -31,23 +30,51 @@ function getSummonerID() {
                 if (found) {
                     console.log("Player already in player array");
                 } else {
-                    player.push(json[SUMMONER_NAME_NOSPACES].id);
+                    if (player.length < 5) {
+                        player.push(json[SUMMONER_NAME_NOSPACES].id);
+                    } else {
+                        console.log("Too many players");
+                    }
                 }
 
                 if (found2) {
                     console.log("PlayerName already in playerName array");
                 } else {
-                    playerName.push(SUMMONER_NAME);
+                    if (playerName.length < 5) {
+                        playerName.push(SUMMONER_NAME);
+                    } else {
+                        console.log("Too many players");
+                    }
+                }
+
+                if (player.length == 1) {
+                    document.getElementById("b1").style.visibility = "visible";
+                }
+
+                if (player.length == 2) {
+                    document.getElementById("b2").style.visibility = "visible";
+                }
+
+                if (player.length == 3) {
+                    document.getElementById("b3").style.visibility = "visible";
+                }
+
+                if (player.length == 4) {
+                    document.getElementById("b4").style.visibility = "visible";
+                }
+
+                if (player.length == 5) {
+                    document.getElementById("b5").style.visibility = "visible";
                 }
 
                 for (a = 0 ; a < player.length ; a++) {
                     document.getElementById("summoner" + (a + 1)).innerHTML = playerName[a] + "<br />";
+                    getSummonerStats(player[a], a);
                 }
 
                 console.log(player);
                 console.log(playerName);
 
-                //getSummonerStats(summonerID);
 
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -57,7 +84,7 @@ function getSummonerID() {
     } else { }
 }
 
-function getSummonerStats(summonerID) {
+function getSummonerStats(summonerID, currentPlayer) {
     $.ajax({
         url: 'https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + summonerID + '/summary?season=SEASON2016&api_key=bacda479-8776-49a8-a67b-41579494c93c',
         type: 'GET',
@@ -66,11 +93,11 @@ function getSummonerStats(summonerID) {
 
         },
         success: function (mpages) {
-            mpages[playerStatSummaries].forEach(function (item) {
-                if (item.playerStatSummaryType == "RankedSolo5x5") {
-                    document.getElementById("summoner1").innerHTML = item.aggregatedStats[0];
+            for (b = 0 ; b < 24 ; b++) {
+                if (mpages.playerStatSummaries[b].playerStatSummaryType == "RankedSolo5x5") {
+                    document.getElementById("summoner" + (currentPlayer + 1)).innerHTML = document.getElementById("summoner" + (currentPlayer + 1)).innerHTML + "<br />" + "Kills: " + mpages.playerStatSummaries[b].aggregatedStats.totalChampionKills + "<br />" + "Assists: " + mpages.playerStatSummaries[b].aggregatedStats.totalAssists + "<br />" + "CS: " + (mpages.playerStatSummaries[b].aggregatedStats.totalMinionKills + mpages.playerStatSummaries[b].aggregatedStats.totalNeutralMinionsKilled) + "<br />" + "Turret Kills: " + mpages.playerStatSummaries[b].aggregatedStats.totalTurretsKilled + "<br />" + "<br />" + "Games: " + (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses) + "<br />" + "W: " + mpages.playerStatSummaries[b].wins + "<br />" + "L: " + mpages.playerStatSummaries[b].losses + "<br />" + "<br />" + "Avg CS p/g: " + Math.round(((mpages.playerStatSummaries[b].aggregatedStats.totalMinionKills + mpages.playerStatSummaries[b].aggregatedStats.totalNeutralMinionsKilled) / (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses))) + "<br />" + "Avg Kills p/g: " + Math.round((mpages.playerStatSummaries[b].aggregatedStats.totalChampionKills / (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses))* 100) / 100 + "<br />" + "Avg Assists p/g: " + Math.round((mpages.playerStatSummaries[b].aggregatedStats.totalAssists / (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses))* 100) / 100 + "<br />" + "Avg Turret Kills p/g: " + Math.round((mpages.playerStatSummaries[b].aggregatedStats.totalTurretsKilled / (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses)) * 100) / 100;
                 }
-            });
+            }
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("error getting Summoner data!");
