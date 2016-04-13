@@ -52,18 +52,28 @@ function getSummonerID() {
                 }
 
                 if (player.length == 2) {
+                    document.getElementById("b1").style.visibility = "visible";
                     document.getElementById("b2").style.visibility = "visible";
                 }
 
                 if (player.length == 3) {
+                    document.getElementById("b1").style.visibility = "visible";
+                    document.getElementById("b2").style.visibility = "visible";
                     document.getElementById("b3").style.visibility = "visible";
                 }
 
                 if (player.length == 4) {
+                    document.getElementById("b1").style.visibility = "visible";
+                    document.getElementById("b2").style.visibility = "visible";
+                    document.getElementById("b3").style.visibility = "visible";
                     document.getElementById("b4").style.visibility = "visible";
                 }
 
                 if (player.length == 5) {
+                    document.getElementById("b1").style.visibility = "visible";
+                    document.getElementById("b2").style.visibility = "visible";
+                    document.getElementById("b3").style.visibility = "visible";
+                    document.getElementById("b4").style.visibility = "visible";
                     document.getElementById("b5").style.visibility = "visible";
                 }
 
@@ -103,4 +113,45 @@ function getSummonerStats(summonerID, currentPlayer) {
             alert("error getting Summoner data!");
         }
     });
+}
+
+function clearS1() {
+    player.splice(0, 1);
+    playerName.splice(0, 1);
+    document.getElementById("summoner1").innerHTML = "";
+    document.getElementById("b1").style.visibility = "hidden";
+    console.log(player);
+    console.log(playerName);
+}
+function clearS2() {
+    player.splice(1, 1);
+    playerName.splice(1, 1);
+    document.getElementById("summoner2").innerHTML = "";
+    document.getElementById("b2").style.visibility = "hidden";
+    console.log(player);
+    console.log(playerName);
+}
+function clearS3() {
+    player.splice(2, 1);
+    playerName.splice(2, 1);
+    document.getElementById("summoner3").innerHTML = "";
+    document.getElementById("b3").style.visibility = "hidden";
+    console.log(player);
+    console.log(playerName);
+}
+function clearS4() {
+    player.splice(3, 1);
+    playerName.splice(3, 1);
+    document.getElementById("summoner4").innerHTML = "";
+    document.getElementById("b4").style.visibility = "hidden";
+    console.log(player);
+    console.log(playerName);
+}
+function clearS5() {
+    player.splice(4, 1);
+    playerName.splice(4, 1);
+    document.getElementById("summoner5").innerHTML = "";
+    document.getElementById("b5").style.visibility = "hidden";
+    console.log(player);
+    console.log(playerName);
 }
