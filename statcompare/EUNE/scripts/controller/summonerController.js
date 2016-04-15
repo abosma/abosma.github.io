@@ -13,7 +13,7 @@ function getSummonerID() {
 
     if (SUMMONER_NAME !== "") {
         $.ajax({
-            url: 'https://na.api.pvp.net/api/lol/na/v1.4/summoner/by-name/' + SUMMONER_NAME + '?api_key=bacda479-8776-49a8-a67b-41579494c93c',
+            url: 'https://eune.api.pvp.net/api/lol/eune/v1.4/summoner/by-name/' + SUMMONER_NAME + '?api_key=bacda479-8776-49a8-a67b-41579494c93c',
             type: 'GET',
             dataType: 'json',
             data: {
@@ -96,7 +96,7 @@ function getSummonerID() {
 
 function getSummonerStats(summonerID, currentPlayer) {
     $.ajax({
-        url: 'https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + summonerID + '/summary?season=SEASON2016&api_key=bacda479-8776-49a8-a67b-41579494c93c',
+        url: 'https://eune.api.pvp.net/api/lol/eune/v1.3/stats/by-summoner/' + summonerID + '/summary?season=SEASON2016&api_key=bacda479-8776-49a8-a67b-41579494c93c',
         type: 'GET',
         dataType: 'json',
         data: {

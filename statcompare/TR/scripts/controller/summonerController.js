@@ -20,7 +20,7 @@ function getSummonerID() {
 
             },
             success: function (json) {
-                var SUMMONER_NAME_NOSPACES = SUMMONER_NAME.replace(" ", "");
+                var SUMMONER_NAME_NOSPACES = SUMMONER_NAME.replace(/\s/g, "");
 
                 SUMMONER_NAME_NOSPACES = SUMMONER_NAME_NOSPACES.toLowerCase().trim();
 
