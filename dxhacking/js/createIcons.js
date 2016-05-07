@@ -1,4 +1,6 @@
-﻿function getRandomPosition(element) {
+﻿var currentFile;
+
+function getRandomPosition(element) {
     var x = $(window).width();
     var y = $(window).height();
     var randomX = Math.floor(Math.random() * x);
@@ -6,7 +8,40 @@
     return [randomX, randomY];
 }
 
+function changeIconCapture0() {
+    document.getElementById("hackingBtnCapture").setAttribute("src", "images/hackingBtnCaptureOver.png");
+}
+
+function changeIconCapture1() {
+    document.getElementById("hackingBtnCapture").setAttribute("src", "images/hackingBtnCapture.png");
+}
+
+function changeIconDefend0() {
+    document.getElementById("hackingBtnDefend").setAttribute("src", "images/hackingBtnDefendOver.png");
+}
+
+function changeIconDefend1() {
+    document.getElementById("hackingBtnDefend").setAttribute("src", "images/hackingBtnDefend.png");
+}
+
+function changeIconNuke0() {
+    document.getElementById("hackingBtnNuke").setAttribute("src", "images/hackingBtnNukeOver.png");
+}
+
+function changeIconNuke1() {
+    document.getElementById("hackingBtnNuke").setAttribute("src", "images/hackingBtnNuke.png");
+}
+
+function changeIconStop0() {
+    document.getElementById("hackingBtnStop").setAttribute("src", "images/hackingBtnStopOver.png");
+}
+
+function changeIconStop1() {
+    document.getElementById("hackingBtnStop").setAttribute("src", "images/hackingBtnStop.png");
+}
+
 function showControls() {
+    console.log(currentFile);
     var x = event.clientX;
     var y = event.clientY;
     if (!document.getElementById("hackingControls")) {
@@ -16,33 +51,37 @@ function showControls() {
         var hackingBtnNuke = document.createElement("INPUT");
         var hackingBtnStop = document.createElement("INPUT");
 
-        hackingControls.setAttribute("style", "position:absolute;");
+        hackingControls.setAttribute("style", "position:absolute;z-index:0;");
         hackingControls.setAttribute("src", "images/hackingControls.png");
         hackingControls.setAttribute("id", "hackingControls");
 
         hackingBtnCapture.setAttribute("type", "image");
         hackingBtnCapture.setAttribute("src", "images/hackingBtnCapture.png");
-        hackingBtnCapture.setAttribute("style", "position:absolute;");
+        hackingBtnCapture.setAttribute("style", "position:absolute;z-index:1;");
         hackingBtnCapture.setAttribute("id", "hackingBtnCapture");
-        hackingBtnCapture.setAttribute("onmouseover", "hackingBtnCapture");
+        hackingBtnCapture.setAttribute("onmouseover", "changeIconCapture0();");
+        hackingBtnCapture.setAttribute("onmouseout", "changeIconCapture1();");
 
         hackingBtnDefend.setAttribute("type", "image");
         hackingBtnDefend.setAttribute("src", "images/hackingBtnDefend.png");
-        hackingBtnDefend.setAttribute("style", "position:absolute;");
+        hackingBtnDefend.setAttribute("style", "position:absolute;z-index:1;");
         hackingBtnDefend.setAttribute("id", "hackingBtnDefend");
-        hackingBtnDefend.setAttribute("onmouseover", "hackingBtnCapture");
+        hackingBtnDefend.setAttribute("onmouseover", "changeIconDefend0();");
+        hackingBtnDefend.setAttribute("onmouseout", "changeIconDefend1();");
 
         hackingBtnNuke.setAttribute("type", "image");
         hackingBtnNuke.setAttribute("src", "images/hackingBtnNuke.png");
-        hackingBtnNuke.setAttribute("style", "position:absolute;");
+        hackingBtnNuke.setAttribute("style", "position:absolute;z-index:1;");
         hackingBtnNuke.setAttribute("id", "hackingBtnNuke");
-        hackingBtnNuke.setAttribute("onmouseover", "hackingBtnCapture");
+        hackingBtnNuke.setAttribute("onmouseover", "changeIconNuke0();");
+        hackingBtnNuke.setAttribute("onmouseout", "changeIconNuke1();");
 
         hackingBtnStop.setAttribute("type", "image");
         hackingBtnStop.setAttribute("src", "images/hackingBtnStop.png");
-        hackingBtnStop.setAttribute("style", "position:absolute;");
+        hackingBtnStop.setAttribute("style", "position:absolute;z-index:1;");
         hackingBtnStop.setAttribute("id", "hackingBtnStop");
-        hackingBtnStop.setAttribute("onmouseover", "hackingBtnCapture");
+        hackingBtnStop.setAttribute("onmouseover", "changeIconStop0();");
+        hackingBtnStop.setAttribute("onmouseout", "changeIconStop1();");
 
         document.body.appendChild(hackingBtnCapture);
         document.body.appendChild(hackingBtnDefend);
@@ -54,33 +93,33 @@ function showControls() {
         hackingControls.style.top = (y - 80) + 'px';
         hackingControls.style.left = (x + 40) + 'px';
 
-        hackingBtnCapture.style.top = (y - 80) + 'px';
-        hackingBtnCapture.style.left = (x + 40) + 'px';
+        hackingBtnCapture.style.top = (y - 68) + 'px';
+        hackingBtnCapture.style.left = (x + 122) + 'px';
 
-        hackingBtnDefend.style.top = (y - 80) + 'px';
-        hackingBtnDefend.style.left = (x + 40) + 'px';
+        hackingBtnDefend.style.top = (y + 7) + 'px';
+        hackingBtnDefend.style.left = (x + 113) + 'px';
 
-        hackingBtnNuke.style.top = (y - 80) + 'px';
-        hackingBtnNuke.style.left = (x + 40) + 'px';
+        hackingBtnNuke.style.top = (y - 28) + 'px';
+        hackingBtnNuke.style.left = (x + 58) + 'px';
 
-        hackingBtnStop.style.top = (y - 80) + 'px';
-        hackingBtnStop.style.left = (x + 40) + 'px';
+        hackingBtnStop.style.top = (y - 30) + 'px';
+        hackingBtnStop.style.left = (x + 178) + 'px';
 
     } else {
         document.getElementById("hackingControls").style.top = (y - 80) + 'px';
-        document.getElementById("hackingControls").style.left = (x + 20) + 'px';
+        document.getElementById("hackingControls").style.left = (x + 40) + 'px';
 
-        document.getElementById("hackingBtnCapture").style.top = (y - 80) + 'px';
-        document.getElementById("hackingBtnCapture").style.left = (x + 20) + 'px';
+        document.getElementById("hackingBtnCapture").style.top = (y - 68) + 'px';
+        document.getElementById("hackingBtnCapture").style.left = (x + 122) + 'px';
 
-        document.getElementById("hackingBtnDefend").style.top = (y - 80) + 'px';
-        document.getElementById("hackingBtnDefend").style.left = (x + 20) + 'px';
+        document.getElementById("hackingBtnDefend").style.top = (y + 7) + 'px';
+        document.getElementById("hackingBtnDefend").style.left = (x + 113) + 'px';
 
-        document.getElementById("hackingBtnNuke").style.top = (y - 80) + 'px';
-        document.getElementById("hackingBtnNuke").style.left = (x + 20) + 'px';
+        document.getElementById("hackingBtnNuke").style.top = (y - 28) + 'px';
+        document.getElementById("hackingBtnNuke").style.left = (x + 58) + 'px';
 
-        document.getElementById("hackingBtnStop").style.top = (y - 80) + 'px';
-        document.getElementById("hackingBtnStop").style.left = (x + 20) + 'px';
+        document.getElementById("hackingBtnStop").style.top = (y - 30) + 'px';
+        document.getElementById("hackingBtnStop").style.left = (x + 178) + 'px';
     }
 }
 
