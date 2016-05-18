@@ -13,7 +13,7 @@ function getSummonerID() {
 
     if (SUMMONER_NAME !== "") {
         $.ajax({
-            url: 'https://ru.api.pvp.net/api/lol/ru/v1.4/summoner/by-name/' + SUMMONER_NAME + '?api_key=bacda479-8776-49a8-a67b-41579494c93c',
+            url: 'https://ru.api.pvp.net/api/lol/ru/v1.4/summoner/by-name/' + SUMMONER_NAME + '?api_key=3aab1f3c-ddc0-4bf8-91d8-ec12113790c5',
             type: 'GET',
             dataType: 'json',
             data: {
@@ -96,7 +96,7 @@ function getSummonerID() {
 
 function getSummonerStats(summonerID, currentPlayer) {
     $.ajax({
-        url: 'https://ru.api.pvp.net/api/lol/ru/v1.3/stats/by-summoner/' + summonerID + '/summary?season=SEASON2016&api_key=bacda479-8776-49a8-a67b-41579494c93c',
+        url: 'https://ru.api.pvp.net/api/lol/ru/v1.3/stats/by-summoner/' + summonerID + '/summary?season=SEASON2016&api_key=3aab1f3c-ddc0-4bf8-91d8-ec12113790c5',
         type: 'GET',
         dataType: 'json',
         data: {
