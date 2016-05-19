@@ -1,5 +1,6 @@
 ﻿var player = [];
 var playerName = [];
+var playerIconID = [];
 
 function summonerLookUp() {
 
@@ -26,6 +27,7 @@ function getSummonerID() {
 
                 var found = $.inArray(json[SUMMONER_NAME_NOSPACES].id, player) > -1;
                 var found2 = $.inArray(SUMMONER_NAME, playerName) > -1;
+                var found3 = $.inArray(json[SUMMONER_NAME_NOSPACES].profileIconId, playerIconID) > -1;
 
                 if (found) {
                     console.log("Player already in player array");
@@ -43,7 +45,17 @@ function getSummonerID() {
                     if (playerName.length < 5) {
                         playerName.push(SUMMONER_NAME);
                     } else {
-                        console.log("Too many players");
+                        console.log("Too many playerNames");
+                    }
+                }
+
+                if (found3) {
+                    console.log("Player icon ID already in array");
+                } else {
+                    if (playerIconID.length < 5) {
+                        playerIconID.push(json[SUMMONER_NAME_NOSPACES].profileIconId);
+                    } else {
+                        console.log("Too many playerIconID's");
                     }
                 }
 
@@ -77,6 +89,28 @@ function getSummonerID() {
                     document.getElementById("b5").style.visibility = "visible";
                 }
 
+                for (b = 0 ; b < player.length ; b++) {
+                    if (document.getElementById("playerIcon" + b) == null) {
+                        var profileImage = [];
+                        profileImage[b] = document.createElement('IMG');
+                        profileImage[b].setAttribute("src", "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/" + playerIconID[b] + ".png");
+                        profileImage[b].setAttribute("id", "playerIcon" + b);
+                        profileImage[b].setAttribute("style", "position:absolute;z-index:0;")
+                        document.body.appendChild(profileImage[b]);
+
+                        if (b == 0) {
+                            profileImage[b].style.left = 6 + "%";
+                            profileImage[b].style.top = 60 + "%";
+                        } else {
+                            profileImage[b].style.left = ((6 + (b * 20)) + "%");
+                            profileImage[b].style.top = 60 + "%";
+                        }
+
+                        console.log(b);
+
+                    }
+                }
+
                 for (a = 0 ; a < player.length ; a++) {
                     document.getElementById("summoner" + (a + 1)).innerHTML = playerName[a] + "<br />";
                     getSummonerStats(player[a], a);
@@ -84,6 +118,7 @@ function getSummonerID() {
 
                 console.log(player);
                 console.log(playerName);
+                console.log(playerIconID);
 
 
             },
@@ -120,6 +155,7 @@ function clearS1() {
     playerName.splice(0, 1);
     document.getElementById("summoner1").innerHTML = "";
     document.getElementById("b1").style.visibility = "hidden";
+    document.getElementById("playerIcon0").remove();
     console.log(player);
     console.log(playerName);
 }
@@ -128,6 +164,7 @@ function clearS2() {
     playerName.splice(1, 1);
     document.getElementById("summoner2").innerHTML = "";
     document.getElementById("b2").style.visibility = "hidden";
+    document.getElementById("playerIcon1").remove();
     console.log(player);
     console.log(playerName);
 }
@@ -136,6 +173,7 @@ function clearS3() {
     playerName.splice(2, 1);
     document.getElementById("summoner3").innerHTML = "";
     document.getElementById("b3").style.visibility = "hidden";
+    document.getElementById("playerIcon2").remove();
     console.log(player);
     console.log(playerName);
 }
@@ -144,6 +182,7 @@ function clearS4() {
     playerName.splice(3, 1);
     document.getElementById("summoner4").innerHTML = "";
     document.getElementById("b4").style.visibility = "hidden";
+    document.getElementById("playerIcon3").remove();
     console.log(player);
     console.log(playerName);
 }
@@ -152,6 +191,7 @@ function clearS5() {
     playerName.splice(4, 1);
     document.getElementById("summoner5").innerHTML = "";
     document.getElementById("b5").style.visibility = "hidden";
+    document.getElementById("playerIcon4").remove();
     console.log(player);
     console.log(playerName);
 }
