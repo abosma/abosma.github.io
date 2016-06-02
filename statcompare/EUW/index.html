@@ -87,7 +87,8 @@
     <script src="../scripts/controller/summonerController.js"></script>
     <br />Summoner Name
     <br />
-    <input id="userName" />
+    <input id="userName" onkeydown="if (event.keyCode == 13)
+    document.getElementById('submit').click()" />
     <input id="submit" type="submit" onclick="summonerLookUp('EUW');" />
     <br />
     <br /><s1 id="s1"><b>Summoner 1: <br /></b><span id="summoner1"></span></s1>
