@@ -1,19 +1,20 @@
 ﻿var player = [];
 var playerName = [];
+var playerIconID = [];
 
-function summonerLookUp() {
+function summonerLookUp(REGION) {
 
-    getSummonerID();
+    getSummonerID(REGION);
 
 }
 
-function getSummonerID() {
+function getSummonerID(REGION) {
     var SUMMONER_NAME = "";
     SUMMONER_NAME = $("#userName").val();
 
     if (SUMMONER_NAME !== "") {
         $.ajax({
-            url: 'https://kr.api.pvp.net/api/lol/kr/v1.4/summoner/by-name/' + SUMMONER_NAME + '?api_key=3aab1f3c-ddc0-4bf8-91d8-ec12113790c5',
+            url: 'https://' + REGION + '.api.pvp.net/api/lol/' + REGION + '/v1.4/summoner/by-name/' + SUMMONER_NAME + '?api_key=3aab1f3c-ddc0-4bf8-91d8-ec12113790c5',
             type: 'GET',
             dataType: 'json',
             data: {
@@ -26,6 +27,7 @@ function getSummonerID() {
 
                 var found = $.inArray(json[SUMMONER_NAME_NOSPACES].id, player) > -1;
                 var found2 = $.inArray(SUMMONER_NAME, playerName) > -1;
+                var found3 = $.inArray(json[SUMMONER_NAME_NOSPACES].profileIconId, playerIconID) > -1;
 
                 if (found) {
                     console.log("Player already in player array");
@@ -43,7 +45,17 @@ function getSummonerID() {
                     if (playerName.length < 5) {
                         playerName.push(SUMMONER_NAME);
                     } else {
-                        console.log("Too many players");
+                        console.log("Too many playerNames");
+                    }
+                }
+
+                if (found3) {
+                    console.log("Player icon ID already in array");
+                } else {
+                    if (playerIconID.length < 5) {
+                        playerIconID.push(json[SUMMONER_NAME_NOSPACES].profileIconId);
+                    } else {
+                        console.log("Too many playerIconID's");
                     }
                 }
 
@@ -77,13 +89,36 @@ function getSummonerID() {
                     document.getElementById("b5").style.visibility = "visible";
                 }
 
+                for (b = 0 ; b < player.length ; b++) {
+                    if (document.getElementById("playerIcon" + b) == null) {
+                        var profileImage = [];
+                        profileImage[b] = document.createElement('IMG');
+                        profileImage[b].setAttribute("src", "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/" + playerIconID[b] + ".png");
+                        profileImage[b].setAttribute("id", "playerIcon" + b);
+                        profileImage[b].setAttribute("style", "position:absolute;z-index:0;")
+                        document.body.appendChild(profileImage[b]);
+
+                        if (b == 0) {
+                            profileImage[b].style.left = 6 + "%";
+                            profileImage[b].style.top = 60 + "%";
+                        } else {
+                            profileImage[b].style.left = ((6 + (b * 20)) + "%");
+                            profileImage[b].style.top = 60 + "%";
+                        }
+
+                        console.log(b);
+
+                    }
+                }
+
                 for (a = 0 ; a < player.length ; a++) {
                     document.getElementById("summoner" + (a + 1)).innerHTML = playerName[a] + "<br />";
-                    getSummonerStats(player[a], a);
+                    getSummonerStats(REGION, player[a], a);
                 }
 
                 console.log(player);
                 console.log(playerName);
+                console.log(playerIconID);
 
 
             },
@@ -94,9 +129,9 @@ function getSummonerID() {
     } else { }
 }
 
-function getSummonerStats(summonerID, currentPlayer) {
+function getSummonerStats(REGION, summonerID, currentPlayer) {
     $.ajax({
-        url: 'https://kr.api.pvp.net/api/lol/kr/v1.3/stats/by-summoner/' + summonerID + '/summary?season=SEASON2016&api_key=3aab1f3c-ddc0-4bf8-91d8-ec12113790c5',
+        url: 'https://' + REGION + '.api.pvp.net/api/lol/' + REGION + '/v1.3/stats/by-summoner/' + summonerID + '/summary?season=SEASON2016&api_key=3aab1f3c-ddc0-4bf8-91d8-ec12113790c5',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -118,40 +153,50 @@ function getSummonerStats(summonerID, currentPlayer) {
 function clearS1() {
     player.splice(0, 1);
     playerName.splice(0, 1);
+    playerIconID.splice(0, 1);
     document.getElementById("summoner1").innerHTML = "";
     document.getElementById("b1").style.visibility = "hidden";
+    document.getElementById("playerIcon0").remove();
     console.log(player);
     console.log(playerName);
 }
 function clearS2() {
     player.splice(1, 1);
     playerName.splice(1, 1);
+    playerIconID.splice(1, 1);
     document.getElementById("summoner2").innerHTML = "";
     document.getElementById("b2").style.visibility = "hidden";
+    document.getElementById("playerIcon1").remove();
     console.log(player);
     console.log(playerName);
 }
 function clearS3() {
     player.splice(2, 1);
     playerName.splice(2, 1);
+    playerIconID.splice(2, 1);
     document.getElementById("summoner3").innerHTML = "";
     document.getElementById("b3").style.visibility = "hidden";
+    document.getElementById("playerIcon2").remove();
     console.log(player);
     console.log(playerName);
 }
 function clearS4() {
     player.splice(3, 1);
     playerName.splice(3, 1);
+    playerIconID.splice(3, 1);
     document.getElementById("summoner4").innerHTML = "";
     document.getElementById("b4").style.visibility = "hidden";
+    document.getElementById("playerIcon3").remove();
     console.log(player);
     console.log(playerName);
 }
 function clearS5() {
     player.splice(4, 1);
     playerName.splice(4, 1);
+    playerIconID.splice(4, 1);
     document.getElementById("summoner5").innerHTML = "";
     document.getElementById("b5").style.visibility = "hidden";
+    document.getElementById("playerIcon4").remove();
     console.log(player);
     console.log(playerName);
 }
