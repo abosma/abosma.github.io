@@ -1,7 +1,7 @@
 ﻿var slot1;
 var slot2;
 var slot3;
-var score = 0;
+var score = 500;
 
 function useMachine() {
     slot1 = Math.floor(Math.random() * 10);
@@ -120,6 +120,15 @@ function changeIcons() {
             break;
         case 9:
             document.getElementById("image3").style.content = "url(images/s10.png)";
+    }
+}
+
+function showKappa() {
+    if (score => 500) {
+        document.getElementById("kappaSong").play();
+        document.getElementById("kappaimg").removeAttribute("hidden");
+        score -= 500;
+        document.getElementById("score").textContent = "You have: " + score + " Scarra points!"
     }
 }
 

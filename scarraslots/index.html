@@ -10,6 +10,21 @@
     <meta name="author" content="AtillaBosma">
 
     <style>
+        #image1{
+            top:0%;
+            left:0%;
+            position:absolute;
+        }
+        #image2{
+            top:0%;
+            left:4%;
+            position:absolute;
+        }
+        #image3{
+            top:0%;
+            left:8%;
+            position:absolute;
+        }
         resultText {
             top: 15%;
             left: 5%;
@@ -17,13 +32,26 @@
         }
         score {
             top: 20%;
-            left: 5%;
+            left: 2%;
+            position:absolute;
+        }
+        #buyNudes {
+            top: 25%;
+            left: 0%;
             position:absolute;
         }
         #useMachineButton{
             top:10%;
             left: 3%;
             position:absolute;
+        }
+        #kappaimg{
+            -webkit-animation: spin 1s infinite linear;
+        }
+
+        @-webkit-keyframes spin {
+            0%  {-webkit-transform: rotate(0deg);}
+            100% {-webkit-transform: rotate(360deg);}   
         }
     </style>
 </head>
@@ -32,7 +60,13 @@
     <slot1 id="image1"></slot1>
     <slot2 id="image2"></slot2>
     <slot3 id="image3"></slot3>
+    <kappaimg hidden style="content:url(images/Kappa.png)" id="kappaimg" align="center"></kappaimg>
     <button id="useMachineButton" onclick="useMachine()">Roll the dice again!</button>
+    <button id="buyNudes" onclick="showKappa()">Buy Scarra nudes for 500 Scarra points!</button>
+    <audio controls hidden id="kappaSong">
+        <source src="music/Kappa.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     <resultText id="resultText"></resultText>
     <score id="score"></score>
     <script src="scripts/slotScript.js"></script>
