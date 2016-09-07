@@ -1,6 +1,7 @@
 ﻿var slot1;
 var slot2;
 var slot3;
+var score = 0;
 
 function useMachine() {
     slot1 = Math.floor(Math.random() * 10);
@@ -13,10 +14,13 @@ function useMachine() {
 
 function checkIfsame() {
     if (slot1 == slot2 && slot2 == slot3) {
-        document.getElementById("resultText").textContent = "You won!"
+        document.getElementById("resultText").textContent = "You won 100 Scarra points!"
+        score += 100;
+        document.getElementById("score").textContent = "You have: " + score + " Scarra points!"
         return true;
     } else {
         document.getElementById("resultText").textContent = "You lost :("
+        document.getElementById("score").textContent = "You have: " + score + " Scarra points!"
         return false;
     }
 }
