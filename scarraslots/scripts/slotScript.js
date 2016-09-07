@@ -1,13 +1,22 @@
-﻿var slot1 = Math.floor(Math.random() * 10);
-var slot2 = Math.floor(Math.random() * 10);
-var slot3 = Math.floor(Math.random()*10);
+﻿var slot1;
+var slot2;
+var slot3;
+
+function useMachine() {
+    slot1 = Math.floor(Math.random() * 10);
+    slot2 = Math.floor(Math.random() * 10);
+    slot3 = Math.floor(Math.random() * 10);
+
+    checkIfsame();
+    changeIcons();
+}
 
 function checkIfsame() {
     if (slot1 == slot2 && slot2 == slot3) {
-        console.log("You won!")
+        document.getElementById("resultText").textContent = "You won!"
         return true;
     } else {
-        console.log("You lost :(")
+        document.getElementById("resultText").textContent = "You lost :("
         return false;
     }
 }
@@ -110,8 +119,6 @@ function changeIcons() {
     }
 }
 
+useMachine();
+
 console.log("You got these slots: " + slot1 + slot2 + slot3);
-
-checkIfsame();
-
-changeIcons();

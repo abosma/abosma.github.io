@@ -10,6 +10,16 @@
     <meta name="author" content="AtillaBosma">
 
     <style>
+        resultText {
+            top: 15%;
+            left: 7%;
+            position:absolute;
+        }
+        #useMachineButton{
+            top:10%;
+            left: 3%;
+            position:absolute;
+        }
     </style>
 </head>
 <body>
@@ -17,7 +27,8 @@
     <slot1 id="image1"></slot1>
     <slot2 id="image2"></slot2>
     <slot3 id="image3"></slot3>
-
+    <button id="useMachineButton" onclick="useMachine()">Roll the dice again!</button>
+    <resultText id="resultText"></resultText>
     <script src="scripts/slotScript.js"></script>
 </body>
 </html>
