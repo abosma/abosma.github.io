@@ -92,18 +92,47 @@ function getSummonerID() {
                 for (b = 0 ; b < player.length ; b++) {
                     if (document.getElementById("playerIcon" + b) == null) {
                         var profileImage = [];
-                        profileImage[b] = document.createElement('IMG');
-                        profileImage[b].setAttribute("src", "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/" + playerIconID[b] + ".png");
-                        profileImage[b].setAttribute("id", "playerIcon" + b);
-                        profileImage[b].setAttribute("style", "position:absolute;z-index:0;")
-                        document.body.appendChild(profileImage[b]);
 
                         if (b == 0) {
-                            profileImage[b].style.left = 6 + "%";
-                            profileImage[b].style.top = 60 + "%";
-                        } else {
-                            profileImage[b].style.left = ((6 + (b * 20)) + "%");
-                            profileImage[b].style.top = 60 + "%";
+                            profileImage[0] = document.createElement('IMG');
+                            profileImage[0].setAttribute("src", "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/" + playerIconID[0] + ".png");
+                            profileImage[0].setAttribute("id", "playerIcon" + b);
+                            profileImage[0].setAttribute("style", "position:absolute;z-index:0;")
+                            document.body.appendChild(profileImage[0]);
+                            profileImage[0].style.left = 6 + "%";
+                            profileImage[0].style.top = 60 + "%";
+                        } else if (b == 1) {
+                            profileImage[1] = document.createElement('IMG');
+                            profileImage[1].setAttribute("src", "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/" + playerIconID[1] + ".png");
+                            profileImage[1].setAttribute("id", "playerIcon" + b);
+                            profileImage[1].setAttribute("style", "position:absolute;z-index:0;")
+                            document.body.appendChild(profileImage[1]);
+                            profileImage[1].style.left = 26 + "%";
+                            profileImage[1].style.top = 60 + "%";
+                        } else if (b == 2) {
+                            profileImage[2] = document.createElement('IMG');
+                            profileImage[2].setAttribute("src", "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/" + playerIconID[2] + ".png");
+                            profileImage[2].setAttribute("id", "playerIcon" + b);
+                            profileImage[2].setAttribute("style", "position:absolute;z-index:0;")
+                            document.body.appendChild(profileImage[2]);
+                            profileImage[2].style.left = 46 + "%";
+                            profileImage[2].style.top = 60 + "%";
+                        } else if (b == 3) {
+                            profileImage[3] = document.createElement('IMG');
+                            profileImage[3].setAttribute("src", "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/" + playerIconID[3] + ".png");
+                            profileImage[3].setAttribute("id", "playerIcon" + b);
+                            profileImage[3].setAttribute("style", "position:absolute;z-index:0;")
+                            document.body.appendChild(profileImage[3]);
+                            profileImage[3].style.left = 66 + "%";
+                            profileImage[3].style.top = 60 + "%";
+                        } else if (b == 4) {
+                            profileImage[4] = document.createElement('IMG');
+                            profileImage[4].setAttribute("src", "http://ddragon.leagueoflegends.com/cdn/6.9.1/img/profileicon/" + playerIconID[4] + ".png");
+                            profileImage[4].setAttribute("id", "playerIcon" + b);
+                            profileImage[4].setAttribute("style", "position:absolute;z-index:0;")
+                            document.body.appendChild(profileImage[4]);
+                            profileImage[4].style.left = 86 + "%";
+                            profileImage[4].style.top = 60 + "%";
                         }
 
                         console.log(b);
@@ -153,6 +182,7 @@ function getSummonerStats(summonerID, currentPlayer) {
 function clearS1() {
     player.splice(0, 1);
     playerName.splice(0, 1);
+    playerIconID.splice(0, 1);
     document.getElementById("summoner1").innerHTML = "";
     document.getElementById("b1").style.visibility = "hidden";
     document.getElementById("playerIcon0").remove();
@@ -162,6 +192,7 @@ function clearS1() {
 function clearS2() {
     player.splice(1, 1);
     playerName.splice(1, 1);
+    playerIconID.splice(1, 1);
     document.getElementById("summoner2").innerHTML = "";
     document.getElementById("b2").style.visibility = "hidden";
     document.getElementById("playerIcon1").remove();
@@ -171,6 +202,7 @@ function clearS2() {
 function clearS3() {
     player.splice(2, 1);
     playerName.splice(2, 1);
+    playerIconID.splice(2, 1);
     document.getElementById("summoner3").innerHTML = "";
     document.getElementById("b3").style.visibility = "hidden";
     document.getElementById("playerIcon2").remove();
@@ -180,6 +212,7 @@ function clearS3() {
 function clearS4() {
     player.splice(3, 1);
     playerName.splice(3, 1);
+    playerIconID.splice(3, 1);
     document.getElementById("summoner4").innerHTML = "";
     document.getElementById("b4").style.visibility = "hidden";
     document.getElementById("playerIcon3").remove();
@@ -189,6 +222,7 @@ function clearS4() {
 function clearS5() {
     player.splice(4, 1);
     playerName.splice(4, 1);
+    playerIconID.splice(4, 1);
     document.getElementById("summoner5").innerHTML = "";
     document.getElementById("b5").style.visibility = "hidden";
     document.getElementById("playerIcon4").remove();
