@@ -10,75 +10,95 @@
     <meta name="author" content="AtillaBosma">
 
     <style>
-        #s1{
-            position:absolute;
+        #s1 {
+            position: absolute;
             top: 12%;
             left: 5%;
-            text-align:center;
+            text-align: center;
+            z-index: 1;
         }
-        #s2{
-            position:absolute;
+
+        #s2 {
+            position: absolute;
             top: 12%;
             left: 25%;
-            text-align:center;
+            text-align: center;
+            z-index: 1;
         }
-        #s3{
-            position:absolute;
+
+        #s3 {
+            position: absolute;
             top: 12%;
             left: 45%;
-            text-align:center;
+            text-align: center;
+            z-index: 1;
         }
-        #s4{
-            position:absolute;
+
+        #s4 {
+            position: absolute;
             top: 12%;
             left: 65%;
-            text-align:center;
+            text-align: center;
+            z-index: 1;
         }
-        #s5{
-            position:absolute;
+
+        #s5 {
+            position: absolute;
             top: 12%;
             left: 85%;
-            text-align:center;
+            text-align: center;
+            z-index: 1;
         }
-        #b1{
-            position:absolute;
+
+        #b1 {
+            position: absolute;
             top: 55%;
             left: 8%;
-            visibility:hidden;
+            visibility: hidden;
+            z-index: 1;
         }
-        #b2{
-            position:absolute;
+
+        #b2 {
+            position: absolute;
             top: 55%;
             left: 28%;
-            visibility:hidden;
+            visibility: hidden;
+            z-index: 1;
         }
-        #b3{
-            position:absolute;
+
+        #b3 {
+            position: absolute;
             top: 55%;
             left: 48%;
-            visibility:hidden;
+            visibility: hidden;
+            z-index: 1;
         }
-        #b4{
-            position:absolute;
+
+        #b4 {
+            position: absolute;
             top: 55%;
             left: 68%;
-            visibility:hidden;
+            visibility: hidden;
+            z-index: 1;
         }
-        #b5{
-            position:absolute;
+
+        #b5 {
+            position: absolute;
             top: 55%;
             left: 88%;
-            visibility:hidden;
+            visibility: hidden;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
-    <script src="scripts/jquery.js"></script>
-    <script src="scripts/controller/summonerController.js"></script>
+    <script src="../scripts/jquery.js"></script>
+    <script src="../scripts/controller/summonerController.js"></script>
     <br />Summoner Name
     <br />
-    <input id="userName" />
-    <input id="submit" type="submit" onclick="summonerLookUp();" />
+    <input id="userName" onkeydown="if (event.keyCode == 13)
+    document.getElementById('submit').click()" />
+    <input id="submit" type="submit" onclick="summonerLookUp('EUNE');" />
     <br />
     <br /><s1 id="s1"><b>Summoner 1: <br /></b><span id="summoner1"></span></s1>
     <br /><s2 id="s2"><b>Summoner 2: <br /></b><span id="summoner2"></span></s2>

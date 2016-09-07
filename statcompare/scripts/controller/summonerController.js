@@ -2,19 +2,19 @@
 var playerName = [];
 var playerIconID = [];
 
-function summonerLookUp() {
+function summonerLookUp(REGION) {
 
-    getSummonerID();
+    getSummonerID(REGION);
 
 }
 
-function getSummonerID() {
+function getSummonerID(REGION) {
     var SUMMONER_NAME = "";
     SUMMONER_NAME = $("#userName").val();
 
     if (SUMMONER_NAME !== "") {
         $.ajax({
-            url: 'https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/' + SUMMONER_NAME + '?api_key=3aab1f3c-ddc0-4bf8-91d8-ec12113790c5',
+            url: 'https://' + REGION + '.api.pvp.net/api/lol/' + REGION + '/v1.4/summoner/by-name/' + SUMMONER_NAME + '?api_key=3aab1f3c-ddc0-4bf8-91d8-ec12113790c5',
             type: 'GET',
             dataType: 'json',
             data: {
@@ -142,7 +142,7 @@ function getSummonerID() {
 
                 for (a = 0 ; a < player.length ; a++) {
                     document.getElementById("summoner" + (a + 1)).innerHTML = playerName[a] + "<br />";
-                    getSummonerStats(player[a], a);
+                    getSummonerStats(REGION, player[a], a);
                 }
 
                 console.log(player);
@@ -158,9 +158,9 @@ function getSummonerID() {
     } else { }
 }
 
-function getSummonerStats(summonerID, currentPlayer) {
+function getSummonerStats(REGION, summonerID, currentPlayer) {
     $.ajax({
-        url: 'https://euw.api.pvp.net/api/lol/euw/v1.3/stats/by-summoner/' + summonerID + '/summary?season=SEASON2016&api_key=3aab1f3c-ddc0-4bf8-91d8-ec12113790c5',
+        url: 'https://' + REGION + '.api.pvp.net/api/lol/' + REGION + '/v1.3/stats/by-summoner/' + summonerID + '/summary?season=SEASON2016&api_key=3aab1f3c-ddc0-4bf8-91d8-ec12113790c5',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -169,7 +169,17 @@ function getSummonerStats(summonerID, currentPlayer) {
         success: function (mpages) {
             for (b = 0 ; b < 24 ; b++) {
                 if (mpages.playerStatSummaries[b].playerStatSummaryType == "RankedSolo5x5") {
-                    document.getElementById("summoner" + (currentPlayer + 1)).innerHTML = document.getElementById("summoner" + (currentPlayer + 1)).innerHTML + "<br />" + "Kills: " + mpages.playerStatSummaries[b].aggregatedStats.totalChampionKills + "<br />" + "Assists: " + mpages.playerStatSummaries[b].aggregatedStats.totalAssists + "<br />" + "CS: " + (mpages.playerStatSummaries[b].aggregatedStats.totalMinionKills + mpages.playerStatSummaries[b].aggregatedStats.totalNeutralMinionsKilled) + "<br />" + "Turret Kills: " + mpages.playerStatSummaries[b].aggregatedStats.totalTurretsKilled + "<br />" + "<br />" + "Games: " + (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses) + "<br />" + "W: " + mpages.playerStatSummaries[b].wins + "<br />" + "L: " + mpages.playerStatSummaries[b].losses + "<br />" + "<br />" + "Avg CS p/g: " + Math.round(((mpages.playerStatSummaries[b].aggregatedStats.totalMinionKills + mpages.playerStatSummaries[b].aggregatedStats.totalNeutralMinionsKilled) / (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses))) + "<br />" + "Avg Kills p/g: " + Math.round((mpages.playerStatSummaries[b].aggregatedStats.totalChampionKills / (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses))* 100) / 100 + "<br />" + "Avg Assists p/g: " + Math.round((mpages.playerStatSummaries[b].aggregatedStats.totalAssists / (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses))* 100) / 100 + "<br />" + "Avg Turret Kills p/g: " + Math.round((mpages.playerStatSummaries[b].aggregatedStats.totalTurretsKilled / (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses)) * 100) / 100;
+                    document.getElementById("summoner" + (currentPlayer + 1)).innerHTML = document.getElementById("summoner" + (currentPlayer + 1)).innerHTML
+                        + "<br />" + "Kills: " + mpages.playerStatSummaries[b].aggregatedStats.totalChampionKills
+                        + "<br />" + "Assists: " + mpages.playerStatSummaries[b].aggregatedStats.totalAssists
+                        + "<br />" + "CS: " + (mpages.playerStatSummaries[b].aggregatedStats.totalMinionKills + mpages.playerStatSummaries[b].aggregatedStats.totalNeutralMinionsKilled)
+                        + "<br />" + "Turret Kills: " + mpages.playerStatSummaries[b].aggregatedStats.totalTurretsKilled
+                        + "<br />" + "<br />" + "Games: " + (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses)
+                        + "<br />" + "W: " + mpages.playerStatSummaries[b].wins + "<br />" + "L: " + mpages.playerStatSummaries[b].losses
+                        + "<br />" + "<br />" + "Avg CS p/g: " + Math.round(((mpages.playerStatSummaries[b].aggregatedStats.totalMinionKills + mpages.playerStatSummaries[b].aggregatedStats.totalNeutralMinionsKilled) / (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses)))
+                        + "<br />" + "Avg Kills p/g: " + Math.round((mpages.playerStatSummaries[b].aggregatedStats.totalChampionKills / (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses)) * 100) / 100
+                        + "<br />" + "Avg Assists p/g: " + Math.round((mpages.playerStatSummaries[b].aggregatedStats.totalAssists / (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses)) * 100) / 100
+                        + "<br />" + "Avg Turret Kills p/g: " + Math.round((mpages.playerStatSummaries[b].aggregatedStats.totalTurretsKilled / (mpages.playerStatSummaries[b].wins + mpages.playerStatSummaries[b].losses)) * 100) / 100;
                 }
             }
         },

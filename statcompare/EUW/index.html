@@ -83,12 +83,13 @@
     </style>
 </head>
 <body>
-    <script src="scripts/jquery.js"></script>
-    <script src="scripts/controller/summonerController.js"></script>
+    <script src="../scripts/jquery.js"></script>
+    <script src="../scripts/controller/summonerController.js"></script>
     <br />Summoner Name
     <br />
-    <input id="userName" />
-    <input id="submit" type="submit" onclick="summonerLookUp();" />
+    <input id="userName" onkeydown="if (event.keyCode == 13)
+    document.getElementById('submit').click()" />
+    <input id="submit" type="submit" onclick="summonerLookUp('EUW');" />
     <br />
     <br /><s1 id="s1"><b>Summoner 1: <br /></b><span id="summoner1"></span></s1>
     <br /><s2 id="s2"><b>Summoner 2: <br /></b><span id="summoner2"></span></s2>
