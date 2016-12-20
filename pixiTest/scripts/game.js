@@ -62,7 +62,12 @@ function setup() {
                 town[b].x = j * 64;
                 town[b].y = i * 64;
                 town[b].population = Math.floor(Math.random() * 4000) + 1000
-                message[b] = new Text(town[b].population, { fontFamily: "Arial", fontSize: 20, fill: "white" });
+                town[b].happiness = 5
+                town[b].interactive = true;
+                town[b].on("mousedown", clickFunction[b] = function () {
+
+                })
+                message[b] = new Text(town[b].population + "\n" + town[b].happiness, { fontFamily: "Arial", fontSize: 20, fill: "white" });
                 message[b].position.set(town[b].x, town[b].y);
                 stage.addChild(town[b])
                 stage.addChild(message[b]);
@@ -136,9 +141,15 @@ function play() {
 
 window.setInterval(function(){
     for (var x in town) {
-        town[x].population = Math.round(town[x].population + (town[x].population * 0.02))
+        if (town[x].happiness < -5) {
+            town[x].happiness = -5
+        } else if (town[x].happiness > 5) {
+            town[x].happiness = 5
+        }
+        town[x].population = town[x].population + (town[x].population * (town[x].happiness * 0.005))
+        town[x].happiness = town[x].happiness - 0.2
         for (var y in message) {
-            message[y].text = String(town[y].population)
+            message[y].text = Math.round(town[y].population) + "\n" + Math.round(town[y].happiness)
         }
     }
 }, 1000);
