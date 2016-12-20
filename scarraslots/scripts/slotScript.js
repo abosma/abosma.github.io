@@ -3,6 +3,7 @@ var slot2;
 var slot3;
 var score = 500;
 
+
 function useMachine() {
     slot1 = Math.floor(Math.random() * 10);
     slot2 = Math.floor(Math.random() * 10);
