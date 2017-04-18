@@ -14,7 +14,7 @@ function getSummonerID(REGION) {
 
     if (SUMMONER_NAME !== "") {
         $.ajax({
-            url: 'https://' + REGION + '.api.pvp.net/api/lol/' + REGION + '/v1.4/summoner/by-name/' + SUMMONER_NAME + '?api_key=3aab1f3c-ddc0-4bf8-91d8-ec12113790c5',
+            url: 'https://' + REGION + '.api.riotgames.com/api/lol/' + REGION + '/v1.4/summoner/by-name/' + SUMMONER_NAME + '?api_key=3aab1f3c-ddc0-4bf8-91d8-ec12113790c5',
             type: 'GET',
             dataType: 'json',
             data: {
@@ -160,7 +160,7 @@ function getSummonerID(REGION) {
 
 function getSummonerStats(REGION, summonerID, currentPlayer) {
     $.ajax({
-        url: 'https://' + REGION + '.api.pvp.net/api/lol/' + REGION + '/v1.3/stats/by-summoner/' + summonerID + '/summary?season=SEASON2017&api_key=3aab1f3c-ddc0-4bf8-91d8-ec12113790c5',
+        url: 'https://' + REGION + '.api.riotgames.com/api/lol/' + REGION + '/v1.3/stats/by-summoner/' + summonerID + '/summary?season=SEASON2017&api_key=3aab1f3c-ddc0-4bf8-91d8-ec12113790c5',
         type: 'GET',
         dataType: 'json',
         data: {
