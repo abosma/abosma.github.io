@@ -1,0 +1,11 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "WebAssemblyTest.data.unityweb",
+"wasmCodeUrl": "WebAssemblyTest.wasm.code.unityweb",
+"wasmFrameworkUrl": "WebAssemblyTest.wasm.framework.unityweb",
+"asmCodeUrl": "WebAssemblyTest.asm.code.unityweb",
+"asmMemoryUrl": "WebAssemblyTest.asm.memory.unityweb",
+"asmFrameworkUrl": "WebAssemblyTest.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#222C36"
+}
