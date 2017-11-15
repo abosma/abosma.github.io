@@ -14,6 +14,6 @@ $(document).ready(function() {
   function setHeader(xhr) {
     xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
     xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET');
-    xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+    xhr.setRequestHeader('Access-Control-Allow-Origin', 'x-requested-with');
     xhr.setRequestHeader('api_key', apiKey);
   }
