@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+p {
+  text-align: center;
+  font-size: 60px;
+  margin-top:0px;
+}
+
+#dbzfbest{
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+
+</style>
+</head>
+<body>
+<img id="dbzfbest" src="https://i.imgur.com/d1irYAn.gif">
+<p id="dbzfsoon"></p>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Jan 26, 2018 00:00:00").getTime();
+
+var x = setInterval(function() {
+
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    document.getElementById("dbzfsoon").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("dbzfsoon").innerHTML = "WOO DBZF IS RELEASED!";
+    }
+}, 1000);
+</script>
+
+</body>
+</html>
