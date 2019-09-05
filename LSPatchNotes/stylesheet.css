@@ -51,10 +51,14 @@ li img {
 
 li {
     padding: 10px;
-    overflow: auto;
     border-radius: 10px;
     margin: auto;
     margin-bottom: 20px;
+}
+
+li p
+{
+    white-space: pre-wrap;
 }
  
 li:hover {
