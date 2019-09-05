@@ -1,0 +1,4 @@
+[submodule "LSPatchNotes/themes/hugomodo-best-motherfucking-website"]
+	path = LSPatchNotes/themes/hugomodo-best-motherfucking-website
+	url = https://github.com/hugomodo/hugomodo-best-motherfucking-website
+	branch = 0.1.0-standalone
