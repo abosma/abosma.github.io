@@ -77,6 +77,25 @@ li:hover {
     cursor: pointer;
 }
 
+@media (prefers-color-scheme: light)
+{
+    body
+    {
+        color:#3c4856;
+        background:#dbefef;
+    }
+    
+    a:link
+    {
+        color:#5bf
+    }
+    
+    a:visited
+    {
+        color:#ccf
+    }
+}
+
 @media (prefers-color-scheme: dark)
 {
     body
