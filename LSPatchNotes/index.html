@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-<head>
+    <head>
         <meta charset="utf-8">
-        <title>LeagueSandbox Patch Notes</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="The slowest moving patch 4.20 League remake.">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> 
-        <link rel="stylesheet" href="stylesheet.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>LeagueSandbox Patch Notes</title>
+
         <link rel="shortcut icon" type="image/png" href="favicon-96x96.png">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="stylesheet.css">
     </head>
 
     <body>
-        <img class="topImage" src="patch-notes-image.png">
-        
-        <div class="commitContainer">
-            <div class="gameServerCommitDiv">
-                <h2>Game Server</h2>
-            </div>
+        <img class="rounded mx-auto d-block" src="patch-notes-image.png">
 
-            <div class="defaultContentCommitDiv">
-                <h2>Default Content</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <h2>Game Server</h2>
+                    <ul id="gameServerCommitList"></ul>
+                </div>
+    
+                <div class="col">
+                    <h2>Default Content</h2>
+                    <ul id="defaultContentCommitList"></ul>
+                </div>
             </div>
         </div>
     </body>

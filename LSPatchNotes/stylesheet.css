@@ -4,7 +4,7 @@ body
     background:#3c4856;
     white-space: pre;
 
-    font:18px/1.5 'Open Sans';
+    font:18px/1.5 'Roboto';
 }
 
 h2
@@ -29,21 +29,6 @@ h3
     animation: fadein 1.5s;
     margin-bottom: -6%;
     margin-top: -2%;
-}
-
-.commitContainer
-{
-    display: -webkit-flex;
-    display: flex;
-    flex: 1;
-    animation: fadein 1.5s;
-}
-
-.commitContainer > div
-{
-    margin-left: 5%;
-    margin-right: 5%;
-    flex: 1;
 }
 
 li {

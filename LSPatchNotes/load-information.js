@@ -8,7 +8,7 @@ fetch("https://api.github.com/repos/LeagueSandbox/GameServer/commits?per_page=5"
         commitHistory.forEach(
             function(commitJson)
             {
-                CreateAndFillElements(commitJson, "gameServerCommitDiv");
+                CreateAndFillElements(commitJson, "gameServerCommitList");
             }
         )
 })
@@ -23,7 +23,7 @@ fetch("https://api.github.com/repos/LeagueSandbox/LeagueSandbox-Default/commits?
         commitHistory.forEach(
             function(commitJson)
             {
-                CreateAndFillElements(commitJson, "defaultContentCommitDiv");
+                CreateAndFillElements(commitJson, "defaultContentCommitList");
             }
         )
 })
@@ -37,7 +37,7 @@ function CreateAndFillElements(inputJson, listClassName)
     var commitAuthorIcon = inputJson.author.avatar_url;
     var commitAuthorLink = inputJson.author.html_url;
 
-    var commitList = document.getElementsByClassName(listClassName);
+    var commitList = document.getElementById(listClassName);
     var commitNode = document.createElement("LI");
     var commitAuthorImage = document.createElement("IMG");
     var commitAuthorName = document.createElement("H3");
@@ -63,5 +63,5 @@ function CreateAndFillElements(inputJson, listClassName)
         window.location.href = commitUrl;
     }
 
-    commitList[0].appendChild(commitNode);
+    commitList.appendChild(commitNode);
 }
