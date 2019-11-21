@@ -1,70 +1,29 @@
 body
 {
-    color:#dbefef;
-    background:#3c4856;
+    color:#d2eae5;
+    background:#171717;
     white-space: pre;
-
-    font:18px/1.5 'Roboto';
 }
 
-h2
+#patchnotesbutton
 {
-    margin-bottom: -9%;
-    text-align: center;
-    font-size: xx-large;
+    background: #2A3840;
+    transition: 0.25s;
 }
 
-h3
+#patchnotesbutton:hover
 {
-    font-size: xx-large;
-    line-height: 250%;
+    background: #70C989;
 }
 
-.topImage
+.media
 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 50%;
-    animation: fadein 1.5s;
-    margin-bottom: -6%;
-    margin-top: -2%;
+    background: #2A3840;
+    transition: 0.25s;
 }
 
-li {
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.75);
-    transition: 0.5s;
-    background: #737E8A;
-    list-style-type: none;
-    border-radius: 10px;
-}
-
-li p
+.media:hover
 {
-    white-space: pre-wrap;
-    margin: 0 0 0 10px;
-}
-
-li h2
-{
-    margin: 10px 0 10px 10px; 
-}
-
-li img
-{
-    float: left;
-    margin: 10px 15px 0 10px;
-    width: 64px;
-    border-radius: 10px;
-}
- 
-li:hover {
-    background: #54606F;
+    background: #70C989;
     cursor: pointer;
-}
-
-
-@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
 }
