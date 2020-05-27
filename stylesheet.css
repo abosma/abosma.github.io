@@ -1,0 +1,44 @@
+body {
+	margin: 0;
+	padding: 0;
+	/* background: #c0c0c0; */
+	background: #ece9d8;
+}
+
+main {
+	width: 87%;
+	margin-left: 14%;
+	margin-top: 1%;
+	margin-right: 2%;
+	margin-bottom: 5%;
+}
+
+aside {
+	width: 11%;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	padding: 8px;
+	display: flex;
+	align-items: stretch;
+}
+
+aside .tree-view {
+	width: 100%;
+	/* TODO: Move scrollbar into the recessed region? */
+	overflow: auto;
+}
+
+summary {
+	user-select: none;
+	cursor: pointer;
+	display: inline;
+}
+
+summary::-webkit-details-marker {
+	display: none;
+}
+
+details[open] summary {
+	margin-bottom: 8px;
+}
