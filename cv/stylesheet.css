@@ -1,35 +1,35 @@
 @font-face
 {
-	font-family: 'ITC Avant Garde Standard';
-	src: url('../Fonts/ITCAvantGardeStdBk.woff') format('woff');
+	font-family: 'Futura PT Medium';
+	src: url('../Fonts/Futura/FuturaPTMedium.otf') format('opentype');
 }
 
 @font-face
 {
-	font-family: 'ITC Avant Garde Standard Small';
-	src: url('../Fonts/ITCAvantGardeStdXLt.woff') format('woff');
+	font-family: 'Futura PT Light';
+	src: url('../Fonts/Futura/FuturaPTLight.otf') format('opentype');
 }
 
 body, html 
 {
     height: 100%;
-    background-color: #35477d;
+    background-color: #22223b;
 }
 
 h1
 {
-	color: #f67280;
-	font-weight: 600;
+	color: #f2e9e4;
+	font-weight: 500;
 	text-align: center;
-    font-family: 'ITC Avant Garde Standard';
+    font-family: 'Futura PT Medium';
 }
 
 h3
 {
-	color: #f67280;
-	font-weight: 600;
+	color: #f2e9e4;
+	font-weight: 500;
 	text-align: center;
-    font-family: 'ITC Avant Garde Standard Small';
+    font-family: 'Futura PT Light';
 }
 
 #CVImage
