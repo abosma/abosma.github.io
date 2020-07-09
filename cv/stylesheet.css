@@ -2,12 +2,14 @@
 {
 	font-family: 'Futura PT Medium';
 	src: url('../Fonts/Futura/FuturaPTMedium.otf') format('opentype');
+	font-display: swap;
 }
 
 @font-face
 {
 	font-family: 'Futura PT Light';
 	src: url('../Fonts/Futura/FuturaPTLight.otf') format('opentype');
+	font-display: swap;
 }
 
 body, html 
