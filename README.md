@@ -1,2 +1,5 @@
 # atillabosma.github.io
-Game website for testing out JS stuff
+
+Homepage for Atilla Bosma.
+
+Lots of random projects done for fun in here, don't expect good code or anything.
