@@ -13,6 +13,9 @@ var config = {
             gravity: { y: 200 }
         }
     },
+    audio: {
+        disableWebAudio: true
+    },
     scene: {
         preload: preload,
         create: create,

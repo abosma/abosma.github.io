@@ -42,3 +42,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 /LSPatchNotes/.idea
+/SpaceBall/node_modules
+/SpaceBall/package-lock.json
+/SpaceBall/package.json
+/SpaceBall/.babelrc
