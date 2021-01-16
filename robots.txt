@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /LSPatchNotes/*
+Disallow: /Spaceball/*
+Disallow: /Stadium/*
+Disallow: /Icons/*
+Disallow: /Fonts/*
+Sitemap: https://abosma.com/sitemap.xml
