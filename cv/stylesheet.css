@@ -12,8 +12,18 @@
 	font-display: swap;
 }
 
+@keyframes fadeInAnimation { 
+    0% { 
+        opacity: 0; 
+    } 
+    100% { 
+        opacity: 1; 
+     } 
+}
+
 body, html 
 {
+	animation: fadeInAnimation ease 500ms;
     height: 100%;
     background-color: #22223b;
 }
