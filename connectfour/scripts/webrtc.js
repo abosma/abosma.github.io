@@ -1,7 +1,12 @@
 var localPeerIdElement = document.getElementById("localPeerId");
+
 var remotePeerIdInputElement = document.getElementById("remotePeerId");
 var connectButtonElement = document.getElementById("connectButton");
 var playerListElement = document.getElementById("playerList");
+
+var chatInputElement = document.getElementById("chatInput");
+var chatSendButtonElement = document.getElementById("chatSendButton");
+var chatElement = document.getElementById("chat");
 
 var players = [];
 
@@ -16,25 +21,41 @@ connectButtonElement.addEventListener("click", function() {
     var remotePeerId = remotePeerIdInputElement.value;
     
     if(remotePeerId) {
-        conn = peer.connect(remotePeerId);
-        conn.on("open", function() {
-            players.push(conn.peer);
-            updatePlayerList();
+        let connection = peer.connect(remotePeerId);
+        
+        connection.on("open", function() {
+            conn = connection;
+
+            updatePlayerList(connection.peer);
+            initializeConnectionEvents();
         });
     };
 });
 
-peer.on("connection", function(conn) {
-    var playerId = conn.peer;
-    
-    players.push(playerId);
+chatSendButtonElement.addEventListener("click", function() {
+    var toSendMessage = chatInputElement.value;
 
-    updatePlayerList();
+    if(toSendMessage && conn.open) {
+        conn.send(toSendMessage);
+        updateChat(toSendMessage);
+    } else if(!conn.open) {
+        console.log("Connection closed");
+    }
+})
 
+peer.on("connection", function(connection) {
+    conn = connection;
+
+    updatePlayerList(connection.peer);
+    initializeConnectionEvents();
+});
+
+
+function initializeConnectionEvents() {
     conn.on("data", function(data) {
-        console.log(data);
+        updateChat(data);
     })
-
+    
     conn.on("close", function() {
         for(var i = 0; i < players.length; i++) {
             if(players[i] == playerId) {
@@ -43,9 +64,10 @@ peer.on("connection", function(conn) {
         }
         updatePlayerList();
     })
-});
+}
 
-function updatePlayerList() {
+function updatePlayerList(playerId) {
+    players.push(playerId);
     playerListElement.innerHTML = "";
     
     for(var i = 0; i < players.length; i++) {
@@ -54,4 +76,11 @@ function updatePlayerList() {
 
         playerListElement.appendChild(playerListItem);
     }
+}
+
+function updateChat(message) {
+    var chatMessage = document.createElement("li");
+    chatMessage.textContent = message;
+
+    chatElement.appendChild(chatMessage);
 }
