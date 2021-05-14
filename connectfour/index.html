@@ -13,18 +13,33 @@
     </head>
 
     <body>
-        <h3 id="localPeerId"></h3>
+        
 
-        <input id="remotePeerId"></input>
-        <button id="connectButton">Connect</button>
-        <ul id="playerList"></ul>
+        <button id="hostGame">Host Game</button>
+        <button id="joinGame">Join Game</button>
+
+        <div hidden id="hostGameScreen">
+            <p id="localPeerId"></p>
+        </div>
+
+        <div hidden id="joinGameScreen">
+            <input id="remotePeerId"></input>
+            <button id="connectButton">Connect</button>
+            <ul id="playerList"></ul>
+        </div>
 
         </br>
 
-        <input id="chatInput"></input>
-        <button id="chatSendButton">Send</button>
-        <ul id="chat"></ul>
+        <div hidden id="chatScreen">
+            <input id="chatInput"></input>
+            <button id="chatSendButton">Send</button>
+            <ul id="chat"></ul>
+        </div>
+        
+        <script src="./scripts/globals.js"></script>
+        <script src="./scripts/hostGame.js"></script>
+        <script src="./scripts/joinGame.js"></script>
 
-        <script src="./scripts/webrtc.js"></script>
+        <script src="./scripts/chatSystem.js"></script>
     </body>
 </html>
