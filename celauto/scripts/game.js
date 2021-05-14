@@ -7,6 +7,7 @@ let oldTime;
 window.onload = init;
 
 function init() {
+    pixelHandler.start();
     screenHandler.start();
     inputHandler.start();
 
