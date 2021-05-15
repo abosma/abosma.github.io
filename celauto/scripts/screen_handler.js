@@ -17,6 +17,7 @@ class ScreenHandler {
 
     update(dt) {
         this.fillCanvas();
+        this.drawPixels();
     }
 
     fillCanvas() {
@@ -24,14 +25,12 @@ class ScreenHandler {
         this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
     }
 
-    drawPixel(pixel) {
-        var index = (pixel.x + pixel.y * this.canvasWidth) * 4;
-    
-        this.canvasData.data[index + 0] = pixel.color.r;
-        this.canvasData.data[index + 1] = pixel.color.g;
-        this.canvasData.data[index + 2] = pixel.color.b;
-        this.canvasData.data[index + 3] = pixel.color.a;
+    drawPixels() {
+        for(let i = 0; i < pixelHandler.pixelArray.length; i++) {
+            let pixel = pixelHandler.pixelArray[i];
 
-        this.ctx.putImageData(this.canvasData, 0, 0);
+            this.ctx.fillStyle = "red";
+            this.ctx.fillRect(pixel.x, pixel.y, 1, 1);
+        }
     }
 }

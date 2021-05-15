@@ -32,7 +32,7 @@ class InputHandler {
 
         this.canvas.addEventListener("mousemove", (e) => {
             if(this.mouseOver && this.mouseDown) {
-                pixelHandler.addPixel(e.offsetX, e.offsetY, new Color(255, 0, 0, 255));
+                pixelHandler.addPixel(e.offsetX, e.offsetY, new Color(255, 0, 0, 255), PixelType.SAND);
             }
         });
     }
