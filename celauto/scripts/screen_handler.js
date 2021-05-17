@@ -1,9 +1,8 @@
 class ScreenHandler {
     ctx;
     canvas;
-    canvasData;
-    canvasWidth = window.innerWidth;
-    canvasHeight = window.innerHeight;
+    canvasWidth = 500;
+    canvasHeight = 500;
 
     start() {
         this.canvas = document.getElementById("canvas");
@@ -11,8 +10,6 @@ class ScreenHandler {
 
         canvas.width = this.canvasWidth;
         canvas.height = this.canvasHeight;
-
-        this.canvasData = this.ctx.getImageData(0, 0, this.canvasWidth, this.canvasHeight);
     }
 
     update(dt) {
@@ -29,8 +26,8 @@ class ScreenHandler {
         for(let i = 0; i < pixelHandler.pixelArray.length; i++) {
             let pixel = pixelHandler.pixelArray[i];
 
-            this.ctx.fillStyle = "red";
-            this.ctx.fillRect(pixel.x, pixel.y, 1, 1);
+            this.ctx.fillStyle = pixel.color.getHex();
+            this.ctx.fillRect(pixel.x, pixel.y, pixel.width, pixel.height);
         }
     }
 }
