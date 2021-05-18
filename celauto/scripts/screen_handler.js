@@ -23,10 +23,10 @@ class ScreenHandler {
     }
 
     drawPixels() {
-        for(let i = 0; i < pixelHandler.pixelArray.length; i++) {
+        for(let i = pixelHandler.pixelArray.length; i--; ) {
             let pixel = pixelHandler.pixelArray[i];
 
-            this.ctx.fillStyle = pixel.color.getHex();
+            this.ctx.fillStyle = pixel.pixelType.color.getHex();
             this.ctx.fillRect(pixel.x, pixel.y, pixel.width, pixel.height);
         }
     }

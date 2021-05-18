@@ -2,10 +2,11 @@ class InputHandler {
     mouseOver = false;
     mouseDown = false;
 
-    selectedPixelType = PixelType.SAND;
-
     canvas = document.getElementById("canvas");
     pixelHandler = pixelHandler;
+    
+    selectedPixelIndex = 0;
+    pixelTypeCount = Object.keys(PixelType).length;
 
     start() {
         this.initialize_callbacks();
@@ -33,20 +34,26 @@ class InputHandler {
         });
 
         window.addEventListener("keydown", (e) => {
-            let selectedIndex = Object.keys(PixelType).indexOf(this.selectedPixelType);
-            
             if(e.key == "e") {
-                
+                if(this.selectedPixelIndex + 1 == this.pixelTypeCount) {
+                    this.selectedPixelIndex = 0;
+                } else {
+                    this.selectedPixelIndex += 1;
+                }
             }
             
             if(e.key == "q") {
-                
+                if(this.selectedPixelIndex - 1 < 0) {
+                    this.selectedPixelIndex = this.pixelTypeCount;
+                } else {
+                    this.selectedPixelIndex -= 1;
+                }
             }
         })
 
         this.canvas.addEventListener("mousemove", (e) => {
             if(this.mouseOver && this.mouseDown) {
-                pixelHandler.addPixel(new Pixel(e.offsetX, e.offsetY, 1, 1, new Color(255, 0, 0), this.selectedPixelType));
+                pixelHandler.addPixel(new Pixel(e.offsetX, e.offsetY, 1, 1, PixelType[Object.keys(PixelType)[this.selectedPixelIndex]]));
             }
         });
     }

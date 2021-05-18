@@ -19,24 +19,23 @@ class Color {
 const PixelType = {
     SAND : {
         value: 0, 
-        color: [new Color(255, 255, 0)], 
+        color: new Color(255, 255, 0), 
         fallSpeed: 1
     },
     WATER : {
         value: 1, 
-        color: [new Color(0, 0, 255)], 
+        color: new Color(153, 204, 255), 
         fallSpeed: 0.5
     }
 };
 
 class Pixel {
-    constructor(x, y, width, height, color, pixelType) {
+    constructor(x, y, width, height, pixelType) {
         this.id = Pixel.generateId();
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.color = color;
         this.pixelType = pixelType;
     }
 
@@ -61,7 +60,7 @@ class PixelHandler {
     }
 
     update(dt) {
-        for(let i = 0; i < this.pixelArray.length; i++) {
+        for(let i = this.pixelArray.length; i--; ) {
             let pixel = this.pixelArray[i];
 
             let pixelBelow = this.getPixel(pixel.x, pixel.y - 1, pixel.id);
@@ -69,19 +68,19 @@ class PixelHandler {
             let pixelBelowRight = this.getPixel(pixel.x + 1, pixel.y - 1, pixel.id);
 
             if(this.isStuck(pixel)) {
-                pixel.y -= 1;
+                pixel.y -= pixel.pixelType.fallSpeed;
             }
             
             this.keepInBounds(pixel);
 
             if(!pixelBelow) {
-                pixel.y += 1;
+                pixel.y += pixel.pixelType.fallSpeed;
                 continue;
             } else if(!pixelBelowLeft) {
-                pixel.x -= 1;
+                pixel.x -= pixel.pixelType.fallSpeed;
                 continue;
             } else if(!pixelBelowRight) {
-                pixel.x += 1;
+                pixel.x += pixel.pixelType.fallSpeed;
                 continue;
             }
 
@@ -106,7 +105,7 @@ class PixelHandler {
     }
 
     getPixel(x, y, id) {
-        for(let i = 0; i < this.pixelArray.length; i++) {
+        for(let i = this.pixelArray.length; i--; ) {
             if(this.pixelArray[i].id == id) {
                 continue;
             }
@@ -136,7 +135,7 @@ class PixelHandler {
     }
 
     isStuck(pixel) {
-        for(let i = 0; i < this.pixelArray.length; i++) {
+        for(let i = this.pixelArray.length; i--; ) {
             if(this.pixelArray[i].id == pixel.id) {
                 continue;
             }
