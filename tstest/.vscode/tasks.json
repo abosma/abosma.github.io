@@ -1,0 +1,9 @@
+{
+    "version": "2.0.0",
+    "tasks": [{
+        "label": "esbuild",
+        "command": "esbuild .\\src\\scripts\\game.ts --bundle --minify --sourcemap --target='chrome58,firefox57,safari11,edge16' --outfile=game.js --watch",
+        "type": "shell",
+        "isBackground": true
+    }]
+}
