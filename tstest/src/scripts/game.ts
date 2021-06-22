@@ -6,6 +6,8 @@ let oldTime : number = performance.now();
 function init() {
     let player : GameObject = new GameObject("Player");
 
+    console.log(player.transform.position);
+
     window.requestAnimationFrame(update);
 }
 
