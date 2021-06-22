@@ -1,14 +1,19 @@
 import { IComponent } from "../components/component";
+import { Transform } from "../components/transform";
 import { ObjectHandler } from "../handlers/objectHandler";
 
 export class GameObject {
     public components : IComponent[] = new Array<IComponent>();
+    public transform : Transform;
     public name : string;
 
     constructor(name? : string) {
         ObjectHandler.getInstance().addGameObject(this);
 
+        this.transform = new Transform();
+        this.components.push(this.transform);
         this.name = name || "New GameObject";
+        
         this.start();
     }
 
@@ -44,5 +49,23 @@ export class GameObject {
         }
 
         return null;
+    }
+
+    public removeComponent(component : IComponent) {
+        let index : number = -1;
+        
+        for(let i = this.components.length; i--;) {
+            let otherComponent = this.components[i];
+
+            if(otherComponent == component) {
+                index = i;
+            }
+        }
+
+        if(index != -1) {
+            this.components.splice(index, 1);
+        }
+
+        return;
     }
 }

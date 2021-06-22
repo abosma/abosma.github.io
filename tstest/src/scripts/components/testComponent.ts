@@ -6,6 +6,6 @@ export class TestComponent implements IComponent {
     }
 
     update(dt: number): void {
-        console.log("%.10f", dt);
+        
     }
 }
