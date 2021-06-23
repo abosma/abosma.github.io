@@ -1,21 +1,32 @@
+import { FollowMouse } from "./components/followMouse";
 import { ObjectHandler } from "./handlers/objectHandler";
 import { GameObject } from "./objects/gameObject";
 
-let oldTime : number = performance.now();
+const objectHandler = ObjectHandler.getInstance();
+const dt : number = 0.01;
+
+let currentTime : number = performance.now();
+let accumulator : number = 0.0;
 
 function init() {
     let player : GameObject = new GameObject("Player");
 
-    console.log(player.transform.position);
+    player.addComponent(new FollowMouse());
 
     window.requestAnimationFrame(update);
 }
 
-function update(time : number) {
-    let deltaTime = (time - oldTime) / 1000;
-    oldTime = time;
+function update() {
+    let newTime : number = performance.now();
+    let frameTime : number = newTime - currentTime;
 
-    ObjectHandler.getInstance().update(deltaTime);
+    currentTime = newTime;
+    accumulator += frameTime;
+
+    while(accumulator >= dt) {
+        objectHandler.update(dt);
+        accumulator -= dt;
+    }
 
     window.requestAnimationFrame(update);
 }

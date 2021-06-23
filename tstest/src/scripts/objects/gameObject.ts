@@ -10,8 +10,7 @@ export class GameObject {
     constructor(name? : string) {
         ObjectHandler.getInstance().addGameObject(this);
 
-        this.transform = new Transform();
-        this.components.push(this.transform);
+        this.transform = this.addComponent(new Transform());
         this.name = name || "New GameObject";
         
         this.start();
@@ -30,6 +29,8 @@ export class GameObject {
     public addComponent<Type>(component : Type) : Type {
         let newComponent : IComponent = component as unknown as IComponent;
         
+        newComponent.gameObject = this;
+
         if(this.components.indexOf(newComponent) == -1) {
             this.components.push(newComponent);
             newComponent.start();
