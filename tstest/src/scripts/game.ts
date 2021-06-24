@@ -1,8 +1,11 @@
 import { FollowMouse } from "./components/followMouse";
 import { ObjectHandler } from "./handlers/objectHandler";
+import { RenderHandler } from "./handlers/renderHandler";
 import { GameObject } from "./objects/gameObject";
 
 const objectHandler = ObjectHandler.getInstance();
+const renderHandler = RenderHandler.getInstance();
+
 const dt : number = 0.01;
 
 let currentTime : number = performance.now();
@@ -27,6 +30,8 @@ function update() {
         objectHandler.update(dt);
         accumulator -= dt;
     }
+
+    renderHandler.update(dt);
 
     window.requestAnimationFrame(update);
 }
