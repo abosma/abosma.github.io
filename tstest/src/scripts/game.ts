@@ -1,4 +1,4 @@
-import { FollowMouse } from "./components/followMouse";
+import { Renderer } from "./components/renderer";
 import { ObjectHandler } from "./handlers/objectHandler";
 import { RenderHandler } from "./handlers/renderHandler";
 import { GameObject } from "./objects/gameObject";
@@ -13,8 +13,11 @@ let accumulator : number = 0.0;
 
 function init() {
     let player : GameObject = new GameObject("Player");
+    
+    let image : CanvasImageSource = new Image();
+    image.src = "./src/assets/player.png";
 
-    player.addComponent(new FollowMouse());
+    player.addComponent(new Renderer(image));
 
     window.requestAnimationFrame(update);
 }

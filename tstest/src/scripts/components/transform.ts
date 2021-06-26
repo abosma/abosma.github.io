@@ -43,6 +43,11 @@ export class Transform implements IComponent {
         }
     }
 
+    /**
+     * Moves object to specific given Vector2 using speed * deltaTime. Don't give it a negative speed or it will go in the other direction.
+     * @param pos 
+     * @param speed 
+     */
     moveTo(pos : Vector2, speed : number) : void {
         this.startPosition = this.position;
         this.endPosition = pos;
