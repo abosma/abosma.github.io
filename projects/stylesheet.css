@@ -1,21 +1,21 @@
 @font-face
 {
 	font-family: 'Futura PT Medium';
-	src: url('Fonts/Futura/FuturaPTMedium.otf') format('opentype');
+	src: url('../Fonts/Futura/FuturaPTMedium.otf') format('opentype');
 	font-display: swap;
 }
 
 @font-face
 {
 	font-family: 'Futura PT Light';
-	src: url('Fonts/Futura/FuturaPTLight.otf') format('opentype');
+	src: url('../Fonts/Futura/FuturaPTLight.otf') format('opentype');
 	font-display: swap;
 }
 
 @font-face
 {
 	font-family: 'Futura PT Condensed';
-	src: url('Fonts/Futura/FuturaPTCondBookOblique.otf') format('opentype');
+	src: url('../Fonts/Futura/FuturaPTCondBookOblique.otf') format('opentype');
 	font-display: swap;
 }
 
@@ -99,7 +99,7 @@ body
 	font-size: larger;
 	text-align: left;
 	line-height: 1.4;
-	margin-top: -2%;
+	margin-top: 7%;
 	margin-left: 10%;
 	font-family: 'Futura PT Light';
 }

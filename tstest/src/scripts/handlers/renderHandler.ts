@@ -41,7 +41,7 @@ export class RenderHandler {
 
         for(let i = this.renderers.length; i--;) {
             let renderer : Renderer = this.renderers[i];
-            let rendererImage : CanvasImageSource = renderer.getImage();
+            let rendererImage : CanvasImageSource = renderer.image;
             let rendererImageWidth : number = rendererImage.width as number;
             let rendererImageHeight : number = rendererImage.height as number;
             let rendererPositionX : number = renderer.gameObject.transform.position.x;

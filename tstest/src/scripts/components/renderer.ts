@@ -4,7 +4,7 @@ import { IComponent } from "./component";
 
 export class Renderer implements IComponent {
     gameObject: GameObject;
-    private image : CanvasImageSource;
+    image : CanvasImageSource;
 
     constructor(image? : CanvasImageSource) {
         if(image !== undefined) {
@@ -20,21 +20,5 @@ export class Renderer implements IComponent {
 
     update(dt: number): void {
         return;
-    }
-
-    /**
-     * Gets image
-     * @returns image 
-     */
-    public getImage() : CanvasImageSource {
-        return this.image;
-    }
-
-    /**
-     * Sets image
-     * @param image 
-     */
-    public setImage(image : CanvasImageSource) : void {
-        this.image = image;
     }
 }

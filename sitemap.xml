@@ -5,18 +5,19 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://abosma.com/</loc>
-  <lastmod>2021-01-16T15:16:37+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://abosma.com/cv/</loc>
-  <lastmod>2021-01-16T15:16:37+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-
+  <url>
+    <loc>https://abosma.com/</loc>
+    <lastmod>2021-01-16T15:16:37+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://abosma.com/cv/</loc>
+    <lastmod>2021-01-16T15:16:37+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://abosma.com/projects/</loc>
+    <lastmod>2021-01-16T15:16:37+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
 </urlset>

@@ -21,11 +21,47 @@
      } 
 }
 
+
 body, html 
 {
 	animation: fadeInAnimation ease 500ms;
     height: 100%;
     background-color: #22223b;
+    font-family: 'Futura PT Medium';
+}
+
+.top
+{
+	margin-left: 9%;
+	margin-right: 8.9%;
+	margin-top: 1%;
+	margin-bottom: -5%;
+	color: #f2e9e4;
+}
+
+.top-links
+{
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: baseline;
+	justify-content: space-between;
+}
+
+.links
+{
+	display: flex;
+}
+
+.links > a
+{
+	font-size: 120%;
+	margin: 0 0 0 35px;
+}
+
+.top > hr
+{
+	border-color: #c9ada7;
+	margin-top: 1%;
 }
 
 h1
@@ -42,6 +78,7 @@ h3
 	font-weight: 500;
 	text-align: center;
     font-family: 'Futura PT Light';
+    margin-top: 4%;
 }
 
 #CVImage
@@ -59,6 +96,7 @@ h3
 a:link 
 {
 	color: #f67280;
+	text-decoration: none;
 }
 
 a:visited 
@@ -69,4 +107,5 @@ a:visited
 a:hover 
 {
 	color: #c06c84;
+	text-decoration: underline;
 }
