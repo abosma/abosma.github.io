@@ -11,7 +11,9 @@ export class RenderHandler {
 
     private static instance: RenderHandler;
     
-    private constructor() {
+    private constructor() {};
+
+    public start() : void {
         this.displayCanvas = document.querySelector<HTMLCanvasElement>("#canvas");
         this.offscreenCanvas = document.createElement("canvas");
 
@@ -41,7 +43,7 @@ export class RenderHandler {
 
         for(let i = this.renderers.length; i--;) {
             let renderer : Renderer = this.renderers[i];
-            let rendererImage : CanvasImageSource = renderer.image;
+            let rendererImage : HTMLImageElement = renderer.image;
             let rendererImageWidth : number = rendererImage.width as number;
             let rendererImageHeight : number = rendererImage.height as number;
             let rendererPositionX : number = renderer.gameObject.transform.position.x;

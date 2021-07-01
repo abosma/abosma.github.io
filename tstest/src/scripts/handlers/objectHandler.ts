@@ -6,6 +6,10 @@ export class ObjectHandler {
     
     private gameObjects : GameObject[] = new Array<GameObject>();
 
+    public start() : void {
+        return;
+    }
+
     public static getInstance() : ObjectHandler {
         if(!ObjectHandler.instance) {
             ObjectHandler.instance = new ObjectHandler();
