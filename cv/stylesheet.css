@@ -109,3 +109,9 @@ a:hover
 	color: #c06c84;
 	text-decoration: underline;
 }
+
+@media screen and (max-width: 991px) {
+	#CVImage {
+		width: 100%;
+	}
+}
