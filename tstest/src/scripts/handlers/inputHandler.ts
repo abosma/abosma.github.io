@@ -5,6 +5,14 @@ export class InputHandler {
 
     private constructor() {};
 
+    public static getInstance() : InputHandler {
+        if(!InputHandler.instance) {
+            InputHandler.instance = new InputHandler();
+        };
+
+        return InputHandler.instance;
+    };
+
     public start() : void {
         document.addEventListener('keydown', (e) => {
             if(e.defaultPrevented) {
@@ -27,14 +35,6 @@ export class InputHandler {
                 InputHandler.pressedKeys.splice(keyIndex, 1);
             };
         });
-    };
-
-    public static getInstance() : InputHandler {
-        if(!InputHandler.instance) {
-            InputHandler.instance = new InputHandler();
-        };
-
-        return InputHandler.instance;
     };
 
     public static keyDown(keyCode : string) : boolean {
