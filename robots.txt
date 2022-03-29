@@ -1,5 +1,5 @@
 User-agent: *
-Disallow: /Icons/*
-Disallow: /Fonts/*
+Disallow: /icons/*
+Disallow: /fonts/*
 Disallow: /tstest/*
 Sitemap: https://abosma.com/sitemap.xml
