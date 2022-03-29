@@ -1,33 +1,54 @@
 class ScreenHandler {
-    ctx;
-    canvas;
-    canvasWidth = 500;
-    canvasHeight = 500;
+    displayCanvas;
+    displayCanvasContext;
+    
+    offscreenCanvas;
+    offscreenCanvasContext;
+
+    pixelCache = [];
 
     start() {
-        this.canvas = document.getElementById("canvas");
-        this.ctx = canvas.getContext("2d");
+        this.displayCanvas = document.getElementById("canvas");
+        this.displayCanvasContext = canvas.getContext("2d", {alpha: false});
 
-        canvas.width = this.canvasWidth;
-        canvas.height = this.canvasHeight;
+        this.offscreenCanvas = document.createElement("canvas");
+        this.offscreenCanvasContext = this.offscreenCanvas.getContext("2d", {alpha: false});
+
+        this.displayCanvas.width = width;
+        this.displayCanvas.height = height;
+
+        this.offscreenCanvas.width = width;
+        this.offscreenCanvas.height = height;
     }
 
-    update(dt) {
-        this.fillCanvas();
-        this.drawPixels();
+    update() {
+        this.render();
+        this.fillScreen();
     }
 
-    fillCanvas() {
-        this.ctx.fillStyle = "black";
-        this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
+    fillScreen() {
+        this.offscreenCanvasContext.fillStyle = "black";
+        this.offscreenCanvasContext.fillRect(0, 0, width, height);
     }
 
-    drawPixels() {
-        for(let i = pixelHandler.pixelArray.length; i--; ) {
-            let pixel = pixelHandler.pixelArray[i];
+    addPixelToPixelCache(pixel) {
+        this.pixelCache.push(pixel);
+    }
 
-            this.ctx.fillStyle = pixel.pixelType.color.getHex();
-            this.ctx.fillRect(pixel.x, pixel.y, pixel.width, pixel.height);
+    drawPixelCache() {
+        this.offscreenCanvasContext.beginPath();
+        
+        for(var i = 0; i < this.pixelCache.length; i++) {
+            this.offscreenCanvasContext.fillStyle = this.pixelCache[i].pixelType.color.toHex();
+            this.offscreenCanvasContext.rect(this.pixelCache[i].x, this.pixelCache[i].y, this.pixelCache[i].width, this.pixelCache[i].height);
         }
+
+        this.offscreenCanvasContext.fill();
+
+        this.pixelCache.length = 0;
+    }
+
+    render() {
+        this.displayCanvasContext.drawImage(this.offscreenCanvas, 0, 0);
     }
 }

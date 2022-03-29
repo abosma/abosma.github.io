@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "resolveJsonModule": true,
+        "module": "commonjs",
+        "target": "ES6",
+        "outDir": "scripts",
+        "rootDir": "src/scripts"
+    }
+}

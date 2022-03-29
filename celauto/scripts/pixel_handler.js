@@ -6,7 +6,7 @@ class Color {
     }
 
     // Taken from https://stackoverflow.com/a/39077686
-    getHex() {
+    toHex() {
         let toReturnHex = "#" + [this.r, this.g, this.b].map(c => {
             let hex = c.toString(16);
             return hex.length === 1 ? "0" + hex : hex;
@@ -17,6 +17,11 @@ class Color {
 }
 
 const PixelType = {
+    EMPTY : {
+        value: -1, 
+        color: new Color(0, 0, 0), 
+        fallSpeed: 0
+    },
     SAND : {
         value: 0, 
         color: new Color(255, 255, 0), 
@@ -37,6 +42,7 @@ class Pixel {
         this.width = width;
         this.height = height;
         this.pixelType = pixelType;
+        this.updated = false;
     }
 
     static generateId() {
@@ -48,102 +54,92 @@ class Pixel {
 
         return this.lastId;
     }
+
+    update() {
+        switch(this.pixelType) {
+            case PixelType.SAND:
+                this.keepInBounds();
+                this.updateSand();
+                break;
+            case PixelType.WATER:
+                this.keepInBounds();
+                this.updateWater();
+                break;
+        }
+    }
+
+    keepInBounds() {
+        if(this.y > height - 100) {
+            this.y = height - 100;
+        }
+
+        if(this.y < 100) {
+            this.y = 100;
+        }
+
+        if(this.x > width - 100) {
+            this.x = width - 100;
+        }
+
+        if(this.x < 100) {
+            this.x = 100;
+        }
+    }
+
+    updateSand() {
+        const surroundingIndices = [
+            { x: this.x, y: (this.y + height + 1) % height },                       // Bottom
+            { x: (this.x + width + 1) % width, y: (this.y + height + 1) % height }, // Bottom Right
+            { x: (this.x + width - 1) % width, y: (this.y + height + 1) % height }  // Bottom Left
+        ];
+
+        for(let i = 0; i < 3; ++i) {
+            let surroundingIndex = surroundingIndices[i];
+            if(pixelArray[surroundingIndex.x][surroundingIndex.y].pixelType == PixelType.EMPTY) {
+                pixelArray[surroundingIndex.x][surroundingIndex.y] = this;
+                pixelArray[this.x][this.y] = new Pixel(this.x, this.y, 1, 1, PixelType.EMPTY);
+                this.x = surroundingIndex.x;
+                this.y = surroundingIndex.y;
+                break;
+            }
+        }
+
+        screenHandler.addPixelToPixelCache(this);
+    }
+
+    updateWater() {
+
+    }
+}
+
+var pixelArray = Array(height).fill(Array(width));
+
+for(let x = 0; x < width; ++x) {
+    for(let y = 0; y < height; ++y) {
+        pixelArray[x][y] = new Pixel(x, y, 1, 1, PixelType.EMPTY);
+    }
 }
 
 class PixelHandler {
-    constructor() {
-        
-    }
-    
     start() {
-        this.pixelArray = [];
+        return;
     }
 
-    update(dt) {
-        for(let i = this.pixelArray.length; i--; ) {
-            let pixel = this.pixelArray[i];
+    update() {
+        for(let y = height - 1; y > 0; --y) {
+            for(let x = 0; x < width; ++x) {
+                if(pixelArray[x][y].pixelType == PixelType.EMPTY) {
+                    continue;
+                }
 
-            let pixelBelow = this.getPixel(pixel.x, pixel.y - 1, pixel.id);
-            let pixelBelowLeft = this.getPixel(pixel.x - 1, pixel.y - 1, pixel.id);
-            let pixelBelowRight = this.getPixel(pixel.x + 1, pixel.y - 1, pixel.id);
-
-            if(this.isStuck(pixel)) {
-                pixel.y -= pixel.pixelType.fallSpeed;
+                pixelArray[x][y].update();
             }
-            
-            this.keepInBounds(pixel);
-
-            if(!pixelBelow) {
-                pixel.y += pixel.pixelType.fallSpeed;
-                continue;
-            } else if(!pixelBelowLeft) {
-                pixel.x -= pixel.pixelType.fallSpeed;
-                continue;
-            } else if(!pixelBelowRight) {
-                pixel.x += pixel.pixelType.fallSpeed;
-                continue;
-            }
-
-            // for(let z = 0; z < this.pixelArray.length; z++) {
-            //     let otherPixel = this.pixelArray[z];
-
-            //     if(pixel.id == otherPixel.id) {
-            //         break;
-            //     }
-
-            //     if(pixel.pixelType == PixelType.SAND) {
-            //         if(pixel.x == otherPixel.x && pixel.y - 1 != otherPixel.y - 1) {
-            //             pixel.y += 1;
-            //         }
-            //     }
-            // }
         }
+
+        screenHandler.drawPixelCache();
     }
 
-    addPixel(pixel) {
-        this.pixelArray.push(pixel);
+    writePixel(x, y, pixel) {
+        pixelArray[x][y] = pixel;
     }
-
-    getPixel(x, y, id) {
-        for(let i = this.pixelArray.length; i--; ) {
-            if(this.pixelArray[i].id == id) {
-                continue;
-            }
-            
-            if(this.pixelArray[i].x == x && this.pixelArray[i].y == y) {
-                return this.pixelArray[i];
-            }
-        }
-    }
-
-    keepInBounds(pixel) {
-        if(pixel.y > screenHandler.canvasHeight - 100) {
-            pixel.y = screenHandler.canvasHeight - 100;
-        }
-
-        if(pixel.y < 100) {
-            pixel.y = 100;
-        }
-
-        if(pixel.x > screenHandler.canvasWidth - 100) {
-            pixel.x = screenHandler.canvasWidth - 100;
-        }
-
-        if(pixel.x < 100) {
-            pixel.x = 100;
-        }
-    }
-
-    isStuck(pixel) {
-        for(let i = this.pixelArray.length; i--; ) {
-            if(this.pixelArray[i].id == pixel.id) {
-                continue;
-            }
-            
-            if(this.pixelArray[i].x == pixel.x && this.pixelArray[i].y == pixel.y) {
-                return true;
-            }
-        }
-    }
-    
 }

@@ -37,6 +37,16 @@ body
 	font-family: 'Futura PT Medium';
 }
 
+h1 {
+	font-size: calc(1.8vw);
+	transition: all .3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+h3, p {
+	font-size: calc(1vw);
+	transition: all .3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
 .top
 {
 	margin-left: 9.5%;
@@ -77,7 +87,6 @@ body
 	text-align: left;
 	margin-left: 9%;
 	margin-top: 10%;
-	font-size: 150%;
 	font-weight: 400;
 	font-family: 'Futura PT Condensed';
 }
@@ -88,7 +97,7 @@ body
 	text-align: left;
 	margin-left: 10%;
 	margin-top: -1%;
-	font-size: 400%;
+	font-size: calc(3.3vw);
 	font-family: 'Futura PT Medium';
 }
 
@@ -96,7 +105,6 @@ body
 {
 	color: #D4CFC7;
 	font-weight: 500;
-	font-size: larger;
 	text-align: left;
 	line-height: 1.4;
 	margin-top: -2%;
@@ -143,12 +151,38 @@ a:hover
 	}
 }
 
-@media screen and (max-width: 576px) {
-	h1.name {
-		font-size: 375%;
+@media screen and (max-width: 768px) {
+	h1 {
+		font-size: calc(4vw);
 	}
 	
-	p.subheading {
-		padding-right: 8%;
+	h3, p {
+		font-size: calc(4vw);
+	}
+
+	.name {
+		font-size: calc(12vw);
+	}
+
+	.subheading {
+		padding-right: calc(8vw);
+	}
+}
+
+@media screen and (max-width: 576px) {
+	h1 {
+		font-size: calc(6vw);
+	}
+	
+	h3, p {
+		font-size: calc(5vw);
+	}
+
+	.name {
+		font-size: calc(12vw);
+	}
+
+	.subheading {
+		padding-right: calc(10vw);
 	}
 }
