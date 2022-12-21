@@ -14,8 +14,8 @@ export class FollowMouse implements IComponent {
 
     start(): void {
         this.renderer = this.gameObject.getComponent(Renderer);
-        
-        if(this.renderer) {
+
+        if (this.renderer) {
             this.image = this.renderer.image;
         }
     }
@@ -27,7 +27,7 @@ export class FollowMouse implements IComponent {
 
         const mousePos = MouseHandler.getPosition();
 
-        if(!this.image) {
+        if (!this.image) {
             this.gameObject.transform.position = mousePos;
         } else {
             this.gameObject.transform.position = new Vector2(mousePos.x - this.image.width / 2, mousePos.y - this.image.height / 2);

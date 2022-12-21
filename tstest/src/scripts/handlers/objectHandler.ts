@@ -52,7 +52,7 @@ export class ObjectHandler {
                 let go1 = colliderObjects[y];
                 let go2 = colliderObjects[x];
 
-                if(this.aabbTest(go1, go2)) {
+                if (this.aabbTest(go1, go2)) {
                     go1.onCollision.emit(go2);
                     go2.onCollision.emit(go1);
                 }

@@ -1,6 +1,9 @@
+import { RenderHandler } from "./renderHandler";
+
 export class LogHandler {
     private static instance: LogHandler;
 
+    private renderHandler: RenderHandler = RenderHandler.getInstance();
     private logs: string[] = [];
 
     private constructor() {
@@ -25,8 +28,7 @@ export class LogHandler {
             return;
         }
 
-        console.group(this.logs);
-        console.groupEnd();
+        this.renderHandler.addDebugText(this.logs);
         this.logs = [];
     }
 }

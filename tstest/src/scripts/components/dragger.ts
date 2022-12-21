@@ -14,12 +14,12 @@ export class Dragger implements IComponent {
     }
 
     update(dt: number): void {
-        if(!MouseHandler.mouseDown) {
+        if (!MouseHandler.mouseDown) {
             this.followMouse.shouldFollow = false;
             return;
         }
 
-        if(MouseHandler.isOverObject(this.gameObject.transform.getCenter(), 50)) {
+        if (MouseHandler.isOverObject(this.gameObject.transform.getCenter(), 50)) {
             this.followMouse.shouldFollow = true;
         }
     }

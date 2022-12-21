@@ -1,7 +1,7 @@
 import { GameObject } from "../objects/gameObject";
 
 export interface IComponent {
-    gameObject : GameObject,
+    gameObject: GameObject,
     start(): void,
-    update(dt : number) : void
+    update(dt: number): void
 };

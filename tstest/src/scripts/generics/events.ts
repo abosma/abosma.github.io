@@ -1,3 +1,5 @@
+// Taken from https://gist.github.com/basarat/46936dec14ad985bee24f54f3977cb2d (basarat on github)
+
 export interface Listener<T> {
     (event: T): any;
 }

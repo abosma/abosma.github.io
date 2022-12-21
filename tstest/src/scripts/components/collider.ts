@@ -4,7 +4,7 @@ import { Transform } from "./transform";
 
 export class Collider implements IComponent {
     gameObject: GameObject;
-    transform : Transform;
+    transform: Transform;
 
     start(): void {
         this.transform = this.gameObject.getComponent(Transform);

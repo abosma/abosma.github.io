@@ -4,10 +4,10 @@ import { IComponent } from "./component";
 
 export class Renderer implements IComponent {
     gameObject: GameObject;
-    image : HTMLImageElement;
+    image: HTMLImageElement;
 
-    constructor(image? : HTMLImageElement) {
-        if(image !== undefined) {
+    constructor(image?: HTMLImageElement) {
+        if (image !== undefined) {
             this.image = image;
         }
 

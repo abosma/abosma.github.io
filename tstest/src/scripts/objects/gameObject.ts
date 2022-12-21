@@ -1,6 +1,7 @@
 import { IComponent } from "../components/component";
 import { Transform } from "../components/transform";
 import { TypedEvent } from "../generics/events";
+import { LogHandler } from "../handlers/logHandler";
 import { ObjectHandler } from "../handlers/objectHandler";
 
 export class GameObject {
@@ -8,6 +9,8 @@ export class GameObject {
     public transform: Transform;
     public name: string;
     public onCollision: TypedEvent<GameObject> = new TypedEvent<GameObject>();
+
+    private logHandler: LogHandler = LogHandler.getInstance();
 
     constructor(name?: string) {
         ObjectHandler.getInstance().addGameObject(this);
@@ -19,7 +22,7 @@ export class GameObject {
     }
 
     public start(): void {
-        console.log(`Started ${this.name}`);
+        this.logHandler.addLog(`Started ${this.name}`);
     }
 
     public update(dt: number): void {

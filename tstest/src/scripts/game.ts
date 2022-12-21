@@ -17,16 +17,16 @@ const inputHandler = InputHandler.getInstance();
 const logHandler = LogHandler.getInstance();
 const mouseHandler = new MouseHandler();
 
-const dt : number = 0.01;
+const dt: number = 0.01;
 
-let currentTime : number = performance.now();
-let accumulator : number = 0.0;
+let currentTime: number = performance.now();
+let accumulator: number = 0.0;
 
 function init() {
     objectHandler.start();
     renderHandler.start();
     inputHandler.start();
-    
+
     let player = new GameObject("Player");
     let renderer = player.addComponent(new Renderer());
     let playerImage = new Image();
@@ -59,13 +59,13 @@ function init() {
 }
 
 function update() {
-    let newTime : number = performance.now();
-    let frameTime : number = newTime - currentTime;
+    let newTime: number = performance.now();
+    let frameTime: number = newTime - currentTime;
 
     currentTime = newTime;
     accumulator += frameTime;
 
-    while(accumulator >= dt) {
+    while (accumulator >= dt) {
         objectHandler.update(dt);
         accumulator -= dt;
     }
