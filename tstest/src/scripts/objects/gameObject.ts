@@ -1,14 +1,12 @@
 import { IComponent } from "../components/component";
 import { Transform } from "../components/transform";
-import { TypedEvent } from "../generics/events";
 import { LogHandler } from "../handlers/logHandler";
 import { ObjectHandler } from "../handlers/objectHandler";
 
-export class GameObject {
+export abstract class GameObject {
     public components: IComponent[] = new Array<IComponent>();
     public transform: Transform;
     public name: string;
-    public onCollision: TypedEvent<GameObject> = new TypedEvent<GameObject>();
 
     constructor(name?: string) {
         ObjectHandler.addGameObject(this);
@@ -83,5 +81,9 @@ export class GameObject {
         }
 
         return false;
+    }
+
+    public toString = (): string => {
+        return `${this.name}`;
     }
 }

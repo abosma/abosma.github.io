@@ -61,4 +61,8 @@ export class Vector2 {
     public static len(pos: Vector2): number {
         return Math.sqrt(pos.x * pos.x + pos.y * pos.y);
     }
+
+    public toString = (): string => {
+        return `(x: ${this.x.toPrecision(5)}, y: ${this.y.toPrecision(5)})`;
+    }
 }

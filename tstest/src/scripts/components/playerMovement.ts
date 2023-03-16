@@ -10,11 +10,7 @@ export class PlayerMovement implements IComponent {
     canMove: boolean = true;
 
     start(): void {
-        this.gameObject.onCollision.on((other) => {
-            LogHandler.addLog(`Collision with object: ${other.name}`);
-        });
-
-        return;
+        
     }
 
     update(dt: number): void {
