@@ -5,7 +5,7 @@ export class ObjectHandler {
     private static instance: ObjectHandler;
     private constructor() { }
 
-    private gameObjects: GameObject[] = new Array<GameObject>();
+    private static gameObjects: GameObject[] = new Array<GameObject>();
 
     public start(): void {
         return;
@@ -19,18 +19,18 @@ export class ObjectHandler {
         return ObjectHandler.instance;
     }
 
-    public addGameObject(gameObject: GameObject) {
-        if (this.gameObjects.indexOf(gameObject) == -1) {
-            this.gameObjects.push(gameObject);
+    public static addGameObject(gameObject: GameObject) {
+        if (ObjectHandler.gameObjects.indexOf(gameObject) == -1) {
+            ObjectHandler.gameObjects.push(gameObject);
         }
     }
 
     public getGameObjectsWithComponent<Type>(componentType: { new(): Type }): GameObject[] {
         let toReturnGameObjects: GameObject[] = [];
 
-        for (let i = this.gameObjects.length; i--;) {
-            if (this.gameObjects[i].hasComponent(Collider)) {
-                toReturnGameObjects.push(this.gameObjects[i]);
+        for (let i = ObjectHandler.gameObjects.length; i--;) {
+            if (ObjectHandler.gameObjects[i].hasComponent(Collider)) {
+                toReturnGameObjects.push(ObjectHandler.gameObjects[i]);
             }
         }
 
@@ -38,8 +38,8 @@ export class ObjectHandler {
     }
 
     public update(dt) {
-        for (let i = this.gameObjects.length; i--;) {
-            this.gameObjects[i].update(dt);
+        for (let i = ObjectHandler.gameObjects.length; i--;) {
+            ObjectHandler.gameObjects[i].update(dt);
             this.checkCollisions();
         }
     }

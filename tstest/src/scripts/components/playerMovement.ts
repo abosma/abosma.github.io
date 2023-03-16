@@ -11,7 +11,7 @@ export class PlayerMovement implements IComponent {
 
     start(): void {
         this.gameObject.onCollision.on((other) => {
-            LogHandler.getInstance().addLog(`Collision with object: ${other.name}`);
+            LogHandler.addLog(`Collision with object: ${other.name}`);
         });
 
         return;

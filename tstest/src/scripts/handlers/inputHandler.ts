@@ -1,3 +1,6 @@
+import { LogHandler } from "./logHandler";
+import { RenderHandler } from "./renderHandler";
+
 export class InputHandler {
     private static instance: InputHandler;
 
@@ -35,6 +38,8 @@ export class InputHandler {
                 InputHandler.pressedKeys.splice(keyIndex, 1);
             };
         });
+
+        LogHandler.addLog('Started InputHandler');
     };
 
     public static keyDown(keyCode: string): boolean {

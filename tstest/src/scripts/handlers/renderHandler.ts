@@ -40,6 +40,7 @@ export class RenderHandler {
     }
 
     public addDebugText(text: string[]) {
+        // Max 20 lines of debug text
         this.debugText = text.slice(-20);
     }
 

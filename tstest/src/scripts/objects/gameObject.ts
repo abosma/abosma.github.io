@@ -10,10 +10,8 @@ export class GameObject {
     public name: string;
     public onCollision: TypedEvent<GameObject> = new TypedEvent<GameObject>();
 
-    private logHandler: LogHandler = LogHandler.getInstance();
-
     constructor(name?: string) {
-        ObjectHandler.getInstance().addGameObject(this);
+        ObjectHandler.addGameObject(this);
 
         this.transform = this.addComponent(new Transform());
         this.name = name || "New GameObject";
@@ -22,7 +20,7 @@ export class GameObject {
     }
 
     public start(): void {
-        this.logHandler.addLog(`Started ${this.name}`);
+        LogHandler.addLog(`Started ${this.name}`);
     }
 
     public update(dt: number): void {

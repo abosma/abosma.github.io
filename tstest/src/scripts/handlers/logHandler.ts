@@ -4,10 +4,10 @@ export class LogHandler {
     private static instance: LogHandler;
 
     private renderHandler: RenderHandler = RenderHandler.getInstance();
-    private logs: string[] = [];
+    private static logs: string[] = [];
 
     private constructor() {
-        this.logs = [];
+        LogHandler.logs = [];
         window.setInterval(this.printLogs, 1000);
     };
 
@@ -19,16 +19,16 @@ export class LogHandler {
         return LogHandler.instance;
     };
 
-    public addLog(log: string): void {
+    public static addLog(log: string): void {
         this.logs.push(log);
     }
 
     public printLogs(): void {
-        if (!this.logs || this.logs.length == 0) {
+        if (!LogHandler.logs || LogHandler.logs.length == 0) {
             return;
         }
 
-        this.renderHandler.addDebugText(this.logs);
-        this.logs = [];
+        this.renderHandler.addDebugText(LogHandler.logs);
+        LogHandler.logs = [];
     }
 }
