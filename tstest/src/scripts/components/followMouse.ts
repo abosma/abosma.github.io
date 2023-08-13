@@ -4,20 +4,23 @@ import { GameObject } from "../objects/gameObject";
 import { IComponent } from "./component";
 
 export class FollowMouse implements IComponent {
-    gameObject: GameObject;
+  gameObject: GameObject;
 
-    public shouldFollow: boolean;
+  public shouldFollow: boolean;
 
-    start(): void {
-        return;
+  start(): void {
+    return;
+  }
+
+  update(dt: number): void {
+    if (!this.shouldFollow) {
+      return;
     }
 
-    update(dt: number): void {
-        if (!this.shouldFollow) {
-            return;
-        }
-
-        const mousePos = MouseHandler.getPosition();
-        this.gameObject.transform.position = new Vector2(mousePos.x - this.gameObject.transform.width / 2, mousePos.y - this.gameObject.transform.height / 2);
-    }
+    const mousePos = MouseHandler.getPosition();
+    this.gameObject.transform.position = new Vector2(
+      mousePos.x - this.gameObject.transform.width / 2,
+      mousePos.y - this.gameObject.transform.height / 2,
+    );
+  }
 }

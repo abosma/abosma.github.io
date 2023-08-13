@@ -1,27 +1,27 @@
 import { RenderHandler } from "./renderHandler";
 
 export abstract class LogHandler {
-    private static renderHandler: RenderHandler = RenderHandler.getInstance();
-    private static logs: string[] = [];
+  private static renderHandler: RenderHandler = RenderHandler.getInstance();
+  private static logs: string[] = [];
 
-    private constructor() {
-        LogHandler.logs = [];
-        window.setInterval(LogHandler.printLogs, 1000);
-    };
+  private constructor() {
+    LogHandler.logs = [];
+    window.setInterval(LogHandler.printLogs, 1000);
+  }
 
-    public static log(...logs: string[]): void {
-        if(!logs || logs.length === 0) {
-            return;
-        }
-        
-        LogHandler.logs.push(...logs);
+  public static log(...logs: string[]): void {
+    if (!logs || logs.length === 0) {
+      return;
     }
 
-    public static printLogs(): void {
-        if (!LogHandler.logs || LogHandler.logs.length == 0) {
-            return;
-        }
+    LogHandler.logs.push(...logs);
+  }
 
-        LogHandler.renderHandler.addDebugText(LogHandler.logs);
+  public static printLogs(): void {
+    if (!LogHandler.logs || LogHandler.logs.length == 0) {
+      return;
     }
+
+    LogHandler.renderHandler.addDebugText(LogHandler.logs);
+  }
 }

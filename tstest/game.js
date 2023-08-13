@@ -1,2 +1,505 @@
-(()=>{var F=Object.defineProperty;var $=(o,e,t)=>e in o?F(o,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):o[e]=t;var n=(o,e,t)=>($(o,typeof e!="symbol"?e+"":e,t),t);var v=class{constructor(){n(this,"renderers",new Array);n(this,"debugText",new Array);n(this,"offscreenCanvas");n(this,"offscreenContext");n(this,"displayCanvas");n(this,"displayContext")}start(){this.displayCanvas=document.querySelector("#canvas"),this.offscreenCanvas=document.createElement("canvas"),this.offscreenCanvas.width=this.displayCanvas.width,this.offscreenCanvas.height=this.displayCanvas.height,this.displayContext=this.displayCanvas.getContext("2d"),this.offscreenContext=this.offscreenCanvas.getContext("2d")}static getInstance(){return v.instance||(v.instance=new v),v.instance}addRenderer(e){this.renderers.indexOf(e)==-1&&this.renderers.push(e)}addDebugText(e){this.debugText=e.slice(-20)}update(e){this.clearScreen(),this.drawRenderers(),this.drawDebug(),this.displayContext.drawImage(this.offscreenCanvas,0,0,this.offscreenCanvas.width,this.offscreenCanvas.height)}clearScreen(){this.offscreenContext.fillRect(0,0,this.displayCanvas.width,this.displayCanvas.height)}drawRenderers(){for(let e=this.renderers.length;e--;){let t=this.renderers[e],r=t.image,a=r.width,p=r.height,g=t.gameObject.transform.position.x,w=t.gameObject.transform.position.y;this.offscreenContext.drawImage(r,g,w,a,p)}}drawDebug(){this.offscreenContext.fillStyle="white",this.offscreenContext.globalAlpha=.5,this.offscreenContext.fillRect(this.displayCanvas.width*.8,this.displayCanvas.height*.03,300,320),this.offscreenContext.font="small-caps bold 12px sans-serif",this.offscreenContext.fillStyle="black",this.offscreenContext.globalAlpha=1;for(let e=this.debugText.length;e--;)this.offscreenContext.fillText(this.debugText[e],this.displayCanvas.width*.81,this.displayCanvas.height*.06+15*e)}},f=v;n(f,"instance");var b=class{constructor(){b.logs=[],window.setInterval(b.printLogs,1e3)}static log(...e){!e||e.length===0||b.logs.push(...e)}static printLogs(){!b.logs||b.logs.length==0||b.renderHandler.addDebugText(b.logs)}},h=b;n(h,"renderHandler",f.getInstance()),n(h,"logs",[]);var u=class{constructor(){}static getInstance(){return u.instance||(u.instance=new u),u.instance}start(){document.addEventListener("keydown",e=>{e.defaultPrevented||u.pressedKeys.indexOf(e.code)==-1&&u.pressedKeys.push(e.code)}),document.addEventListener("keyup",e=>{if(e.defaultPrevented)return;let t=u.pressedKeys.indexOf(e.code);t!=-1&&u.pressedKeys.splice(t,1)}),h.log("Started InputHandler")}static keyDown(e){return this.pressedKeys.indexOf(e)!=-1}},s=u;n(s,"instance"),n(s,"pressedKeys",new Array);var C=class{constructor(){n(this,"listeners",[]);n(this,"listenersOncer",[]);n(this,"on",e=>(this.listeners.push(e),{dispose:()=>this.off(e)}));n(this,"once",e=>{this.listenersOncer.push(e)});n(this,"off",e=>{var t=this.listeners.indexOf(e);t>-1&&this.listeners.splice(t,1)});n(this,"emit",e=>{if(this.listeners.forEach(t=>t(e)),this.listenersOncer.length>0){let t=this.listenersOncer;this.listenersOncer=[],t.forEach(r=>r(e))}});n(this,"pipe",e=>this.on(t=>e.emit(t)))}};var i=class{constructor(e,t){n(this,"x",0);n(this,"y",0);n(this,"toString",()=>`(x: ${this.x.toPrecision(5)}, y: ${this.y.toPrecision(5)})`);e!==void 0&&(this.x=e),t!==void 0&&(this.y=t)}add(e){return e instanceof i?new i(this.x+e.x,this.y+e.y):new i(this.x+e,this.y+e)}subtract(e){return e instanceof i?new i(this.x-e.x,this.y-e.y):new i(this.x-e,this.y-e)}multiply(e){return e instanceof i?new i(this.x*e.x,this.y*e.y):new i(this.x*e,this.y*e)}static addVectors(e,t){return new i(e.x+t.x,e.y+t.y)}static subtractVectors(e,t){return new i(e.x-t.x,e.y-t.y)}static multiplyVectors(e,t){return new i(e.x*t.x,e.y*t.y)}static distance(e,t){return i.len(i.subtractVectors(e,t))}static normalize(e){let t=i.len(e);return new i(e.x/t,e.y/t)}static len(e){return Math.sqrt(e.x*e.x+e.y*e.y)}};var y=class{constructor(e){n(this,"gameObject");n(this,"image");e!==void 0&&(this.image=e),f.getInstance().addRenderer(this)}start(){}update(e){}};var O=class{constructor(e,t,r,a,p){n(this,"position",new i);n(this,"width");n(this,"height");n(this,"startPosition");n(this,"endPosition");n(this,"isMoving",!1);n(this,"distance");n(this,"direction");n(this,"speed");n(this,"gameObject");e!==void 0&&(this.position.x=e),t!==void 0&&(this.position.y=t),r!==void 0&&(this.width=r),a!==void 0&&(this.height=a),p!==void 0&&(this.position=p)}start(){}update(e){this.isMoving&&(this.position=i.addVectors(this.position,this.direction.multiply(this.speed*e)),i.distance(this.startPosition,this.position)>=this.distance&&(this.position=this.endPosition,this.isMoving=!1))}moveTo(e,t){this.startPosition=this.position,this.endPosition=e,this.distance=i.distance(this.startPosition,e),this.speed=t/1e3,this.direction=i.normalize(i.subtractVectors(e,this.startPosition)),this.isMoving=!0}getCenter(){let e=this.gameObject.getComponent(y);if(!e)return;let t=e.image.width,r=e.image.height;return new i(this.position.x+t/2,this.position.y+r/2)}};var d=class{constructor(){n(this,"collisionEnter",new C);n(this,"collision",new C);n(this,"collisionExit",new C);n(this,"gameObject");n(this,"transform");n(this,"collidedGameObjects",[]);n(this,"toString",()=>`${this.transform.position} - (${this.transform.height}, ${this.transform.width})`)}start(){this.transform=this.gameObject.getComponent(O)}update(e){}};var m=class{constructor(){}start(){}static getInstance(){return m.instance||(m.instance=new m),m.instance}static addGameObject(e){m.gameObjects.indexOf(e)==-1&&m.gameObjects.push(e)}getGameObjectsWithComponent(e){let t=[];for(let r=m.gameObjects.length;r--;)m.gameObjects[r].hasComponent(d)&&t.push(m.gameObjects[r]);return t}update(e){for(let t=m.gameObjects.length;t--;)m.gameObjects[t].update(e),this.checkCollisions()}checkCollisions(){let e=this.getGameObjectsWithComponent(d);for(let t=0;t<e.length;t++)for(let r=t+1;r<e.length;r++){if(e[t]===e[r])continue;let a=e[t],p=e[r],g=a.getComponent(d),w=p.getComponent(d),L=w.collidedGameObjects.findIndex(R=>R===a),D=g.collidedGameObjects.findIndex(R=>R===p),V=this.aabbTest(a,p);V?(g.collision.emit(p),w.collision.emit(a),D===-1&&(g.collidedGameObjects.push(p),g.collisionEnter.emit(p)),L===-1&&(w.collidedGameObjects.push(a),w.collisionEnter.emit(a))):V||(D!==-1&&(g.collidedGameObjects.splice(D,1),g.collisionExit.emit(p)),L!==-1&&(w.collidedGameObjects.splice(L,1),w.collisionExit.emit(a)))}}aabbTest(e,t){return e.transform.position.x<t.transform.position.x+t.transform.width&&e.transform.position.x+e.transform.width>t.transform.position.x&&e.transform.position.y<t.transform.position.y+t.transform.height&&e.transform.position.y+e.transform.height>t.transform.position.y}},x=m;n(x,"instance"),n(x,"gameObjects",new Array);var c=class{static getInstance(){return c.instance||(c.instance=new c),c.instance}constructor(){window.addEventListener("mousemove",e=>{c.mouseX=e.x,c.mouseY=e.y}),window.addEventListener("mousedown",()=>{c.mouseDown=!0}),window.addEventListener("mouseup",()=>{c.mouseDown=!1})}static getPosition(){return new i(c.mouseX,c.mouseY)}static isOverObject(e,t){let r=c.getPosition();return Math.pow(r.x-e.x,2)+Math.pow(r.y-e.y,2)<Math.pow(t,2)}},l=c;n(l,"mouseX"),n(l,"mouseY"),n(l,"mouseDown"),n(l,"instance");var j=class{constructor(e){n(this,"components",new Array);n(this,"transform");n(this,"name");n(this,"toString",()=>`${this.name}`);x.addGameObject(this),this.transform=this.addComponent(new O),this.name=e||"New GameObject",this.start()}start(){h.log(`Started ${this.name}`)}update(e){for(let t=this.components.length;t--;)this.components[t].update(e)}addComponent(e){let t=e;return t.gameObject=this,this.components.indexOf(t)==-1?(this.components.push(t),t.start(),e):null}getComponent(e){for(let t=this.components.length;t--;){let r=this.components[t];if(r instanceof e)return r}return null}removeComponent(e){let t=-1;for(let r=this.components.length;r--;)this.components[r]==e&&(t=r);t!=-1&&this.components.splice(t,1)}hasComponent(e){for(let t=this.components.length;t--;)if(this.components[t]instanceof e)return!0;return!1}};var T=class extends j{constructor(){super();n(this,"collider");n(this,"renderer");this.collider=this.addComponent(new d),this.renderer=this.addComponent(new y);let t=new Image;t.src="src/assets/wall.png",this.renderer.image=t,this.transform.height=64,this.transform.width=64,this.transform.position=new i(500,500)}};var I=class{constructor(){n(this,"gameObject");n(this,"shouldFollow")}start(){}update(e){if(!this.shouldFollow)return;let t=l.getPosition();this.gameObject.transform.position=new i(t.x-this.gameObject.transform.width/2,t.y-this.gameObject.transform.height/2)}};var G=class{constructor(){n(this,"gameObject");n(this,"followMouse")}start(){this.followMouse=this.gameObject.getComponent(I),this.followMouse.shouldFollow=!1}update(e){if(!l.mouseDown){this.followMouse.shouldFollow=!1;return}l.isOverObject(this.gameObject.transform.getCenter(),50)&&(this.followMouse.shouldFollow=!0)}};var M=class{constructor(){n(this,"speed",1);n(this,"gameObject");n(this,"canMove",!0)}start(){}update(e){this.canMove&&((s.keyDown("KeyA")||s.keyDown("ArrowLeft"))&&(this.gameObject.transform.position.x-=this.speed*e),(s.keyDown("KeyD")||s.keyDown("ArrowRight"))&&(this.gameObject.transform.position.x+=this.speed*e),(s.keyDown("KeyW")||s.keyDown("ArrowUp"))&&(this.gameObject.transform.position.y-=this.speed*e),(s.keyDown("KeyS")||s.keyDown("ArrowDown"))&&(this.gameObject.transform.position.y+=this.speed*e))}};var H=class extends j{constructor(){super();n(this,"renderer");n(this,"collider");n(this,"playerMovement");this.renderer=this.addComponent(new y);let t=new Image;t.src="src/assets/player.png",this.renderer.image=t,this.transform.height=64,this.transform.width=64,this.collider=this.addComponent(new d),this.playerMovement=this.addComponent(new M),this.addComponent(new I),this.addComponent(new G)}};var A=x.getInstance(),S=f.getInstance(),W=s.getInstance(),it=new l,E=.01,k=performance.now(),P=0;function q(){A.start(),S.start(),W.start();let o=new H,e=new T;window.requestAnimationFrame(K)}function K(){let o=performance.now(),e=o-k;for(k=o,P+=e;P>=E;)A.update(E),P-=E;S.update(E),h.printLogs(),window.requestAnimationFrame(K)}window.onload=()=>q();})();
+(() => {
+  var F = Object.defineProperty;
+  var $ = (o, e, t) =>
+    e in o
+      ? F(o, e, { enumerable: !0, configurable: !0, writable: !0, value: t })
+      : (o[e] = t);
+  var n = (o, e, t) => ($(o, typeof e != "symbol" ? e + "" : e, t), t);
+  var v = class {
+      constructor() {
+        n(this, "renderers", new Array());
+        n(this, "debugText", new Array());
+        n(this, "offscreenCanvas");
+        n(this, "offscreenContext");
+        n(this, "displayCanvas");
+        n(this, "displayContext");
+      }
+      start() {
+        (this.displayCanvas = document.querySelector("#canvas")),
+          (this.offscreenCanvas = document.createElement("canvas")),
+          (this.offscreenCanvas.width = this.displayCanvas.width),
+          (this.offscreenCanvas.height = this.displayCanvas.height),
+          (this.displayContext = this.displayCanvas.getContext("2d")),
+          (this.offscreenContext = this.offscreenCanvas.getContext("2d"));
+      }
+      static getInstance() {
+        return v.instance || (v.instance = new v()), v.instance;
+      }
+      addRenderer(e) {
+        this.renderers.indexOf(e) == -1 && this.renderers.push(e);
+      }
+      addDebugText(e) {
+        this.debugText = e.slice(-20);
+      }
+      update(e) {
+        this.clearScreen(),
+          this.drawRenderers(),
+          this.drawDebug(),
+          this.displayContext.drawImage(
+            this.offscreenCanvas,
+            0,
+            0,
+            this.offscreenCanvas.width,
+            this.offscreenCanvas.height,
+          );
+      }
+      clearScreen() {
+        this.offscreenContext.fillRect(
+          0,
+          0,
+          this.displayCanvas.width,
+          this.displayCanvas.height,
+        );
+      }
+      drawRenderers() {
+        for (let e = this.renderers.length; e--; ) {
+          let t = this.renderers[e],
+            r = t.image,
+            a = r.width,
+            p = r.height,
+            g = t.gameObject.transform.position.x,
+            w = t.gameObject.transform.position.y;
+          this.offscreenContext.drawImage(r, g, w, a, p);
+        }
+      }
+      drawDebug() {
+        (this.offscreenContext.fillStyle = "white"),
+          (this.offscreenContext.globalAlpha = 0.5),
+          this.offscreenContext.fillRect(
+            this.displayCanvas.width * 0.8,
+            this.displayCanvas.height * 0.03,
+            300,
+            320,
+          ),
+          (this.offscreenContext.font = "small-caps bold 12px sans-serif"),
+          (this.offscreenContext.fillStyle = "black"),
+          (this.offscreenContext.globalAlpha = 1);
+        for (let e = this.debugText.length; e--; )
+          this.offscreenContext.fillText(
+            this.debugText[e],
+            this.displayCanvas.width * 0.81,
+            this.displayCanvas.height * 0.06 + 15 * e,
+          );
+      }
+    },
+    f = v;
+  n(f, "instance");
+  var b = class {
+      constructor() {
+        (b.logs = []), window.setInterval(b.printLogs, 1e3);
+      }
+      static log(...e) {
+        !e || e.length === 0 || b.logs.push(...e);
+      }
+      static printLogs() {
+        !b.logs || b.logs.length == 0 || b.renderHandler.addDebugText(b.logs);
+      }
+    },
+    h = b;
+  n(h, "renderHandler", f.getInstance()), n(h, "logs", []);
+  var u = class {
+      constructor() {}
+      static getInstance() {
+        return u.instance || (u.instance = new u()), u.instance;
+      }
+      start() {
+        document.addEventListener("keydown", (e) => {
+          e.defaultPrevented ||
+            (u.pressedKeys.indexOf(e.code) == -1 && u.pressedKeys.push(e.code));
+        }),
+          document.addEventListener("keyup", (e) => {
+            if (e.defaultPrevented) return;
+            let t = u.pressedKeys.indexOf(e.code);
+            t != -1 && u.pressedKeys.splice(t, 1);
+          }),
+          h.log("Started InputHandler");
+      }
+      static keyDown(e) {
+        return this.pressedKeys.indexOf(e) != -1;
+      }
+    },
+    s = u;
+  n(s, "instance"), n(s, "pressedKeys", new Array());
+  var C = class {
+    constructor() {
+      n(this, "listeners", []);
+      n(this, "listenersOncer", []);
+      n(
+        this,
+        "on",
+        (e) => (this.listeners.push(e), { dispose: () => this.off(e) }),
+      );
+      n(this, "once", (e) => {
+        this.listenersOncer.push(e);
+      });
+      n(this, "off", (e) => {
+        var t = this.listeners.indexOf(e);
+        t > -1 && this.listeners.splice(t, 1);
+      });
+      n(this, "emit", (e) => {
+        if (
+          (this.listeners.forEach((t) => t(e)), this.listenersOncer.length > 0)
+        ) {
+          let t = this.listenersOncer;
+          (this.listenersOncer = []), t.forEach((r) => r(e));
+        }
+      });
+      n(this, "pipe", (e) => this.on((t) => e.emit(t)));
+    }
+  };
+  var i = class {
+    constructor(e, t) {
+      n(this, "x", 0);
+      n(this, "y", 0);
+      n(
+        this,
+        "toString",
+        () => `(x: ${this.x.toPrecision(5)}, y: ${this.y.toPrecision(5)})`,
+      );
+      e !== void 0 && (this.x = e), t !== void 0 && (this.y = t);
+    }
+    add(e) {
+      return e instanceof i
+        ? new i(this.x + e.x, this.y + e.y)
+        : new i(this.x + e, this.y + e);
+    }
+    subtract(e) {
+      return e instanceof i
+        ? new i(this.x - e.x, this.y - e.y)
+        : new i(this.x - e, this.y - e);
+    }
+    multiply(e) {
+      return e instanceof i
+        ? new i(this.x * e.x, this.y * e.y)
+        : new i(this.x * e, this.y * e);
+    }
+    static addVectors(e, t) {
+      return new i(e.x + t.x, e.y + t.y);
+    }
+    static subtractVectors(e, t) {
+      return new i(e.x - t.x, e.y - t.y);
+    }
+    static multiplyVectors(e, t) {
+      return new i(e.x * t.x, e.y * t.y);
+    }
+    static distance(e, t) {
+      return i.len(i.subtractVectors(e, t));
+    }
+    static normalize(e) {
+      let t = i.len(e);
+      return new i(e.x / t, e.y / t);
+    }
+    static len(e) {
+      return Math.sqrt(e.x * e.x + e.y * e.y);
+    }
+  };
+  var y = class {
+    constructor(e) {
+      n(this, "gameObject");
+      n(this, "image");
+      e !== void 0 && (this.image = e), f.getInstance().addRenderer(this);
+    }
+    start() {}
+    update(e) {}
+  };
+  var O = class {
+    constructor(e, t, r, a, p) {
+      n(this, "position", new i());
+      n(this, "width");
+      n(this, "height");
+      n(this, "startPosition");
+      n(this, "endPosition");
+      n(this, "isMoving", !1);
+      n(this, "distance");
+      n(this, "direction");
+      n(this, "speed");
+      n(this, "gameObject");
+      e !== void 0 && (this.position.x = e),
+        t !== void 0 && (this.position.y = t),
+        r !== void 0 && (this.width = r),
+        a !== void 0 && (this.height = a),
+        p !== void 0 && (this.position = p);
+    }
+    start() {}
+    update(e) {
+      this.isMoving &&
+        ((this.position = i.addVectors(
+          this.position,
+          this.direction.multiply(this.speed * e),
+        )),
+        i.distance(this.startPosition, this.position) >= this.distance &&
+          ((this.position = this.endPosition), (this.isMoving = !1)));
+    }
+    moveTo(e, t) {
+      (this.startPosition = this.position),
+        (this.endPosition = e),
+        (this.distance = i.distance(this.startPosition, e)),
+        (this.speed = t / 1e3),
+        (this.direction = i.normalize(
+          i.subtractVectors(e, this.startPosition),
+        )),
+        (this.isMoving = !0);
+    }
+    getCenter() {
+      let e = this.gameObject.getComponent(y);
+      if (!e) return;
+      let t = e.image.width,
+        r = e.image.height;
+      return new i(this.position.x + t / 2, this.position.y + r / 2);
+    }
+  };
+  var d = class {
+    constructor() {
+      n(this, "collisionEnter", new C());
+      n(this, "collision", new C());
+      n(this, "collisionExit", new C());
+      n(this, "gameObject");
+      n(this, "transform");
+      n(this, "collidedGameObjects", []);
+      n(
+        this,
+        "toString",
+        () =>
+          `${this.transform.position} - (${this.transform.height}, ${this.transform.width})`,
+      );
+    }
+    start() {
+      this.transform = this.gameObject.getComponent(O);
+    }
+    update(e) {}
+  };
+  var m = class {
+      constructor() {}
+      start() {}
+      static getInstance() {
+        return m.instance || (m.instance = new m()), m.instance;
+      }
+      static addGameObject(e) {
+        m.gameObjects.indexOf(e) == -1 && m.gameObjects.push(e);
+      }
+      getGameObjectsWithComponent(e) {
+        let t = [];
+        for (let r = m.gameObjects.length; r--; )
+          m.gameObjects[r].hasComponent(d) && t.push(m.gameObjects[r]);
+        return t;
+      }
+      update(e) {
+        for (let t = m.gameObjects.length; t--; )
+          m.gameObjects[t].update(e), this.checkCollisions();
+      }
+      checkCollisions() {
+        let e = this.getGameObjectsWithComponent(d);
+        for (let t = 0; t < e.length; t++)
+          for (let r = t + 1; r < e.length; r++) {
+            if (e[t] === e[r]) continue;
+            let a = e[t],
+              p = e[r],
+              g = a.getComponent(d),
+              w = p.getComponent(d),
+              D = w.collidedGameObjects.findIndex((R) => R === a),
+              L = g.collidedGameObjects.findIndex((R) => R === p),
+              V = this.aabbTest(a, p);
+            V
+              ? (g.collision.emit(p),
+                w.collision.emit(a),
+                L === -1 &&
+                  (g.collidedGameObjects.push(p), g.collisionEnter.emit(p)),
+                D === -1 &&
+                  (w.collidedGameObjects.push(a), w.collisionEnter.emit(a)))
+              : V ||
+                (L !== -1 &&
+                  (g.collidedGameObjects.splice(L, 1), g.collisionExit.emit(p)),
+                D !== -1 &&
+                  (w.collidedGameObjects.splice(D, 1),
+                  w.collisionExit.emit(a)));
+          }
+      }
+      aabbTest(e, t) {
+        return (
+          e.transform.position.x < t.transform.position.x + t.transform.width &&
+          e.transform.position.x + e.transform.width > t.transform.position.x &&
+          e.transform.position.y <
+            t.transform.position.y + t.transform.height &&
+          e.transform.position.y + e.transform.height > t.transform.position.y
+        );
+      }
+    },
+    x = m;
+  n(x, "instance"), n(x, "gameObjects", new Array());
+  var c = class {
+      static getInstance() {
+        return c.instance || (c.instance = new c()), c.instance;
+      }
+      constructor() {
+        window.addEventListener("mousemove", (e) => {
+          (c.mouseX = e.x), (c.mouseY = e.y);
+        }),
+          window.addEventListener("mousedown", () => {
+            c.mouseDown = !0;
+          }),
+          window.addEventListener("mouseup", () => {
+            c.mouseDown = !1;
+          });
+      }
+      static getPosition() {
+        return new i(c.mouseX, c.mouseY);
+      }
+      static isOverObject(e, t) {
+        let r = c.getPosition();
+        return Math.pow(r.x - e.x, 2) + Math.pow(r.y - e.y, 2) < Math.pow(t, 2);
+      }
+    },
+    l = c;
+  n(l, "mouseX"), n(l, "mouseY"), n(l, "mouseDown"), n(l, "instance");
+  var j = class {
+    constructor(e) {
+      n(this, "components", new Array());
+      n(this, "transform");
+      n(this, "name");
+      n(this, "toString", () => `${this.name}`);
+      x.addGameObject(this),
+        (this.transform = this.addComponent(new O())),
+        (this.name = e || "New GameObject"),
+        this.start();
+    }
+    start() {
+      h.log(`Started ${this.name}`);
+    }
+    update(e) {
+      for (let t = this.components.length; t--; ) this.components[t].update(e);
+    }
+    addComponent(e) {
+      let t = e;
+      return (
+        (t.gameObject = this),
+        this.components.indexOf(t) == -1
+          ? (this.components.push(t), t.start(), e)
+          : null
+      );
+    }
+    getComponent(e) {
+      for (let t = this.components.length; t--; ) {
+        let r = this.components[t];
+        if (r instanceof e) return r;
+      }
+      return null;
+    }
+    removeComponent(e) {
+      let t = -1;
+      for (let r = this.components.length; r--; )
+        this.components[r] == e && (t = r);
+      t != -1 && this.components.splice(t, 1);
+    }
+    hasComponent(e) {
+      for (let t = this.components.length; t--; )
+        if (this.components[t] instanceof e) return !0;
+      return !1;
+    }
+  };
+  var T = class extends j {
+    constructor() {
+      super();
+      n(this, "collider");
+      n(this, "renderer");
+      (this.collider = this.addComponent(new d())),
+        (this.renderer = this.addComponent(new y()));
+      let t = new Image();
+      (t.src = "src/assets/wall.png"),
+        (this.renderer.image = t),
+        (this.transform.height = 64),
+        (this.transform.width = 64),
+        (this.transform.position = new i(500, 500));
+    }
+  };
+  var I = class {
+    constructor() {
+      n(this, "gameObject");
+      n(this, "shouldFollow");
+    }
+    start() {}
+    update(e) {
+      if (!this.shouldFollow) return;
+      let t = l.getPosition();
+      this.gameObject.transform.position = new i(
+        t.x - this.gameObject.transform.width / 2,
+        t.y - this.gameObject.transform.height / 2,
+      );
+    }
+  };
+  var G = class {
+    constructor() {
+      n(this, "gameObject");
+      n(this, "followMouse");
+    }
+    start() {
+      (this.followMouse = this.gameObject.getComponent(I)),
+        (this.followMouse.shouldFollow = !1);
+    }
+    update(e) {
+      if (!l.mouseDown) {
+        this.followMouse.shouldFollow = !1;
+        return;
+      }
+      l.isOverObject(this.gameObject.transform.getCenter(), 50) &&
+        (this.followMouse.shouldFollow = !0);
+    }
+  };
+  var M = class {
+    constructor() {
+      n(this, "speed", 1);
+      n(this, "gameObject");
+      n(this, "canMove", !0);
+    }
+    start() {}
+    update(e) {
+      this.canMove &&
+        ((s.keyDown("KeyA") || s.keyDown("ArrowLeft")) &&
+          (this.gameObject.transform.position.x -= this.speed * e),
+        (s.keyDown("KeyD") || s.keyDown("ArrowRight")) &&
+          (this.gameObject.transform.position.x += this.speed * e),
+        (s.keyDown("KeyW") || s.keyDown("ArrowUp")) &&
+          (this.gameObject.transform.position.y -= this.speed * e),
+        (s.keyDown("KeyS") || s.keyDown("ArrowDown")) &&
+          (this.gameObject.transform.position.y += this.speed * e));
+    }
+  };
+  var E = class extends j {
+    constructor() {
+      super();
+      n(this, "renderer");
+      n(this, "collider");
+      n(this, "playerMovement");
+      this.renderer = this.addComponent(new y());
+      let t = new Image();
+      (t.src = "src/assets/player.png"),
+        (this.renderer.image = t),
+        (this.transform.height = 64),
+        (this.transform.width = 64),
+        (this.collider = this.addComponent(new d())),
+        (this.playerMovement = this.addComponent(new M())),
+        this.addComponent(new I()),
+        this.addComponent(new G());
+    }
+  };
+  var A = x.getInstance(),
+    S = f.getInstance(),
+    W = s.getInstance(),
+    it = new l(),
+    H = 0.01,
+    k = performance.now(),
+    P = 0;
+  function q() {
+    A.start(), S.start(), W.start();
+    let o = new E(),
+      e = new T();
+    window.requestAnimationFrame(K);
+  }
+  function K() {
+    let o = performance.now(),
+      e = o - k;
+    for (k = o, P += e; P >= H; ) A.update(H), (P -= H);
+    S.update(H), h.printLogs(), window.requestAnimationFrame(K);
+  }
+  window.onload = () => q();
+})();
 //# sourceMappingURL=game.js.map

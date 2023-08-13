@@ -2,51 +2,51 @@ import { LogHandler } from "./logHandler";
 import { RenderHandler } from "./renderHandler";
 
 export class InputHandler {
-    private static instance: InputHandler;
+  private static instance: InputHandler;
 
-    private static pressedKeys: Array<string> = new Array<string>();
+  private static pressedKeys: Array<string> = new Array<string>();
 
-    private constructor() { };
+  private constructor() {}
 
-    public static getInstance(): InputHandler {
-        if (!InputHandler.instance) {
-            InputHandler.instance = new InputHandler();
-        };
+  public static getInstance(): InputHandler {
+    if (!InputHandler.instance) {
+      InputHandler.instance = new InputHandler();
+    }
 
-        return InputHandler.instance;
-    };
+    return InputHandler.instance;
+  }
 
-    public start(): void {
-        document.addEventListener('keydown', (e) => {
-            if (e.defaultPrevented) {
-                return;
-            };
+  public start(): void {
+    document.addEventListener("keydown", (e) => {
+      if (e.defaultPrevented) {
+        return;
+      }
 
-            if (InputHandler.pressedKeys.indexOf(e.code) == -1) {
-                InputHandler.pressedKeys.push(e.code);
-            };
-        });
+      if (InputHandler.pressedKeys.indexOf(e.code) == -1) {
+        InputHandler.pressedKeys.push(e.code);
+      }
+    });
 
-        document.addEventListener('keyup', (e) => {
-            if (e.defaultPrevented) {
-                return;
-            };
+    document.addEventListener("keyup", (e) => {
+      if (e.defaultPrevented) {
+        return;
+      }
 
-            let keyIndex: number = InputHandler.pressedKeys.indexOf(e.code);
+      let keyIndex: number = InputHandler.pressedKeys.indexOf(e.code);
 
-            if (keyIndex != -1) {
-                InputHandler.pressedKeys.splice(keyIndex, 1);
-            };
-        });
+      if (keyIndex != -1) {
+        InputHandler.pressedKeys.splice(keyIndex, 1);
+      }
+    });
 
-        LogHandler.log('Started InputHandler');
-    };
+    LogHandler.log("Started InputHandler");
+  }
 
-    public static keyDown(keyCode: string): boolean {
-        if (this.pressedKeys.indexOf(keyCode) != -1) {
-            return true;
-        };
+  public static keyDown(keyCode: string): boolean {
+    if (this.pressedKeys.indexOf(keyCode) != -1) {
+      return true;
+    }
 
-        return false;
-    };
+    return false;
+  }
 }

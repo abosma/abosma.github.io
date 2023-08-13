@@ -4,23 +4,23 @@ import { IComponent } from "./component";
 import { FollowMouse } from "./followMouse";
 
 export class Dragger implements IComponent {
-    gameObject: GameObject;
+  gameObject: GameObject;
 
-    private followMouse: FollowMouse;
+  private followMouse: FollowMouse;
 
-    start(): void {
-        this.followMouse = this.gameObject.getComponent(FollowMouse);
-        this.followMouse.shouldFollow = false;
+  start(): void {
+    this.followMouse = this.gameObject.getComponent(FollowMouse);
+    this.followMouse.shouldFollow = false;
+  }
+
+  update(dt: number): void {
+    if (!MouseHandler.mouseDown) {
+      this.followMouse.shouldFollow = false;
+      return;
     }
 
-    update(dt: number): void {
-        if (!MouseHandler.mouseDown) {
-            this.followMouse.shouldFollow = false;
-            return;
-        }
-
-        if (MouseHandler.isOverObject(this.gameObject.transform.getCenter(), 50)) {
-            this.followMouse.shouldFollow = true;
-        }
+    if (MouseHandler.isOverObject(this.gameObject.transform.getCenter(), 50)) {
+      this.followMouse.shouldFollow = true;
     }
+  }
 }

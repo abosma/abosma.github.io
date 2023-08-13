@@ -17,32 +17,32 @@ let currentTime: number = performance.now();
 let accumulator: number = 0.0;
 
 function init() {
-    objectHandler.start();
-    renderHandler.start();
-    inputHandler.start();
+  objectHandler.start();
+  renderHandler.start();
+  inputHandler.start();
 
-    let player = new Player();
-    let wall = new Wall();
+  let player = new Player();
+  let wall = new Wall();
 
-    window.requestAnimationFrame(update);
+  window.requestAnimationFrame(update);
 }
 
 function update() {
-    let newTime: number = performance.now();
-    let frameTime: number = newTime - currentTime;
+  let newTime: number = performance.now();
+  let frameTime: number = newTime - currentTime;
 
-    currentTime = newTime;
-    accumulator += frameTime;
+  currentTime = newTime;
+  accumulator += frameTime;
 
-    while (accumulator >= dt) {
-        objectHandler.update(dt);
-        accumulator -= dt;
-    }
+  while (accumulator >= dt) {
+    objectHandler.update(dt);
+    accumulator -= dt;
+  }
 
-    renderHandler.update(dt);
-    LogHandler.printLogs();
+  renderHandler.update(dt);
+  LogHandler.printLogs();
 
-    window.requestAnimationFrame(update);
+  window.requestAnimationFrame(update);
 }
 
 window.onload = () => init();
