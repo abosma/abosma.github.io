@@ -1,6 +1,5 @@
 import { IComponent } from "../components/component";
 import { Transform } from "../components/transform";
-import { LogHandler } from "../handlers/logHandler";
 import { ObjectHandler } from "../handlers/objectHandler";
 
 export abstract class GameObject {
@@ -17,9 +16,7 @@ export abstract class GameObject {
     this.start();
   }
 
-  public start(): void {
-    LogHandler.log(`Started ${this.name}`);
-  }
+  public start(): void {}
 
   public update(dt: number): void {
     for (let i = this.components.length; i--; ) {

@@ -10,6 +10,11 @@ export class Dragger implements IComponent {
 
   start(): void {
     this.followMouse = this.gameObject.getComponent(FollowMouse);
+
+    if (!this.followMouse) {
+      this.followMouse = this.gameObject.addComponent(new FollowMouse());
+    }
+
     this.followMouse.shouldFollow = false;
   }
 

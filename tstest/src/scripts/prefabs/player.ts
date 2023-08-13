@@ -1,8 +1,8 @@
 import { Collider } from "../components/collider";
-import { Dragger } from "../components/dragger";
-import { FollowMouse } from "../components/followMouse";
 import { PlayerMovement } from "../components/playerMovement";
 import { Renderer } from "../components/renderer";
+import { Size } from "../generics/size";
+import { Vector2 } from "../generics/vector2";
 import { GameObject } from "../objects/gameObject";
 
 export class Player extends GameObject {
@@ -10,21 +10,25 @@ export class Player extends GameObject {
   private collider: Collider;
   private playerMovement: PlayerMovement;
 
-  constructor() {
+  constructor(initialPosition?: Vector2, size?: Size) {
     super();
     this.renderer = this.addComponent(new Renderer());
     const playerImage = new Image();
 
     playerImage.src = "src/assets/player.png";
-    this.renderer.image = playerImage;
+    playerImage.width = size?.width ? size.width : 64;
+    playerImage.height = size?.height ? size.height : 64;
 
-    this.transform.height = 64;
-    this.transform.width = 64;
+    this.transform.width = size?.width ? size.width : 64;
+    this.transform.height = size?.height ? size.height : 64;
+
+    this.renderer.image = playerImage;
 
     this.collider = this.addComponent(new Collider());
     this.playerMovement = this.addComponent(new PlayerMovement());
 
-    this.addComponent(new FollowMouse());
-    this.addComponent(new Dragger());
+    if (initialPosition) {
+      this.transform.position = initialPosition;
+    }
   }
 }

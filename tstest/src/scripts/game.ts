@@ -2,10 +2,14 @@ import { InputHandler } from "./handlers/inputHandler";
 import { ObjectHandler } from "./handlers/objectHandler";
 import { RenderHandler } from "./handlers/renderHandler";
 import { LogHandler } from "./handlers/logHandler";
+import { MouseHandler } from "./handlers/mouseHandler";
+import { LevelHander } from "./handlers/levelHandler";
 
 const objectHandler = ObjectHandler.getInstance();
 const renderHandler = RenderHandler.getInstance();
 const inputHandler = InputHandler.getInstance();
+const mouseHandler = MouseHandler.getInstance();
+const levelHandler = LevelHander.getInstance();
 
 const dt: number = 0.01;
 
@@ -17,6 +21,9 @@ function init() {
   renderHandler.start();
   inputHandler.start();
 
+  levelHandler.start();
+
+  LevelHander.loadLevel("level_1");
 
   window.requestAnimationFrame(update);
 }
