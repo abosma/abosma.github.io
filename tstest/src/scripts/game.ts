@@ -20,7 +20,7 @@ function init() {
   objectHandler.start();
   renderHandler.start();
   inputHandler.start();
-
+  mouseHandler.start();
   levelHandler.start();
 
   LevelHander.loadLevel("level_1");

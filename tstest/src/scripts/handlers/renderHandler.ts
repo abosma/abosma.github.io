@@ -1,4 +1,5 @@
 import { Renderer } from "../components/renderer";
+import { LogHandler } from "./logHandler";
 
 export class RenderHandler {
   private renderers: Renderer[] = new Array<Renderer>();
@@ -23,6 +24,8 @@ export class RenderHandler {
 
     this.displayContext = this.displayCanvas.getContext("2d");
     this.offscreenContext = this.offscreenCanvas.getContext("2d");
+
+    LogHandler.log("Started RenderHandler")
   }
 
   public static getInstance(): RenderHandler {

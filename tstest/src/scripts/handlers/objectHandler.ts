@@ -1,5 +1,6 @@
 import { Collider } from "../components/collider";
 import { GameObject } from "../objects/gameObject";
+import { LogHandler } from "./logHandler";
 
 export class ObjectHandler {
   private static instance: ObjectHandler;
@@ -8,7 +9,7 @@ export class ObjectHandler {
   private static gameObjects: GameObject[] = new Array<GameObject>();
 
   public start(): void {
-    return;
+    LogHandler.log("Started ObjectHandler");
   }
 
   public static getInstance(): ObjectHandler {

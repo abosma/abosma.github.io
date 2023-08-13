@@ -1,4 +1,5 @@
 import { Vector2 } from "../generics/vector2";
+import { LogHandler } from "./logHandler";
 
 export class MouseHandler {
   private static mouseX: number;
@@ -16,7 +17,9 @@ export class MouseHandler {
     return MouseHandler.instance;
   }
 
-  constructor() {
+  constructor() {}
+
+  public start(): void {
     window.addEventListener("mousemove", (event: MouseEvent) => {
       MouseHandler.mouseX = event.x;
       MouseHandler.mouseY = event.y;
@@ -29,6 +32,8 @@ export class MouseHandler {
     window.addEventListener("mouseup", () => {
       MouseHandler.mouseDown = false;
     });
+
+    LogHandler.log("Started MouseHandler");
   }
 
   public static getPosition(): Vector2 {

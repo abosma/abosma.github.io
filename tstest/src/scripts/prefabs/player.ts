@@ -27,6 +27,8 @@ export class Player extends GameObject {
     this.collider = this.addComponent(new Collider());
     this.playerMovement = this.addComponent(new PlayerMovement());
 
+    this.playerMovement.speed = 0.5;
+
     if (initialPosition) {
       this.transform.position = initialPosition;
     }
