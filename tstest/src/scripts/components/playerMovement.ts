@@ -1,5 +1,4 @@
 import { InputHandler } from "../handlers/inputHandler";
-import { LogHandler } from "../handlers/logHandler";
 import { GameObject } from "../objects/gameObject";
 import { IComponent } from "./component";
 

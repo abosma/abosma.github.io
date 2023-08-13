@@ -25,10 +25,11 @@ export class ObjectHandler {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public getGameObjectsWithComponent<Type>(componentType: {
     new (): Type;
   }): GameObject[] {
-    let toReturnGameObjects: GameObject[] = [];
+    const toReturnGameObjects: GameObject[] = [];
 
     for (let i = ObjectHandler.gameObjects.length; i--; ) {
       if (ObjectHandler.gameObjects[i].hasComponent(Collider)) {
@@ -47,7 +48,7 @@ export class ObjectHandler {
   }
 
   public checkCollisions() {
-    let colliderObjects: GameObject[] =
+    const colliderObjects: GameObject[] =
       this.getGameObjectsWithComponent(Collider);
 
     for (let x = 0; x < colliderObjects.length; x++) {
@@ -56,20 +57,20 @@ export class ObjectHandler {
           continue;
         }
 
-        let go1 = colliderObjects[x];
-        let go2 = colliderObjects[y];
+        const go1 = colliderObjects[x];
+        const go2 = colliderObjects[y];
 
-        let go1Collider = go1.getComponent(Collider);
-        let go2Collider = go2.getComponent(Collider);
+        const go1Collider = go1.getComponent(Collider);
+        const go2Collider = go2.getComponent(Collider);
 
-        let go1Index = go2Collider.collidedGameObjects.findIndex(
-          (go) => go === go1,
+        const go1Index = go2Collider.collidedGameObjects.findIndex(
+          (go) => go === go1
         );
-        let go2Index = go1Collider.collidedGameObjects.findIndex(
-          (go) => go === go2,
+        const go2Index = go1Collider.collidedGameObjects.findIndex(
+          (go) => go === go2
         );
 
-        let hasCollided = this.aabbTest(go1, go2);
+        const hasCollided = this.aabbTest(go1, go2);
 
         if (hasCollided) {
           go1Collider.collision.emit(go2);

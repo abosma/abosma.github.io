@@ -2,14 +2,10 @@ import { InputHandler } from "./handlers/inputHandler";
 import { ObjectHandler } from "./handlers/objectHandler";
 import { RenderHandler } from "./handlers/renderHandler";
 import { LogHandler } from "./handlers/logHandler";
-import { MouseHandler } from "./handlers/mouseHandler";
-import { Wall } from "./prefabs/wall";
-import { Player } from "./prefabs/player";
 
 const objectHandler = ObjectHandler.getInstance();
 const renderHandler = RenderHandler.getInstance();
 const inputHandler = InputHandler.getInstance();
-const mouseHandler = new MouseHandler();
 
 const dt: number = 0.01;
 
@@ -21,15 +17,13 @@ function init() {
   renderHandler.start();
   inputHandler.start();
 
-  let player = new Player();
-  let wall = new Wall();
 
   window.requestAnimationFrame(update);
 }
 
 function update() {
-  let newTime: number = performance.now();
-  let frameTime: number = newTime - currentTime;
+  const newTime: number = performance.now();
+  const frameTime: number = newTime - currentTime;
 
   currentTime = newTime;
   accumulator += frameTime;

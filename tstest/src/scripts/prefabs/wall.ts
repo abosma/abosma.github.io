@@ -1,7 +1,6 @@
 import { Collider } from "../components/collider";
 import { Renderer } from "../components/renderer";
 import { Vector2 } from "../generics/vector2";
-import { LogHandler } from "../handlers/logHandler";
 import { GameObject } from "../objects/gameObject";
 
 export class Wall extends GameObject {
@@ -13,7 +12,7 @@ export class Wall extends GameObject {
     this.collider = this.addComponent(new Collider());
     this.renderer = this.addComponent(new Renderer());
 
-    let wallImage = new Image();
+    const wallImage = new Image();
     wallImage.src = "src/assets/wall.png";
 
     this.renderer.image = wallImage;

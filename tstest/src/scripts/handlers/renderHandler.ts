@@ -44,7 +44,7 @@ export class RenderHandler {
     this.debugText = text.slice(-20);
   }
 
-  public update(dt) {
+  public update(dt: number) {
     this.clearScreen();
     this.drawRenderers();
     this.drawDebug();
@@ -69,12 +69,12 @@ export class RenderHandler {
 
   private drawRenderers() {
     for (let i = this.renderers.length; i--; ) {
-      let renderer: Renderer = this.renderers[i];
-      let rendererImage: HTMLImageElement = renderer.image;
-      let rendererImageWidth: number = rendererImage.width as number;
-      let rendererImageHeight: number = rendererImage.height as number;
-      let rendererPositionX: number = renderer.gameObject.transform.position.x;
-      let rendererPositionY: number = renderer.gameObject.transform.position.y;
+      const renderer: Renderer = this.renderers[i];
+      const rendererImage: HTMLImageElement = renderer.image;
+      const rendererImageWidth: number = rendererImage.width as number;
+      const rendererImageHeight: number = rendererImage.height as number;
+      const rendererPositionX: number = renderer.gameObject.transform.position.x;
+      const rendererPositionY: number = renderer.gameObject.transform.position.y;
 
       this.offscreenContext.drawImage(
         rendererImage,

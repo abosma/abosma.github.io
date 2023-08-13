@@ -13,7 +13,7 @@ export class Player extends GameObject {
   constructor() {
     super();
     this.renderer = this.addComponent(new Renderer());
-    let playerImage = new Image();
+    const playerImage = new Image();
 
     playerImage.src = "src/assets/player.png";
     this.renderer.image = playerImage;

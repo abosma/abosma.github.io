@@ -53,7 +53,7 @@ export class Vector2 {
   }
 
   public static normalize(pos: Vector2): Vector2 {
-    let length = Vector2.len(pos);
+    const length = Vector2.len(pos);
 
     return new Vector2(pos.x / length, pos.y / length);
   }

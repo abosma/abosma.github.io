@@ -1,5 +1,4 @@
 import { LogHandler } from "./logHandler";
-import { RenderHandler } from "./renderHandler";
 
 export class InputHandler {
   private static instance: InputHandler;
@@ -32,7 +31,7 @@ export class InputHandler {
         return;
       }
 
-      let keyIndex: number = InputHandler.pressedKeys.indexOf(e.code);
+      const keyIndex: number = InputHandler.pressedKeys.indexOf(e.code);
 
       if (keyIndex != -1) {
         InputHandler.pressedKeys.splice(keyIndex, 1);

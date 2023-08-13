@@ -1,5 +1,4 @@
 import { Vector2 } from "../generics/vector2";
-import { LogHandler } from "./logHandler";
 
 export class MouseHandler {
   private static mouseX: number;

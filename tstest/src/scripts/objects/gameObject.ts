@@ -28,7 +28,7 @@ export abstract class GameObject {
   }
 
   public addComponent<Type>(component: Type): Type {
-    let newComponent: IComponent = component as unknown as IComponent;
+    const newComponent: IComponent = component as unknown as IComponent;
 
     newComponent.gameObject = this;
 
@@ -43,7 +43,7 @@ export abstract class GameObject {
 
   public getComponent<Type>(componentType: { new (): Type }): Type {
     for (let i = this.components.length; i--; ) {
-      let component = this.components[i];
+      const component = this.components[i];
 
       if (component instanceof componentType) {
         return component;
@@ -57,7 +57,7 @@ export abstract class GameObject {
     let index: number = -1;
 
     for (let i = this.components.length; i--; ) {
-      let otherComponent = this.components[i];
+      const otherComponent = this.components[i];
 
       if (otherComponent == component) {
         index = i;
@@ -73,7 +73,7 @@ export abstract class GameObject {
 
   public hasComponent<Type>(componentType: { new (): Type }): boolean {
     for (let i = this.components.length; i--; ) {
-      let component = this.components[i];
+      const component = this.components[i];
 
       if (component instanceof componentType) {
         return true;
