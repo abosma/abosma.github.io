@@ -39,7 +39,7 @@ export class InputHandler {
             };
         });
 
-        LogHandler.addLog('Started InputHandler');
+        LogHandler.log('Started InputHandler');
     };
 
     public static keyDown(keyCode: string): boolean {

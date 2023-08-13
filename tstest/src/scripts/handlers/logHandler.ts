@@ -9,7 +9,7 @@ export abstract class LogHandler {
         window.setInterval(LogHandler.printLogs, 1000);
     };
 
-    public static addLog(...logs: string[]): void {
+    public static log(...logs: string[]): void {
         if(!logs || logs.length === 0) {
             return;
         }

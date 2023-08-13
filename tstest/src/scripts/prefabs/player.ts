@@ -3,8 +3,6 @@ import { Dragger } from "../components/dragger";
 import { FollowMouse } from "../components/followMouse";
 import { PlayerMovement } from "../components/playerMovement";
 import { Renderer } from "../components/renderer";
-import { InputHandler } from "../handlers/inputHandler";
-import { LogHandler } from "../handlers/logHandler";
 import { GameObject } from "../objects/gameObject";
 
 export class Player extends GameObject {
@@ -12,7 +10,8 @@ export class Player extends GameObject {
     private collider: Collider;
     private playerMovement: PlayerMovement;
 
-    public start(): void {
+    constructor() {
+        super();
         this.renderer = this.addComponent(new Renderer());
         let playerImage = new Image();
 

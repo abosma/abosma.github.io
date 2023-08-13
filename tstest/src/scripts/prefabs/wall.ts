@@ -1,5 +1,4 @@
 import { Collider } from "../components/collider";
-import { PlayerMovement } from "../components/playerMovement";
 import { Renderer } from "../components/renderer";
 import { Vector2 } from "../generics/vector2";
 import { LogHandler } from "../handlers/logHandler";
@@ -9,7 +8,8 @@ export class Wall extends GameObject {
     public collider: Collider;
     public renderer: Renderer;
     
-    public start(): void {
+    constructor() {
+        super();
         this.collider = this.addComponent(new Collider);
         this.renderer = this.addComponent(new Renderer);
 

@@ -18,7 +18,7 @@ export abstract class GameObject {
     }
 
     public start(): void {
-        LogHandler.addLog(`Started ${this.name}`);
+        LogHandler.log(`Started ${this.name}`);
     }
 
     public update(dt: number): void {
