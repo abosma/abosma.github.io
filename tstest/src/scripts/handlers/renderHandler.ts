@@ -16,8 +16,11 @@ export class RenderHandler {
   private constructor() {}
 
   public start(): void {
-    this.displayCanvas = document.querySelector<HTMLCanvasElement>("#canvas");
+    this.displayCanvas = document.getElementById("canvas") as HTMLCanvasElement;
     this.offscreenCanvas = document.createElement("canvas");
+
+    this.displayCanvas.width = window.innerWidth;
+    this.displayCanvas.height = window.innerHeight;
 
     this.offscreenCanvas.width = this.displayCanvas.width;
     this.offscreenCanvas.height = this.displayCanvas.height;
